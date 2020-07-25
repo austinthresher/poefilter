@@ -1,3 +1,23 @@
+# Style guide
+# Emphasis:
+# 1 (Least):
+# 	No border, partially transparent background. Probably hidden.
+# 2:
+# 	No border, dark opaque background
+# 3:
+# 	Bright border, dark background
+# 4:
+# 	Inverted, bright background, dark text
+# 5:
+# 	Bright white background, colored text
+
+# Text colors for anything with a rarity follow the usual
+# white / blue / yellow / orange
+
+# Other types have their own color scheme
+
+# 
+
 # ===============================================
 # Defaults
 # ===============================================
@@ -52,26 +72,18 @@ Show
 	Continue
 
 # ===============================================
-# Currency, Frags, etc
+# Currency
 # ===============================================
 Hide
 	Class "Currency"
 	BaseType "Scroll"
-Show
+
+Show # Emphasis 2
 	Class "Currency"
+	BaseType "Transmutation" "Augmentation" "Whetstone" "Scrap"
+	SetTextColor 0 191 0
 	SetFontSize 32
-	Continue
-Show
-	Class "Currency"
-	BaseType "Shard"
-	SetFontSize 24
-	Continue
-Show
-	Class "Currency"
-	BaseType "Prophecy"
-	SetTextColor 255 255 255
-	SetBackgroundColor 88 0 179
-	SetBorderColor 38 0 86 255
+	
 Show
 	Class "Currency"
 	BaseType "Exalt"
@@ -95,11 +107,61 @@ Show
 	SetTextColor 128 254 128
 	SetBackgroundColor 20 20 20 128
 	Continue
+
+# ===============================================
+# Prophecies
+# ===============================================
+
+# Never worth picking up
+#Hide
+#	Class "Currency"
+#	BaseType "Prophecy"
+#	Prophecy ""
+#	SetFontSize 24
+# Top tier
+Show
+	Class "Currency"
+	BaseType "Prophecy"
+	Prophecy "Fated Connections" "Twice Enchanted"
+	SetFontSize 45
+	SetTextColor 255 255 255
+	SetBackgroundColor 38 0 86 255
+	SetBorderColor 255 255 255 255
+# Fated Uniques
+Show
+	Class "Currency"
+	BaseType "Prophecy"
+	Prophecy "A Dishonourable Death" "A Forest of False Idols" "A Rift in Time" "A Vision of Ice and Fire" "Agony at Dusk" "Ancient Doom" "Battle Hardened" "Black Devotion" "Blind Faith" "Blinding Light" "Burning Dread" "Cold Blooded Fury" "Cold Greed" "Crimson Hues" "Dance of Steel" "Dark Instincts" "Darktongue's Shriek" "Dying Cry" "End of the Light" "Faith Exhumed" "Fire and Brimstone" "Fire and Ice" "From The Void" "Greed's Folly" "Heavy Blows" "Last of the Wildmen" "Mouth of Horrors" "Nature's Resilience" "Pleasure and Pain" "Power Magnified" "Severed Limbs" "Song of the Sekhema" "Sun's Punishment" "The Apex Predator" "The Beginning and the End" "The Bishop's Legacy" "The Bloody Flowers Redux" "The Bowstring's Music" "The Dreaded Rhoa" "The Fall of an Empire" "The Flow of Energy" "The Great Leader of the North" "The Great Mind of the North" "The Karui Rebellion" "The King and the Brambles" "The King's Path" "The Malevolent Witch" "The Mentor" "The Misunderstood Queen" "The Nightmare Awakens" "The Queen's Sacrifice" "The Servant's Heart" "The Silverwood" "The Snuffed Flame" "The Storm Spire" "Trapped in the Tower" "Winter's Mournful Melodies"
+	SetFontSize 40
+	SetBackgroundColor 38 0 86 255
+	SetTextColor 88 0 179
+# SSF Uniques
+Show
+	Class "Currency"
+	BaseType "Prophecy"
+	Prophecy "A Call into the Void" "A Firm Foothold" "A Prodigious Hand" "A Whispered Prayer" "Abnormal Effulgence" "Against the Tide" "Baptism by Death" "Blood in the Eyes" "Blood of the Betrayed" "Cleanser of Sins" "Custodians of Silence" "Fear's Wide Reach" "Fire, Wood and Stone" "Flesh of the Beast" "From Death Springs Life" "Graceful Flames" "Heart of the Fire" "Lost in the Pages" "Nemesis of Greed" "Notched Flesh" "Roth's Legacy" "Storm on the Horizon" "Storm on the Reef" "Strong as a Bull" "The Brutal Enforcer" "The Eagle's Cry" "The Flayed Man" "The Hollow Pledge" "The Lady in Black" "The Last Watch" "The Lost Undying" "The Nest" "The Petrified" "The Prison Guard" "The Prison Key" "The Queen's Vaults" "The Singular Spirit" "The Sinner's Stone" "The Soulless Beast" "The Stockkeeper" "The Sword King's Passion" "The Vanguard" "The Walking Mountain" "The Ward's Ward" "The Watcher's Watcher" "Weeping Death" "Wind and Thunder" "The Mysterious Gift"
+	SetFontSize 32
+	SetTextColor 88 0 179
+# Other prophecies
+Show
+	Class "Currency"
+	BaseType "Prophecy"
+	SetTextColor 255 255 255
+	SetBackgroundColor 88 0 179 255
+	SetBorderColor 38 0 86 255
+
+# ===============================================
+# Map fragments
+# ===============================================
 Show
 	Class "Map Fragments"
 	SetBackgroundColor 231 180 120
 	SetTextColor 0 0 0
 	SetFontSize 40
+
+# ===============================================
+# Divination cards
+# ===============================================
 Show
 	Class "Divination"
 	SetBackgroundColor 14 186 255
