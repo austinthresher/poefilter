@@ -1,18 +1,24 @@
+# ===============================================
 # Defaults
+# ===============================================
 Show
 	SetBackgroundColor 20 20 20
 	SetBorderColor 0 0 0 0
 	SetFontSize 36
 	Continue
 
+# ===============================================
 # Corrupted
+# ===============================================
 Show
 	Corrupted True
 	SetBackgroundColor 86 0 0
 	SetBorderColor 210 0 0 255
 	Continue
 
+# ===============================================
 # 6 links
+# ===============================================
 Show
 	LinkedSockets 6
 	SetTextColor 128 254 128
@@ -23,7 +29,9 @@ Show
 	Corrupted False
 	SetBorderColor 255 255 255 255
 
+# ===============================================
 # Rarity
+# ===============================================
 Show
 	Rarity Normal
 	SetTextColor 255 255 255
@@ -43,15 +51,20 @@ Show
 	SetFontSize 45
 	Continue
 
+# ===============================================
 # Currency, Frags, etc
+# ===============================================
+Hide
+	Class "Currency"
+	BaseType "Scroll"
 Show
 	Class "Currency"
-	SetFontSize 45
+	SetFontSize 32
 	Continue
 Show
 	Class "Currency"
 	BaseType "Shard"
-	SetFontSize 32
+	SetFontSize 24
 	Continue
 Show
 	Class "Currency"
@@ -93,12 +106,16 @@ Show
 	SetTextColor 0 0 0
 	SetBorderColor 255 255 255 255
 
+# ===============================================
 # Veiled gear
+# ===============================================
 Show
 	HasExplicitMod "Veil"
 	SetBorderColor 50 230 100 255
 
+# ===============================================
 # Influenced gear
+# ===============================================
 Show
 	HasInfluence Shaper
 	SetBackgroundColor 255 40 0
@@ -130,17 +147,32 @@ Show
 	SetBorderColor 255 255 255 255
 	Continue
 	
+# ===============================================
 # Jewels
+# ===============================================
 Show
 	Class "Jewel"
 	SetBorderColor 0 0 254 255
 
+# ===============================================
 # Gems
+# ===============================================
 Show
 	Class "Gem"
+	BaseType "Empower" "Enhance" "Enlighten" "Portal"
+	SetBackgroundColor 27 162 155
+	SetTextColor 255 255 255
+	SetFontSize 45
+Show
+	Class "Gem"
+	Quality >= 10
 	SetTextColor 27 162 155
+Hide
+	Class "Gem"
 
+# ===============================================
 # Map Tiers
+# ===============================================
 Show
 	Class "Maps"
 	MapTier <= 5
@@ -154,5 +186,131 @@ Show
 	MapTier > 10
 	SetBorderColor 191 0 0 255
 
+# ===============================================
+# Only show specific base types
+# ===============================================
+
+# Gloves
+Show
+	AreaLevel >= 70
+	Class "Gloves"
+	BaseType "Fingerless" "Gripped" "Spiked"
+Hide
+	AreaLevel >= 70
+	Class "Gloves"
+	Rarity < Unique
+	HasInfluence None
+	Identified False
+	AnyEnchantment False
+	SetFontSize 24
+
+# Boots
+Show
+	AreaLevel >= 70
+	Class "Boots"
+	BaseType "Two-Toned"
+Hide
+	AreaLevel >= 70
+	Class "Boots"
+	Rarity < Unique
+	HasInfluence None
+	Identified False
+	AnyEnchantment False
+	SetFontSize 24
+
+# Belts
+Show
+	AreaLevel >= 70
+	Class "Belts"
+	BaseType "Crystal" "Vanguard" "Stygian"
+Hide
+	AreaLevel >= 70
+	Class "Belts"
+	Rarity < Unique
+	HasInfluence None
+	Identified False
+	SetFontSize 24
+
+# Rings
+Show
+	AreaLevel >= 70
+	Class "Rings"
+	BaseType "Cerulean" "Opal" "Steel" "Vermillion"
+Hide
+	AreaLevel >= 70
+	Class "Rings"
+	Rarity < Unique
+	HasInfluence None
+	Identified False
+	SetFontSize 24
+
+# Amulets
+Show
+	AreaLevel >= 70
+	Class "Amulets"
+	BaseType "Marble" "Blue"
+Hide
+	AreaLevel >= 70
+	Class "Amulets"
+	Rarity < Unique
+	HasInfluence None
+	Identified False
+	SetFontSize 24
+
+# Helmets
+Show
+	AreaLevel >= 70
+	Class "Helmets"
+	BaseType "Bone"
+Hide
+	AreaLevel >= 70
+	Class "Helmets"
+	Rarity < Unique
+	HasInfluence None
+	Identified False
+	AnyEnchantment False
+	SetFontSize 24
+
+# Body Armour
+Show
+	AreaLevel >= 70
+	Class "Body"
+	BaseType "Astral" "Vaal Regalia"
+Hide
+	AreaLevel >= 70
+	Class "Body"
+	Rarity < Unique
+	HasInfluence None
+	Identified False
+	SetFontSize 24
+
+# Flasks
+Hide
+	AreaLevel >= 70
+	Class "Flask"
+	Rarity < Unique
+	SetFontSize 24
+
+# Weapons
+# TODO: Specific weapons to show
+Hide
+	AreaLevel >= 70
+	Class "Claw" "Dagger" "Wand" "Sword" "Axe" "Mace" "Bow" "Stave" "Sceptre" 
+	Rarity < Unique
+	HasInfluence None
+	Identified False
+	SetFontSize 24
+
+# Shields
+Hide
+	AreaLevel >= 70
+	Class "Shield" "Quiver"
+	Rarity < Unique
+	HasInfluence None
+	Identified False
+	SetFontSize 24
+
+# ===============================================
 # Everything else
+# ===============================================
 Show
