@@ -1,3 +1,4 @@
+from colorsys import rgb_to_hsv, hsv_to_rgb
 from contextlib import contextmanager
 
 global in_block
@@ -22,6 +23,13 @@ def _hex(hex_string):
         t = tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
         return " ".join(str(x) for x in t)
     return hex_string
+
+def _rgb_float_to_dec(rgb):
+    r_in, g_in, b_in = rgb
+    r_out = int(r_in * 255)
+    g_out = int(g_in * 255)
+    b_out = int(b_in * 255)
+    return "%d %d %d" % (r_out, g_out, b_out)
 
 def _esc(text):
     t = str(text)
@@ -124,6 +132,44 @@ class Style:
             _apply(self.play_effect_color, "PlayEffect")
 
 
+class ColorSeries:
+    def __init__(self, fg_color, bg_color, tiers, min_sat=0.01, min_val=0.1):
+        fg_col_str = _hex(fg_color)
+        bg_col_str = _hex(bg_color)
+        self.fg_color = [(int(x) / 255.0) for x in fg_col_str.split()]
+        self.bg_color = [(int(x) / 255.0) for x in bg_col_str.split()]
+        self.tiers = tiers
+        self.min_sat = min_sat 
+        self.min_val = min_val
+
+    def fg(self, tier):
+        assert tier >= 0 and tier < self.tiers
+        h, s, v = rgb_to_hsv(*self.fg_color)
+        # Desaturate lower tiers
+        delta = tier / self.tiers 
+        s = self.min_sat * (1.0 - delta) + s * delta
+        # Lighten higher tiers
+        missing_val = 1.0 - v
+        v += delta * missing_val
+        return _rgb_float_to_dec(hsv_to_rgb(h, s, v))        
+
+    def bg(self, tier):
+        assert tier >= 0 and tier < self.tiers
+        h, s, v = rgb_to_hsv(*self.bg_color)
+        # Darken lower tiers
+        delta = tier / self.tiers 
+        v = self.min_val * (1.0 - delta) + v * delta
+        # Saturate lower tiers
+        missing_sat = 1.0 - s
+        s += (1.0 - delta) * missing_sat
+        # Hue transitions to complementary color for higher tiers
+        delta *= delta # Transition is nonlinear
+        opposite = h + 0.5
+        if opposite >= 1.0:
+            opposite -= 1.0
+        h = (1.0 - delta) * h + opposite * delta
+        return _rgb_float_to_dec(hsv_to_rgb(h, s, v))        
+
 def begin_show():
     print("Show")
     _enter_block()
@@ -140,16 +186,6 @@ def cont():
     _indent()
     print("Continue")
     end()
-
-#def rule(text, arg_list=None):
-#    if arg_list is None:
-#        return text
-#    elif isinstance(arg_list, list):
-#        for a in arg_list:
-#            text += " " + _esc(a)
-#        return text + "\n"
-#    else:
-#        return text + " " + _esc(arg_list)
 
 def cond(*args):
     assert len(args) > 0
