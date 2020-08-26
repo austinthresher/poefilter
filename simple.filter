@@ -1,0 +1,200 @@
+Show
+    SetTextColor 255 0 0
+    SetBackgroundColor 0 0 0
+    SetFontSize 45
+    Continue
+
+Show
+    Class Currency
+    AreaLevel < 24
+    BaseType "Scroll of Wisdom"
+    SetTextColor 183 183 183
+    SetBackgroundColor 67 54 51
+
+Show
+    Class Currency
+    AreaLevel < 24
+    BaseType "Portal Scroll"
+    SetTextColor 167 183 183
+    SetBackgroundColor 70 78 91
+
+Show
+    Class Currency
+    AreaLevel < 24
+    BaseType "Orb of Transmutation"
+    SetTextColor 204 204 204
+    SetBackgroundColor 48 76 120
+
+Show
+    Class Currency
+    AreaLevel < 24
+    BaseType "Orb of Alteration"
+    SetTextColor 217 217 208
+    SetBackgroundColor 64 49 149
+
+Show
+    Class Currency
+    AreaLevel < 24
+    BaseType "Orb of Chance"
+    SetTextColor 239 239 239
+    SetBackgroundColor 153 0 67
+
+Show
+    Class Currency
+    AreaLevel < 24
+    BaseType "Orb of Alchemy"
+    SetTextColor 255 255 255
+    SetBackgroundColor 255 0 0
+
+Show
+    Class Currency
+    AreaLevel < 24
+    BaseType "Chaos Orb"
+    SetTextColor 91 15 0
+    SetBackgroundColor 244 204 204
+
+Hide
+    Class Currency
+    AreaLevel < 68
+    BaseType "Scroll of Wisdom"
+    SetTextColor 128 128 128
+    SetBackgroundColor 20 20 20 128
+
+Show
+    Class Currency
+    AreaLevel < 68
+    BaseType "Portal Scroll"
+    SetTextColor 183 183 183
+    SetBackgroundColor 67 54 51
+
+Show
+    Class Currency
+    AreaLevel < 68
+    BaseType "Orb of Transmutation"
+    SetTextColor 167 183 183
+    SetBackgroundColor 70 78 91
+
+Show
+    Class Currency
+    AreaLevel < 68
+    BaseType "Orb of Alteration"
+    SetTextColor 204 204 204
+    SetBackgroundColor 48 76 120
+
+Show
+    Class Currency
+    AreaLevel < 68
+    BaseType "Orb of Chance"
+    SetTextColor 217 217 208
+    SetBackgroundColor 64 49 149
+
+Show
+    Class Currency
+    AreaLevel < 68
+    BaseType "Orb of Alchemy"
+    SetTextColor 239 239 239
+    SetBackgroundColor 153 0 67
+
+Show
+    Class Currency
+    AreaLevel < 68
+    BaseType "Chaos Orb"
+    SetTextColor 255 255 255
+    SetBackgroundColor 255 0 0
+
+Show
+    Class Currency
+    AreaLevel < 68
+    BaseType "Orb of Annulment"
+    SetTextColor 91 15 0
+    SetBackgroundColor 244 204 204
+
+Show
+    Class Currency
+    AreaLevel < 68
+    BaseType "Divine Orb"
+    SetTextColor 153 0 0
+    SetBackgroundColor 255 231 231
+
+Show
+    Class Currency
+    AreaLevel < 68
+    BaseType "Exalted Orb"
+    SetTextColor 255 0 0
+    SetBackgroundColor 255 255 255
+
+Hide
+    Class Currency
+    AreaLevel >= 69
+    BaseType "Scroll of Wisdom"
+    SetTextColor 128 128 128
+    SetBackgroundColor 20 20 20 128
+
+Hide
+    Class Currency
+    AreaLevel >= 69
+    BaseType "Portal Scroll"
+    SetTextColor 128 128 128
+    SetBackgroundColor 20 20 20 128
+
+Show
+    Class Currency
+    AreaLevel >= 69
+    BaseType "Orb of Transmutation"
+    SetTextColor 167 183 183
+    SetBackgroundColor 70 78 91
+
+Show
+    Class Currency
+    AreaLevel >= 69
+    BaseType "Orb of Alteration"
+    SetTextColor 204 204 204
+    SetBackgroundColor 48 76 120
+
+Show
+    Class Currency
+    AreaLevel >= 69
+    BaseType "Orb of Chance"
+    SetTextColor 217 217 208
+    SetBackgroundColor 64 49 149
+
+Show
+    Class Currency
+    AreaLevel >= 69
+    BaseType "Orb of Alchemy"
+    SetTextColor 239 239 239
+    SetBackgroundColor 153 0 67
+
+Show
+    Class Currency
+    AreaLevel >= 69
+    BaseType "Chaos Orb"
+    SetTextColor 255 255 255
+    SetBackgroundColor 255 0 0
+
+Show
+    Class Currency
+    AreaLevel >= 69
+    BaseType "Orb of Annulment"
+    SetTextColor 91 15 0
+    SetBackgroundColor 244 204 204
+
+Show
+    Class Currency
+    AreaLevel >= 69
+    BaseType "Divine Orb"
+    SetTextColor 153 0 0
+    SetBackgroundColor 255 231 231
+
+Show
+    Class Currency
+    AreaLevel >= 69
+    BaseType "Exalted Orb"
+    SetTextColor 255 0 0
+    SetBackgroundColor 255 255 255
+
+Show
+    Class Currency
+    SetTextColor 239 239 239
+    SetBackgroundColor 153 0 67
+

@@ -49,8 +49,8 @@ begin_show()
 default.apply()
 cont()
 
-act_1_hide = []
-act_1_show = [
+early_hide = []
+early_show = [
         ("Scroll of Wisdom", currency_0),
         ("Portal Scroll", currency_1),
         ("Orb of Transmutation", currency_2),
@@ -60,14 +60,36 @@ act_1_show = [
         ("Chaos Orb", currency_6)
     ]
 
+midgame_hide = [
+        ("Scroll of Wisdom", hidden)
+    ]
+midgame_show = [
+        ("Portal Scroll", currency_0),
+        ("Orb of Transmutation", currency_1),
+        ("Orb of Alteration", currency_2),
+        ("Orb of Chance", currency_3),
+        ("Orb of Alchemy", currency_4),
+        ("Chaos Orb", currency_5),
+        ("Orb of Annulment", currency_6),
+        ("Divine Orb", currency_7),
+        ("Exalted Orb", currency_8)
+    ]
+
+endgame_hide = [
+        ("Scroll of Wisdom", hidden),
+        ("Portal Scroll", hidden)
+    ]
+endgame_show = midgame_show[1:]
 
 area_levels = [
-        (act_1_hide, act_1_show, 24)
+        (early_hide, early_show, ["AreaLevel < 24"]),
+        (midgame_hide, midgame_show, ["AreaLevel < 68"]),
+        (endgame_hide, endgame_show, ["AreaLevel >= 69"])
     ]
 
 with conditions(cond("Class Currency")):
-    for hide, show, level in area_levels:
-        with conditions(cond("AreaLevel", "<", level)):
+    for hide, show, rules in area_levels:
+        with conditions(cond(*rules)):
             for bt, style in hide:
                 begin_hide()
                 condition("BaseType", bt)
@@ -79,3 +101,7 @@ with conditions(cond("Class Currency")):
                 style.apply()
                 end()
 
+    # Any currency we missed
+    begin_show()
+    currency_4.apply()
+    end()
