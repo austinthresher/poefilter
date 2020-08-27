@@ -1,11 +1,15 @@
 from colorsys import rgb_to_hsv, hsv_to_rgb
 from contextlib import contextmanager
+from inspect import currentframe
 
 global in_block
 in_block = 0
 
 global condition_stack
 condition_stack = []
+
+global block_style
+block_style = {}
 
 # Private utility functions
 # =========================
@@ -46,32 +50,38 @@ def _indent():
 def _enter_block():
     global in_block
     global condition_stack
+    global block_style
     assert not in_block
     in_block = True
     for cond in condition_stack:
         _indent()
         print(cond)
+    block_style = {}
+
     
 
 def _exit_block():
+    global block_style
     global in_block
     assert in_block
+    for k, v in block_style.items():
+        _indent()
+        print(k + " " + v)
     in_block = False
 
 
 def _apply(vals, text):
+    global block_style
     if vals is None:
         return False
+    key = text.split()[0]
     if isinstance(vals, list):
         for v in vals:
             if v is None:
                 return False
-        _indent();
-        print(text + " ", end = '')
-        print(" ".join(str(x) for x in vals))
+        block_style[key] = " ".join(str(x) for x in vals)
     else:
-        _indent();
-        print(text + " " + str(vals))
+        block_style[key] = str(vals)
     return True
 
 # Public interface
@@ -92,7 +102,8 @@ class Style:
             minimap_icon_color=None,
             minimap_icon_shape=None,
             play_effect_color=None,
-            play_effect_temp=None):
+            play_effect_temp=None,
+            warn_if_unused=True):
         self.border_color = _hex(border_color)
         self.text_color = _hex(text_color)
         self.background_color = _hex(background_color)
@@ -108,7 +119,15 @@ class Style:
         self.play_effect_color = play_effect_color
         self.play_effect_temp = play_effect_temp
 
+        # Print a warning if the style is never used
+        if warn_if_unused:
+            self.used = False
+            self.lineno = currentframe().f_back.f_lineno
+        else:
+            self.used = True
+
     def apply(self):
+        self.used = True
         _apply(self.border_color, "SetBorderColor")
         _apply(self.text_color, "SetTextColor")
         _apply(self.background_color, "SetBackgroundColor")
@@ -130,6 +149,11 @@ class Style:
             _apply([self.play_effect_color, "Temp"], "PlayEffect")
         else:
             _apply(self.play_effect_color, "PlayEffect")
+
+    def __del__(self):
+        if not self.used:
+            print("# unused style defined on line %d" % (self.lineno))
+
 
 
 class ColorSeries:
@@ -201,6 +225,38 @@ def condition(*args):
     assert in_block
     _indent()
     print(cond(*args))
+
+@contextmanager
+def show():
+    begin_show()
+    try:
+        yield None
+    finally:
+        end()
+
+@contextmanager
+def hide():
+    begin_hide()
+    try:
+        yield None
+    finally:
+        end()
+
+@contextmanager
+def show_continue():
+    begin_show()
+    try:
+        yield None
+    finally:
+        cont()
+
+@contextmanager
+def hide_continue():
+    begin_hide()
+    try:
+        yield None
+    finally:
+        cont()
 
 @contextmanager
 def conditions(*args):
