@@ -5,6 +5,9 @@ from inspect import currentframe
 global in_block
 in_block = 0
 
+global add_continue
+add_continue = False
+
 global condition_stack
 condition_stack = []
 
@@ -24,7 +27,12 @@ def _hex(hex_string):
     if hex_string.startswith("#"):
         # Taken from https://stackoverflow.com/a/29643643
         h = hex_string.lstrip("#")
-        t = tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
+        if len(h) == 6:
+            t = tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
+        elif len(h) == 8:
+            t = tuple(int(h[i:i+2], 16) for i in (0, 2, 4, 6))
+        else:
+            raise Exception("Invalid hex format")
         return " ".join(str(x) for x in t)
     return hex_string
 
@@ -51,22 +59,28 @@ def _enter_block():
     global in_block
     global condition_stack
     global block_style
+    global add_continue
     assert not in_block
     in_block = True
     for cond in condition_stack:
         _indent()
         print(cond)
     block_style = {}
+    add_continue = False
 
     
 
 def _exit_block():
     global block_style
+    global add_continue
     global in_block
     assert in_block
     for k, v in block_style.items():
         _indent()
         print(k + " " + v)
+    if add_continue:
+        _indent()
+        print("Continue")
     in_block = False
 
 
@@ -194,6 +208,23 @@ class ColorSeries:
         h = (1.0 - delta) * h + opposite * delta
         return _rgb_float_to_dec(hsv_to_rgb(h, s, v))        
 
+    def bg_complementary(self, tier):
+        assert tier >= 0 and tier < self.tiers
+        h, s, v = rgb_to_hsv(*self.bg_color)
+        # Darken lower tiers
+        delta = tier / self.tiers 
+        v = self.min_val * (1.0 - delta) + v * delta
+        # Saturate lower tiers
+        missing_sat = 1.0 - s
+        s += (1.0 - delta) * missing_sat
+        # Hue transitions to complementary color for higher tiers
+        delta *= delta # Transition is nonlinear
+        opposite = h + 0.5
+        if opposite >= 1.0:
+            opposite -= 1.0
+        h = (1.0 - delta) * h + opposite * delta
+        return _rgb_float_to_dec(hsv_to_rgb(h, s, v))        
+
 def begin_show():
     print("Show")
     _enter_block()
@@ -207,9 +238,8 @@ def end():
     print("")
 
 def cont():
-    _indent()
-    print("Continue")
-    end()
+    global add_continue
+    add_continue = True
 
 def cond(*args):
     assert len(args) > 0
@@ -241,22 +271,6 @@ def hide():
         yield None
     finally:
         end()
-
-@contextmanager
-def show_continue():
-    begin_show()
-    try:
-        yield None
-    finally:
-        cont()
-
-@contextmanager
-def hide_continue():
-    begin_hide()
-    try:
-        yield None
-    finally:
-        cont()
 
 @contextmanager
 def conditions(*args):

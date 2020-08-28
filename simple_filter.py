@@ -3,20 +3,62 @@ from poefilter import *
 default = Style(
         background_color="0 0 0",
         text_color="255 0 255",
+        border_color="255 255 255 0",
         font_size=45)
 
+hidden = Style(font_size=28)
+
+class Icons:
+    extremely_valuable = Style(
+            play_effect_color="Red",
+            minimap_icon_size=0,
+            minimap_icon_color="Red",
+            minimap_icon_shape="Star")
+    very_valuable = Style(
+            play_effect_color="Red",
+            minimap_icon_size=1,
+            minimap_icon_color="Red",
+            minimap_icon_shape="Star")
+    valuable = Style(
+            play_effect_color="Red",
+            play_effect_temp=True,
+            minimap_icon_size=2,
+            minimap_icon_color="Red",
+            minimap_icon_shape="Star")
+
+class Sounds:
+    exalt = Style(alert_sound_id=1, alert_sound_volume=300)
+    divine = Style(alert_sound_id=2, alert_sound_volume=300)
+    good_unique = Style(alert_sound_id=3, alert_sound_volume=300)
+    something = Style(alert_sound_id=4, alert_sound_volume=300)
+    great_unique = Style(alert_sound_id=5, alert_sound_volume=300)
+    very_interesting = Style(alert_sound_id=6, alert_sound_volume=300)
+    long_wobble = Style(alert_sound_id=7, alert_sound_volume=300)
+    medium_wobble = Style(alert_sound_id=8, alert_sound_volume=300)
+    shorter_wobble = Style(alert_sound_id=9, alert_sound_volume=300)
+    bang = Style(alert_sound_id=10, alert_sound_volume=300)
+    chaos = Style(alert_sound_id=11, alert_sound_volume=300)
+ 
 # Categories without rarity
 class Theme:
     # Class Currency
+    extremely_valuable = Style(
+            text_color="255 0 0 255",
+            background_color="255 255 255 255",
+            font_size=45)
+    very_valuable = Style(
+            text_color="179 36 30 255",
+            background_color="255 248 229",
+            font_size=45)
+    valuable = Style(
+            text_color="255 248 229 255",
+            background_color="193 43 19 255")
     magic_orbs = Style(
             text_color="171 232 240",
             background_color="17 109 130")
-    rare_orbs = Style(
-            text_color="255 246 182",
-            background_color="169 104 98")
     other_orbs = Style(
             text_color="255 216 206",
-            background_color="149 104 71")
+            background_color="20 20 20")
     quality = Style(
             text_color="197 195 147",
             background_color="52 74 72")
@@ -34,7 +76,7 @@ class Theme:
             background_color="17 112 114")
     other_currency = Style(
             text_color="225 211 191",
-            background_color="112 79 44")
+            background_color="20 20 20")
     vials = Style(
             text_color="239 166 172",
             background_color="225 109 118")
@@ -68,13 +110,27 @@ class Theme:
     # Other classes
     quest = Style(
             text_color="59 192 41",
-            background_color="0 88 45")
+            background_color="20 20 20")
     incubators = Style(
             text_color="201 192 179",
             background_color="78 38 13")
     divination = Style(
-            text_color="111 231 252",
-            background_color="73 27 76")
+            text_color="100 206 254 255",
+            background_color="9 23 70 220")
+    awakened_gems = Style(
+            text_color="0 0 0 255",
+            background_color="240 92 36 255",
+            minimap_icon_size=1,
+            minimap_icon_color="Cyan",
+            minimap_icon_shape="Hexagon",
+            play_effect_color="Cyan")
+    drop_gems = Style(
+            text_color="0 0 0 255",
+            background_color="106 212 177 255",
+            minimap_icon_size=2,
+            minimap_icon_color="Cyan",
+            minimap_icon_shape="Hexagon",
+            play_effect_color="Cyan")
     gems = Style(
             text_color="98 201 202",
             background_color="60 98 99")
@@ -88,24 +144,104 @@ class Theme:
 
     # Default colors for rarity
     rarity_normal = Style(
-            text_color="#c8c8c8",
-            background_color="#141414")
+            text_color="200 200 200 192",
+            border_color="200 200 200 128",
+            background_color="20 20 20 192",
+            font_size=30)
 
     rarity_magic = Style(
-            text_color="#8889ff",
-            background_color="#141414")
+            text_color="56 171 255 220",
+            border_color="56 171 255 192",
+            background_color="20 20 20 220",
+            font_size=35)
 
     rarity_rare = Style(
-            text_color="#feff77",
-            background_color="#141414")
+            text_color="255 255 119 255",
+            border_color="255 255 119 220",
+            background_color="20 20 20 255",
+            font_size=40)
 
     rarity_unique = Style(
-            text_color="#b45000",
-            background_color="#141414",
+            text_color="239 132 18 255",
+            border_color="239 132 18 255",
+            background_color="20 20 20 255",
+            font_size=45,
             play_effect_color="Brown",
             minimap_icon_size=1,
             minimap_icon_color="Brown",
             minimap_icon_shape="Diamond")
+
+    # Colors for attribute gear
+
+    attr_str = [
+            "40 0 0 160",
+            "40 0 0 192",
+            "40 0 0 220",
+            "40 0 0 255"]
+    attr_dex = [
+            "0 40 0 160",
+            "0 40 0 192",
+            "0 40 0 220",
+            "0 40 0 255"]
+    attr_int = [
+            "0 0 40 160",
+            "0 0 40 192",
+            "0 0 40 220",
+            "0 0 40 255"]
+    attr_strdex = [
+            "25 25 0 160",
+            "25 25 0 192",
+            "25 25 0 220",
+            "25 25 0 255"]
+    attr_strint = [
+            "25 0 25 160",
+            "25 0 25 192",
+            "25 0 25 220",
+            "25 0 25 255"]
+    attr_dexint = [
+            "0 25 25 160",
+            "0 25 25 192",
+            "0 25 25 220", 
+            "0 25 25 255"]
+
+    # Influences
+    shaper = Style(
+            text_color="0 0 0 255",
+            background_color="#3c78d8ff",
+            border_color="#ffffffff",
+            font_size=45)
+    elder = Style(
+            text_color="0 0 0 255",
+            background_color="#8e7cc3ff",
+            border_color="#ffffffff",
+            font_size=45)
+    warlord = Style(
+            text_color="0 0 0 255",
+            background_color="#ffd966ff",
+            border_color="#ffffffff",
+            font_size=45)
+    hunter = Style(
+            text_color="0 0 0 255",
+            background_color="#6aa84fff",
+            border_color="#ffffffff",
+            font_size=45)
+    redeemer = Style(
+            text_color="0 0 0 255",
+            background_color="#9fc5e8ff",
+            border_color="#ffffffff",
+            font_size=45)
+    crusader = Style(
+            text_color="0 0 0 255",
+            background_color="#cc4125ff",
+            border_color="#ffffffff",
+            font_size=45)
+
+    # Notable highlights
+
+    corrupted = Style(border_color="210 0 0 255")
+    veiled = Style(border_color="70 207 119 255")
+    enchanted = Style(border_color="242 205 233 255")
+    corrupted_enchanted = Style(border_color="255 0 255 255")
 
     # Styles applied for each rarity
     abyss = [
@@ -157,146 +293,152 @@ class Theme:
             rarity_unique
         ]
     life_flasks = [
-            rarity_normal,
-            rarity_magic,
+            Style(background_color="125 13 53"),
+            Style(background_color="125 13 53"),
             rarity_rare, 
-            rarity_unique
+            Style(background_color="125 13 53"),
         ]
     mana_flasks = [
-            rarity_normal,
-            rarity_magic,
+            Style(background_color="32 48 126"),
+            Style(background_color="32 48 126"),
             rarity_rare, 
-            rarity_unique
+            Style(background_color="32 48 126"),
         ]
     hybrid_flasks = [
-            rarity_normal,
-            rarity_magic,
+            Style(background_color="73 27 76"),
+            Style(background_color="73 27 76"),
             rarity_rare, 
-            rarity_unique
+            Style(background_color="73 27 76"),
         ]
     utility_flasks = [
-            rarity_normal,
-            rarity_magic,
+            Style(background_color="0 77 67"),
+            Style(background_color="0 77 67"),
             rarity_rare, 
-            rarity_unique
+            Style(background_color="0 77 67"),
         ]
     str_armour = [
-            rarity_normal,
-            rarity_magic,
-            rarity_rare, 
-            rarity_unique
+            Style(background_color=attr_str[0]),
+            Style(background_color=attr_str[1]),
+            Style(background_color=attr_str[2]), 
+            Style(background_color=attr_str[3]) 
         ]
     dex_armour = [
-            rarity_normal,
-            rarity_magic,
-            rarity_rare, 
-            rarity_unique
+            Style(background_color=attr_dex[0]),
+            Style(background_color=attr_dex[1]),
+            Style(background_color=attr_dex[2]), 
+            Style(background_color=attr_dex[3]) 
         ]
     int_armour = [
-            rarity_normal,
-            rarity_magic,
-            rarity_rare, 
-            rarity_unique
+            Style(background_color=attr_int[0]),
+            Style(background_color=attr_int[1]),
+            Style(background_color=attr_int[2]), 
+            Style(background_color=attr_int[3]) 
         ]
     strdex_armour = [
-            rarity_normal,
-            rarity_magic,
-            rarity_rare, 
-            rarity_unique
+            Style(background_color=attr_strdex[0]),
+            Style(background_color=attr_strdex[1]),
+            Style(background_color=attr_strdex[2]), 
+            Style(background_color=attr_strdex[3]) 
         ]
     strint_armour = [
-            rarity_normal,
-            rarity_magic,
-            rarity_rare, 
-            rarity_unique
+            Style(background_color=attr_strint[0]),
+            Style(background_color=attr_strint[1]),
+            Style(background_color=attr_strint[2]), 
+            Style(background_color=attr_strint[3]) 
         ]
     dexint_armour = [
-            rarity_normal,
-            rarity_magic,
-            rarity_rare, 
-            rarity_unique
+            Style(background_color=attr_dexint[0]),
+            Style(background_color=attr_dexint[1]),
+            Style(background_color=attr_dexint[2]), 
+            Style(background_color=attr_dexint[3]) 
         ]
     str_weapons = [
-            rarity_normal,
-            rarity_magic,
-            rarity_rare, 
-            rarity_unique
+            Style(background_color=attr_str[0]),
+            Style(background_color=attr_str[1]),
+            Style(background_color=attr_str[2]), 
+            Style(background_color=attr_str[3]) 
         ]
     dex_weapons = [
-            rarity_normal,
-            rarity_magic,
-            rarity_rare, 
-            rarity_unique
+            Style(background_color=attr_dex[0]),
+            Style(background_color=attr_dex[1]),
+            Style(background_color=attr_dex[2]), 
+            Style(background_color=attr_dex[3]) 
         ]
     int_weapons = [
-            rarity_normal,
-            rarity_magic,
-            rarity_rare, 
-            rarity_unique
+            Style(background_color=attr_int[0]),
+            Style(background_color=attr_int[1]),
+            Style(background_color=attr_int[2]), 
+            Style(background_color=attr_int[3]) 
         ]
     strdex_weapons = [
-            rarity_normal,
-            rarity_magic,
-            rarity_rare, 
-            rarity_unique
+            Style(background_color=attr_strdex[0]),
+            Style(background_color=attr_strdex[1]),
+            Style(background_color=attr_strdex[2]), 
+            Style(background_color=attr_strdex[3]) 
         ]
     strint_weapons = [
-            rarity_normal,
-            rarity_magic,
-            rarity_rare, 
-            rarity_unique
+            Style(background_color=attr_strint[0]),
+            Style(background_color=attr_strint[1]),
+            Style(background_color=attr_strint[2]), 
+            Style(background_color=attr_strint[3]) 
         ]
     dexint_weapons = [
-            rarity_normal,
-            rarity_magic,
-            rarity_rare, 
-            rarity_unique
+            Style(background_color=attr_dexint[0]),
+            Style(background_color=attr_dexint[1]),
+            Style(background_color=attr_dexint[2]), 
+            Style(background_color=attr_dexint[3]) 
         ]
     quivers = [
-            rarity_normal,
-            rarity_magic,
-            rarity_rare, 
-            rarity_unique
+            Style(background_color=attr_dex[0]),
+            Style(background_color=attr_dex[1]),
+            Style(background_color=attr_dex[2]), 
+            Style(background_color=attr_dex[3]) 
         ]
     fishing = [
-            rarity_normal,
-            rarity_magic,
-            rarity_rare, 
-            rarity_unique
+            Style(text_color="#ff0000", background_color="#ffffff", font_size=45),
+            Style(text_color="#ff0000", background_color="#ffffff", font_size=45),
+            Style(text_color="#ff0000", background_color="#ffffff", font_size=45),
+            Style(text_color="#ff0000", background_color="#ffffff", font_size=45)
         ]
 
 
 # Apply default filter to everything
 # ==================================
 
-with show_continue():
+with show():
     default.apply()
+    cont()
 
-
-# Apply default styles for rarity
-# ===============================
-
-with show_continue():
-    condition("Rarity Normal")
-    Theme.rarity_normal.apply()
-
-with show_continue():
-    condition("Rarity Magic")
-    Theme.rarity_magic.apply()
-
-with show_continue():
-    condition("Rarity Rare")
-    Theme.rarity_rare.apply()
-
-with show_continue():
-    condition("Rarity Unique")
-    Theme.rarity_unique.apply()
 
 
 # Apply styles to items without rarity
 # ====================================
 
 with conditions(cond("Class", "Currency")):
+    # Filter out low tier currency based on AreaLevel
+    with hide():
+        condition("AreaLevel > 23")
+        condition("BaseType", "Scroll of Wisdom")
+        hidden.apply()
+
+    with hide():
+        condition("AreaLevel > 40")
+        condition("BaseType", "Portal Scroll")
+        hidden.apply()
+
+    with show():
+        condition("BaseType",
+                "Exalted Orb", "Mirror of Kalandra", "Albino Rhoa Feather")
+        Icons.extremely_valuable.apply()
+        Theme.extremely_valuable.apply()
+        Sounds.exalt.apply()
+
+    with show():
+        condition("BaseType",
+                "Ancient Orb", "Divine Orb")
+        Icons.very_valuable.apply()
+        Theme.very_valuable.apply()
+
     with show():
         condition("BaseType",
                 "of Alteration", "of Augmentation",
@@ -305,13 +447,14 @@ with conditions(cond("Class", "Currency")):
 
     with show():
         condition("BaseType",
-                "Chaos Orb", "Orb of Annulment",
-                "Divine Orb", "Exalted Orb")
-        Theme.rare_orbs.apply()
+                "Chaos Orb", "Orb of Annulment")
+        Icons.valuable.apply()
+        Theme.valuable.apply()
+        Sounds.chaos.apply()
 
     with show():
         condition("BaseType",
-                "Scrap", "Whetstone", "Prisim", "Bauble")
+                "Scrap", "Whetstone", "Prism", "Bauble")
         Theme.quality.apply()
 
     with show():
@@ -388,6 +531,33 @@ with show():
     condition("Class", "Divination")
     Theme.divination.apply()
 
+with conditions(cond("Class", "Gems")):
+    with show():
+        condition("Corrupted", "True")
+        Theme.corrupted.apply()
+        cont()
+
+    with show():
+        condition("BaseType", "Awakened")
+        Theme.awakened_gems.apply()
+
+    with show():
+        condition("BaseType", "Enlighten", "Enhance", "Empower")
+        Theme.drop_gems.apply()
+
+    with show():
+        condition("Quality > 0")
+        Theme.gems.apply()
+
+    with show():
+        condition("GemLevel > 15")
+        Theme.gems.apply()
+
+    with hide():
+        Theme.gems.apply()
+        hidden.apply()
+
+
 with show():
     condition("Class", "Gems")
     Theme.gems.apply()
@@ -404,6 +574,136 @@ with show():
 # Apply styles to items with rarity
 # =================================
 
+# Apply default styles for rarity
+with show():
+    condition("Rarity Normal")
+    Theme.rarity_normal.apply()
+    cont()
+
+with show():
+    condition("Rarity Magic")
+    Theme.rarity_magic.apply()
+    cont()
+
+with show():
+    condition("Rarity Rare")
+    Theme.rarity_rare.apply()
+    cont()
+
+with show():
+    condition("Rarity Unique")
+    Theme.rarity_unique.apply()
+    cont()
+
+# Conditions that bypass hides
+# ============================
+
+# 5 & 6 links
+with show():
+    condition("LinkedSockets 5")
+    Icons.valuable.apply()
+    Theme.valuable.apply()
+
+with show():
+    condition("LinkedSockets 6")
+    Icons.very_valuable.apply()
+    Theme.very_valuable.apply()
+
+# Influences
+# TODO: Different colors for top tier bases
+with show():
+    condition("HasInfluence", "Shaper")
+    Theme.shaper.apply()
+    Icons.valuable.apply()
+
+with show():
+    condition("HasInfluence", "Elder")
+    Theme.elder.apply()
+    Icons.valuable.apply()
+
+with show():
+    condition("HasInfluence", "Warlord")
+    Theme.warlord.apply()
+    Icons.valuable.apply()
+
+with show():
+    condition("HasInfluence", "Hunter")
+    Theme.hunter.apply()
+    Icons.valuable.apply()
+
+with show():
+    condition("HasInfluence", "Redeemer")
+    Theme.redeemer.apply()
+    Icons.valuable.apply()
+
+with show():
+    condition("HasInfluence", "Crusader")
+    Theme.crusader.apply()
+    Icons.valuable.apply()
+
+# Don't show bad corrupts with 0 mods
+with hide():
+    condition("Corrupted", "True")
+    condition("FracturedItem", "False")
+    condition("SynthesisedItem", "False")
+    condition("Class",
+            "Rings", "Belts", "Quivers", "Mace", "Sword",
+            "Axe", "Bow", "Wand", "Sceptre", "taves", "Dagger",
+            "Claw", "Gloves", "Helmets", "Body", "Shields")
+    condition("CorruptedMods == 0")
+    hidden.apply()
+
+with show():
+    condition("Corrupted", "True")
+    condition("AnyEnchantment", "False")
+    Theme.corrupted.apply()
+
+with show():
+    condition("Corrupted", "False")
+    condition("AnyEnchantment", "True")
+    Theme.enchanted.apply()
+
+with show():
+    condition("Corrupted", "True")
+    condition("AnyEnchantment", "True")
+    Theme.corrupted_enchanted.apply()
+
+with show():
+    condition("HasExplicitMod", "Veil")
+    Theme.veiled.apply()
+
+# Filter stuff out based on arealevel
+with hide():
+    condition("Rarity <= Rare") # Hide Rare except Jewelry after Act 10
+    condition("AreaLevel > 68")
+    condition("Class",
+            "Flasks", "Quivers", "Mace",
+            "Sword", "Axe", "Bow", "Wand", "Sceptre", "taves", "Dagger",
+            "Claw", "Gloves", "Helmets", "Body", "Shields", "Boots")
+    condition("Identified", "False")
+    hidden.apply()
+
+with hide(): # Hide Magic after Act 3, except flasks
+    condition("Rarity < Rare")
+    condition("AreaLevel >= 33")
+    condition("Class",
+            "Amulets", "Rings", "Belts", "Quivers", "Mace",
+            "Sword", "Axe", "Bow", "Wand", "Sceptre", "taves", "Dagger",
+            "Claw", "Gloves", "Helmets", "Body", "Shields", "Boots")
+    condition("Identified", "False")
+    hidden.apply()
+
+with hide(): # Hide Normal after Act 2, except flasks
+    condition("Rarity < Magic")
+    condition("AreaLevel > 23")
+    condition("Class",
+            "Amulets", "Rings", "Belts", "Quivers", "Mace",
+            "Sword", "Axe", "Bow", "Wand", "Sceptre", "taves", "Dagger",
+            "Claw", "Gloves", "Helmets", "Body", "Shields", "Boots")
+    condition("Identified", "False")
+    hidden.apply()
+
+# Apply specific styles to each class / basetype
 for idx, rarity in enumerate(["Normal", "Magic", "Rare", "Unique"]):
     with conditions(cond("Rarity", rarity)):
         
@@ -416,8 +716,8 @@ for idx, rarity in enumerate(["Normal", "Magic", "Rare", "Unique"]):
                 condition("BaseType", "Cluster")
                 Theme.cluster[idx].apply()
 
-        with show():
-            Theme.jewels[idx].apply()
+            with show():
+                Theme.jewels[idx].apply()
 
         with show():
             condition("Class", "Atlas")
@@ -480,7 +780,7 @@ for idx, rarity in enumerate(["Normal", "Magic", "Rare", "Unique"]):
             Theme.strdex_weapons[idx].apply()
 
         with show():
-            condition("Class", "Sceptre", "Staff", "Warstaff")
+            condition("Class", "Sceptre", "Staves", "Warstaves")
             Theme.strint_weapons[idx].apply()
 
         with show():
@@ -556,7 +856,7 @@ for idx, rarity in enumerate(["Normal", "Magic", "Rare", "Unique"]):
                         "Frontier Leather", "Glorious Leather",
                         "Coronal Leather", "Cutthroat's Garb",
                         "Sharkskin Tunic", "Destiny Leather",
-                        "Exquisite Leather", "Zodiak Leather",
+                        "Exquisite Leather", "Zodiac Leather",
                         "Assassin's Garb",
                         # Dex Shields
                         "Buckler")
