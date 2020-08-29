@@ -24,6 +24,7 @@ highlighted_amulets = ["Jade"]
 # Start of actual filter
 # ======================
 
+
 default = Style(
         background="0 0 0",
         text="255 0 255",
@@ -457,60 +458,44 @@ class Theme:
             Style(text="#ff0000", background="#ffffff", size=45)
         ]
 
+# The first section of the filter is styling ONLY. There should be no
+# hide() statements here. After all styling is applied, items can then
+# be hidden by the second portion of the filter.
+set_always_continue(True)
 
 # Apply default filter to everything
 # ==================================
 
 with show():
     default.apply()
-    cont()
 
 
 # Apply styles to items without rarity
 # ====================================
 
-with conditions(cond("Class", "Currency")):
-    # Filter out low tier currency based on AreaLevel
-    with conditions(cond("BaseType", "Scroll of Wisdom")):
-        with show():
-            condition("AreaLevel <= 23")
-            Theme.wisdom.apply()
+with conditions(("Class", "Currency")):
+    with conditions(("BaseType", "Scroll of Wisdom")), show():
+        Theme.wisdom.apply()
 
-        with hide():
-            condition("AreaLevel > 23")
-            Theme.wisdom.apply()
-            hidden.apply()
+    with conditions(("BaseType", "Portal Scroll")), show():
+        Theme.portal.apply()
 
-    with conditions(cond("BaseType", "Portal Scroll")):
-        with show():
-            condition("AreaLevel <= 40")
-            Theme.portal.apply()
-
-        with hide():
-            condition("AreaLevel > 40")
-            Theme.portal.apply()
-            hidden.apply()
-
-    with show():
-        condition("BaseType",
-                "Exalted Orb", "Mirror of Kalandra", "Albino Rhoa Feather")
+    with conditions(("BaseType",
+                "Exalted Orb", "Mirror of Kalandra", "Albino Rhoa Feather")), show():
         Icons.extremely_valuable.apply()
         Theme.extremely_valuable.apply()
         Sounds.exalt.apply()
 
-    with show():
-        condition("BaseType",
-                "Ancient Orb", "Divine Orb")
+    with conditions(("BaseType",
+                "Ancient Orb", "Divine Orb")), show():
         Icons.very_valuable.apply()
         Theme.very_valuable.apply()
 
-    with show():
-        condition("BaseType", "of Transmutation")
+    with conditions(("BaseType", "of Transmutation")), show():
         Theme.transmute.apply()
 
-    with show():
-        condition("BaseType",
-                "of Alteration", "of Augmentation", "Regal Orb")
+    with conditions(("BaseType",
+                "of Alteration", "of Augmentation", "Regal Orb")), show():
         Theme.magic_orbs.apply()
 
     with show():
@@ -569,7 +554,7 @@ with conditions(cond("Class", "Currency")):
         Theme.other_currency.apply()
     
 
-with conditions(cond("Class", "Fragment")):
+with conditions(("Class", "Fragment")):
     with show():
         condition("BaseType", "Esh", "Tul", "Chayula", "Xoph", "Netol")
         Theme.breachstones.apply()
@@ -599,7 +584,7 @@ with show():
     condition("Class", "Divination")
     Theme.divination.apply()
 
-with conditions(cond("Class", "Gems")):
+with conditions(("Class", "Gems")):
     with show():
         condition("Corrupted", "True")
         Theme.corrupted.apply()
@@ -618,12 +603,7 @@ with conditions(cond("Class", "Gems")):
         Theme.gems.apply()
 
     with show():
-        condition("GemLevel > 15")
         Theme.gems.apply()
-
-    with hide():
-        Theme.gems.apply()
-        hidden.apply()
 
 
 with show():
@@ -725,17 +705,6 @@ with show():
     Theme.crusader.apply()
     Icons.valuable.apply()
 
-# Don't show bad corrupts with 0 mods
-with hide():
-    condition("Corrupted", "True")
-    condition("FracturedItem", "False")
-    condition("SynthesisedItem", "False")
-    condition("Class",
-            "Rings", "Belts", "Quivers", "Mace", "Sword",
-            "Axe", "Bow", "Wand", "Sceptre", "taves", "Dagger",
-            "Claw", "Gloves", "Helmets", "Body", "Shields")
-    condition("CorruptedMods == 0")
-    hidden.apply()
 
 with show():
     condition("Corrupted", "True")
@@ -755,6 +724,189 @@ with show():
 with show():
     condition("HasExplicitMod", "Veil")
     Theme.veiled.apply()
+
+# Below these levels, show that rarity regardless of base type
+arealevels = {
+        "Normal": 1,
+        "Magic": always_show_magic_until,
+        "Rare": always_show_rare_until,
+        "Unique": always_show_unique_until
+    }
+
+# Apply specific styles to each class / basetype
+for idx, rarity in enumerate(["Normal", "Magic", "Rare", "Unique"]):
+    with conditions(("Rarity", rarity)):
+        
+        with show():
+            condition("Class", "Abyss")
+            Theme.abyss[idx].apply()
+
+        with conditions(("Class", "Jewel")):
+            with show():
+                condition("BaseType", "Cluster")
+                Theme.cluster[idx].apply()
+
+            with show():
+                Theme.jewels[idx].apply()
+
+        with show():
+            condition("Class", "Atlas")
+            Theme.watchstones[idx].apply()
+
+        with show():
+            condition("Class", "Maps")
+            Theme.maps[idx].apply()
+
+        with show():
+            condition("Class", "Amulets")
+            Theme.amulets[idx].apply()
+
+        with conditions(("Class", "Rings")):
+            if highlighted_rings:
+                with show():
+                    condition("BaseType", *highlighted_rings)
+                    Theme.highlighted_rings[idx].apply()
+
+            with show():
+                Theme.rings[idx].apply()
+
+        with conditions(("Class", "Belts")):
+            if highlighted_belts:
+                with show():
+                    condition("BaseType", *highlighted_belts)
+                    Theme.highlighted_belts[idx].apply()
+
+            with show():
+                Theme.belts[idx].apply()
+
+        with show():
+            condition("Class", "Life Flasks")
+            Theme.life_flasks[idx].apply()
+
+        with show():
+            condition("Class", "Mana Flasks")
+            Theme.mana_flasks[idx].apply()
+
+        with show():
+            condition("Class", "Utility Flasks")
+            Theme.utility_flasks[idx].apply()
+
+        with show():
+            condition("Class", "Hybrid Flasks")
+            Theme.hybrid_flasks[idx].apply()
+
+        with show():
+            condition("Class", "Fishing")
+            Theme.fishing[idx].apply()
+
+        with show():
+            condition("Class", "Thrusting")
+            Theme.dex_weapons[idx].apply()
+
+        with show():
+            condition("Class", "Bow")
+            Theme.dex_weapons[idx].apply()
+
+        with show():
+            condition("Class", "Quivers")
+            Theme.quivers[idx].apply()
+
+        with show():
+            condition("Class", "Wand")
+            Theme.int_weapons[idx].apply()
+
+        with show():
+            condition("Class", "One Hand Axes")
+            Theme.strdex_weapons[idx].apply()
+
+        with show():
+            condition("Class", "Two Hand Axes")
+            Theme.strdex_weapons[idx].apply()
+
+        with show():
+            condition("Class", "One Hand Maces")
+            Theme.str_weapons[idx].apply()
+
+        with show():
+            condition("Class", "Two Hand Maces")
+            Theme.str_weapons[idx].apply()
+
+        with show():
+            condition("Class", "One Hand Swords")
+            Theme.strdex_weapons[idx].apply()
+
+        with show():
+            condition("Class", "Two Hand Swords")
+            Theme.strdex_weapons[idx].apply()
+
+        with show():
+            condition("Class", "Sceptre")
+            Theme.strint_weapons[idx].apply()
+
+        with show():
+            condition("Class", "Warstaves")
+            Theme.strint_weapons[idx].apply()
+
+        with show():
+            condition("Class", "Staves")
+            Theme.strint_weapons[idx].apply()
+
+        with show():
+            condition("Class", "Claw")
+            Theme.dexint_weapons[idx].apply()
+
+        with show():
+            condition("Class", "Rune Dagger")
+            Theme.dexint_weapons[idx].apply()
+
+        with show():
+            condition("Class", "Dagger")
+            Theme.dexint_weapons[idx].apply()
+
+        with conditions(("Class",
+                    "Gloves", "Boots", "Helmets", "Body", "Shields")):
+            with conditions(("AreaLevel", "<=", arealevels[rarity])):
+                with show():
+                    condition("BaseType", *tables.str_armour)
+                    Theme.str_armour[idx].apply()
+
+                with show():
+                    condition("BaseType", *tables.dex_armour)
+                    Theme.dex_armour[idx].apply()
+
+                with show():
+                    condition("BaseType", *tables.int_armour)
+                    Theme.int_armour[idx].apply()
+                    
+                with show():
+                    condition("BaseType", *tables.strdex_armour)
+                    Theme.strdex_armour[idx].apply()
+
+                with show():
+                    condition("BaseType", *tables.strint_armour)
+                    Theme.strint_armour[idx].apply()
+
+                with show():
+                    condition("BaseType", *tables.dexint_armour)
+                    Theme.dexint_armour[idx].apply()
+
+# This section of the filter is where items are actually hidden.
+# Up to this point, every block had an implicit Continue.
+
+set_always_continue(False)
+
+
+# Don't show bad corrupts with 0 mods
+with hide():
+    condition("Corrupted", "True")
+    condition("FracturedItem", "False")
+    condition("SynthesisedItem", "False")
+    condition("Class",
+            "Rings", "Belts", "Quivers", "Mace", "Sword",
+            "Axe", "Bow", "Wand", "Sceptre", "taves", "Dagger",
+            "Claw", "Gloves", "Helmets", "Body", "Shields")
+    condition("CorruptedMods == 0")
+    hidden.apply()
 
 # Filter stuff out based on arealevel
 with hide():
@@ -787,259 +939,3 @@ with hide(): # Hide Normal after Act 2, except flasks
     condition("Identified", "False")
     hidden.apply()
 
-# Below these levels, show that rarity regardless of base type
-arealevels = {
-        "Normal": 1,
-        "Magic": always_show_magic_until,
-        "Rare": always_show_rare_until,
-        "Unique": always_show_unique_until
-    }
-
-# Apply specific styles to each class / basetype
-for idx, rarity in enumerate(["Normal", "Magic", "Rare", "Unique"]):
-    with conditions(cond("Rarity", rarity)):
-        
-        with show():
-            condition("Class", "Abyss")
-            Theme.abyss[idx].apply()
-
-        with conditions(cond("Class", "Jewel")):
-            with show():
-                condition("BaseType", "Cluster")
-                Theme.cluster[idx].apply()
-
-            with show():
-                Theme.jewels[idx].apply()
-
-        with show():
-            condition("Class", "Atlas")
-            Theme.watchstones[idx].apply()
-
-        with show():
-            condition("Class", "Maps")
-            Theme.maps[idx].apply()
-
-        with show():
-            condition("Class", "Amulets")
-            Theme.amulets[idx].apply()
-
-        with conditions(cond("Class", "Rings")):
-            if highlighted_rings:
-                with show():
-                    condition("BaseType", *highlighted_rings)
-                    Theme.highlighted_rings[idx].apply()
-
-            with show():
-                Theme.rings[idx].apply()
-
-        with conditions(cond("Class", "Belts")):
-            if highlighted_belts:
-                with show():
-                    condition("BaseType", *highlighted_belts)
-                    Theme.highlighted_belts[idx].apply()
-
-            with show():
-                Theme.belts[idx].apply()
-
-        with show():
-            condition("Class", "Life Flasks")
-            Theme.life_flasks[idx].apply()
-
-        with show():
-            condition("Class", "Mana Flasks")
-            Theme.mana_flasks[idx].apply()
-
-        with show():
-            condition("Class", "Utility Flasks")
-            Theme.utility_flasks[idx].apply()
-
-        with show():
-            condition("Class", "Hybrid Flasks")
-            Theme.hybrid_flasks[idx].apply()
-
-        with show():
-            condition("Class", "Fishing")
-            Theme.fishing[idx].apply()
-
-        # Show rarities until certain levels even if they aren't your weapon type
-        with conditions(cond("AreaLevel", "<=", arealevels[rarity])):
-            with show():
-                condition("Class", "Thrusting")
-                Theme.dex_weapons[idx].apply()
-
-            with show():
-                condition("Class", "Bow")
-                Theme.dex_weapons[idx].apply()
-
-            with show():
-                condition("Class", "Quivers")
-                Theme.quivers[idx].apply()
-
-            with show():
-                condition("Class", "Wand")
-                Theme.int_weapons[idx].apply()
-
-            with show():
-                condition("Class", "One Hand Axes")
-                Theme.strdex_weapons[idx].apply()
-
-            with show():
-                condition("Class", "Two Hand Axes")
-                Theme.strdex_weapons[idx].apply()
-
-            with show():
-                condition("Class", "One Hand Maces")
-                Theme.str_weapons[idx].apply()
-
-            with show():
-                condition("Class", "Two Hand Maces")
-                Theme.str_weapons[idx].apply()
-
-            with show():
-                condition("Class", "One Hand Swords")
-                Theme.strdex_weapons[idx].apply()
-
-            with show():
-                condition("Class", "Two Hand Swords")
-                Theme.strdex_weapons[idx].apply()
-
-            with show():
-                condition("Class", "Sceptre")
-                Theme.strint_weapons[idx].apply()
-
-            with show():
-                condition("Class", "Warstaves")
-                Theme.strint_weapons[idx].apply()
-
-            with show():
-                condition("Class", "Staves")
-                Theme.strint_weapons[idx].apply()
-
-            with show():
-                condition("Class", "Claw")
-                Theme.dexint_weapons[idx].apply()
-
-            with show():
-                condition("Class", "Rune Dagger")
-                Theme.dexint_weapons[idx].apply()
-
-            with show():
-                condition("Class", "Dagger")
-                Theme.dexint_weapons[idx].apply()
-
-        # Only show weapons selected in weapon_types
-        with (show if "thrusting" in weapon_types else hide)():
-            condition("Class", "Thrusting")
-            Theme.dex_weapons[idx].apply()
-
-        with (show if "bows" in weapon_types else hide)():
-            condition("Class", "Bow")
-            Theme.dex_weapons[idx].apply()
-
-        with (show if "bows" in weapon_types else hide)():
-            condition("Class", "Quivers")
-            Theme.quivers[idx].apply()
-
-        with (show if "wands" in weapon_types else hide)():
-            condition("Class", "Wand")
-            Theme.int_weapons[idx].apply()
-
-        with (show if "axes1" in weapon_types else hide)():
-            condition("Class", "One Hand Axes")
-            Theme.strdex_weapons[idx].apply()
-
-        with (show if "axes2" in weapon_types else hide)():
-            condition("Class", "Two Hand Axes")
-            Theme.strdex_weapons[idx].apply()
-
-        with (show if "maces1" in weapon_types else hide)():
-            condition("Class", "One Hand Maces")
-            Theme.str_weapons[idx].apply()
-
-        with (show if "maces2" in weapon_types else hide)():
-            condition("Class", "Two Hand Maces")
-            Theme.str_weapons[idx].apply()
-
-        with (show if "swords1" in weapon_types else hide)():
-            condition("Class", "One Hand Swords")
-            Theme.strdex_weapons[idx].apply()
-
-        with (show if "swords2" in weapon_types else hide)():
-            condition("Class", "Two Hand Swords")
-            Theme.strdex_weapons[idx].apply()
-
-        with (show if "sceptres" in weapon_types else hide)():
-            condition("Class", "Sceptre")
-            Theme.strint_weapons[idx].apply()
-
-        with (show if "warstaves" in weapon_types else hide)():
-            condition("Class", "Warstaves")
-            Theme.strint_weapons[idx].apply()
-
-        with (show if "staves" in weapon_types else hide)():
-            condition("Class", "Staves")
-            Theme.strint_weapons[idx].apply()
-
-        with (show if "claws" in weapon_types else hide)():
-            condition("Class", "Claw")
-            Theme.dexint_weapons[idx].apply()
-
-        with (show if "rune daggers" in weapon_types else hide)():
-            condition("Class", "Rune Dagger")
-            Theme.dexint_weapons[idx].apply()
-
-        with (show if "daggers" in weapon_types else hide)():
-            condition("Class", "Dagger")
-            Theme.dexint_weapons[idx].apply()
-
-
-        with conditions(cond("Class",
-                    "Gloves", "Boots", "Helmets", "Body", "Shields")):
-            with conditions(cond("AreaLevel", "<=", arealevels[rarity])):
-                with show():
-                    condition("BaseType", *tables.str_armour)
-                    Theme.str_armour[idx].apply()
-
-                with show():
-                    condition("BaseType", *tables.dex_armour)
-                    Theme.dex_armour[idx].apply()
-
-                with show():
-                    condition("BaseType", *tables.int_armour)
-                    Theme.int_armour[idx].apply()
-                    
-                with show():
-                    condition("BaseType", *tables.strdex_armour)
-                    Theme.strdex_armour[idx].apply()
-
-                with show():
-                    condition("BaseType", *tables.strint_armour)
-                    Theme.strint_armour[idx].apply()
-
-                with show():
-                    condition("BaseType", *tables.dexint_armour)
-                    Theme.dexint_armour[idx].apply()
-
-            with (show if "str" in armour_types else hide)():
-                condition("BaseType", *tables.str_armour)
-                Theme.str_armour[idx].apply()
-
-            with (show if "dex" in armour_types else hide)():
-                condition("BaseType", *tables.dex_armour)
-                Theme.dex_armour[idx].apply()
-
-            with (show if "int" in armour_types else hide)():
-                condition("BaseType", *tables.int_armour)
-                Theme.int_armour[idx].apply()
-                
-            with (show if "strdex" in armour_types else hide)():
-                condition("BaseType", *tables.strdex_armour)
-                Theme.strdex_armour[idx].apply()
-
-            with (show if "strint" in armour_types else hide)():
-                condition("BaseType", *tables.strint_armour)
-                Theme.strint_armour[idx].apply()
-
-            with (show if "dexint" in armour_types else hide)():
-                condition("BaseType", *tables.dexint_armour)
-                Theme.dexint_armour[idx].apply()

@@ -5,6 +5,9 @@ from inspect import currentframe
 global in_block
 in_block = 0
 
+global always_continue
+always_continue = False
+
 global add_continue
 add_continue = False
 
@@ -54,6 +57,13 @@ def _indent():
     if in_block:
         print("    ", end='')
 
+def _cond(*args):
+    assert len(args) > 0
+    result = str(args[0])
+    if len(args) > 1:
+        for a in args[1:]:
+            result += " " + _esc(a)
+    return result
 
 def _enter_block():
     global in_block
@@ -71,6 +81,7 @@ def _enter_block():
     
 
 def _exit_block():
+    global always_continue
     global block_style
     global add_continue
     global in_block
@@ -78,7 +89,7 @@ def _exit_block():
     for k, v in block_style.items():
         _indent()
         print(k + " " + v)
-    if add_continue:
+    if add_continue or always_continue:
         _indent()
         print("Continue")
     in_block = False
@@ -225,6 +236,10 @@ class ColorSeries:
         h = (1.0 - delta) * h + opposite * delta
         return _rgb_float_to_dec(hsv_to_rgb(h, s, v))        
 
+def set_always_continue(val):
+    global always_continue
+    always_continue = val
+
 def begin_show():
     print("Show")
     _enter_block()
@@ -241,20 +256,12 @@ def cont():
     global add_continue
     add_continue = True
 
-def cond(*args):
-    assert len(args) > 0
-    result = str(args[0])
-    if len(args) > 1:
-        for a in args[1:]:
-            result += " " + _esc(a)
-    return result
-
 def condition(*args):
     """Add a condition to the active block"""
     global in_block
     assert in_block
     _indent()
-    print(cond(*args))
+    print(_cond(*args))
 
 @contextmanager
 def show():
@@ -274,11 +281,13 @@ def hide():
 
 @contextmanager
 def conditions(*args):
+    """Expects each argument to be a tuple defining one condition"""
     global condition_stack
     global in_block
     assert not in_block
     num_to_pop = len(args)
-    condition_stack.extend(args)
+    for a in args:
+        condition_stack.append(_cond(*a))
     try:
         yield None
     finally:
