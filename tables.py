@@ -1,3 +1,36 @@
+act_1_max_level = 13
+act_2_max_level = 23
+act_3_max_level = 33
+act_4_max_level = 40
+act_5_max_level = 45
+act_6_max_level = 50
+act_7_max_level = 55
+act_8_max_level = 60
+act_9_max_level = 64
+act_10_max_level = 67
+
+weapon_classes = [
+        "Claws", "Rune Daggers", "Daggers", "Wands", "One Hand Swords",
+        "Two Hand Swords", "Bows", "Warstaves", "Staves",
+        "Sceptres", "One Hand Axes", "Two Hand Axes", "One Hand Maces",
+        "Two Hand Maces", "Quivers"] # Quivers is debatable
+
+trinket_classes = [
+        "Amulets", "Rings", "Belts"]
+
+armour_classes = [
+        "Helmets", "Gloves", "Boots", "Body Armours", "Shields"]
+
+equipment_classes = [
+        *weapon_classes,
+        *armour_classes,
+        *trinket_classes]
+
+# item classes that exist in more than one rarity
+rarity_classes = [
+        *equipment_classes,
+        "Maps", "Flasks", "Fishing", "Jewel"] # Not sure where Watchstones go
+
 str_armour = [
         # Str Gloves
         "Iron Gauntlets", "Plated Gauntlets",
@@ -31,6 +64,7 @@ str_armour = [
         # Str Shields
         "Tower Shield"
     ]
+
 dex_armour = [
         # Dex Gloves
         "Rawhide Gloves", "Goathide Gloves",
@@ -63,6 +97,7 @@ dex_armour = [
         # Dex Shields
         "Buckler"
     ]
+
 int_armour = [
         # Int Gloves
         "Wool Gloves", "Velvet Gloves",
@@ -96,6 +131,7 @@ int_armour = [
         # Int Shields
         "Spirit Shield"
     ]
+
 strdex_armour = [
         # Str + Dex Gloves
         "Fishscale Gauntlets", "Ironscale Gauntlets",
@@ -127,6 +163,7 @@ strdex_armour = [
         # Str + Dex Shields
         "Round Shield"
     ]
+
 strint_armour = [
         # Str + Int Gloves
         "Chain Gloves", "Ringmail Gloves",
@@ -159,6 +196,7 @@ strint_armour = [
         # Str + Int Shields
         "Kite Shield"
     ]
+
 dexint_armour = [
         # Dex + Int Gloves
         "Wrapped Mitts", "Strapped Mitts",
@@ -192,3 +230,5 @@ dexint_armour = [
         # Dex + Int Shields
         "Spiked Bundle", "Spiked Shield"
     ]
+
+influences = ["Shaper", "Elder", "Warlord", "Crusader", "Hunter", "Redeemer"]

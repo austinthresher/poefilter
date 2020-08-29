@@ -1,0 +1,62 @@
+from poefilter import *
+
+class Icons:
+    extremely_valuable = Style(
+            play_effect_color="Red",
+            minimap_icon_size=0,
+            minimap_icon_color="Red",
+            minimap_icon_shape="Star")
+    very_valuable = Style(
+            play_effect_color="Red",
+            minimap_icon_size=1,
+            minimap_icon_color="Red",
+            minimap_icon_shape="Star")
+    valuable = Style(
+            play_effect_color="Red",
+            play_effect_temp=True,
+            minimap_icon_size=2,
+            minimap_icon_color="Red",
+            minimap_icon_shape="Star")
+    green_circle_beam = Style(
+            play_effect_color="Green",
+            play_effect_temp=True,
+            minimap_icon_size=2,
+            minimap_icon_color="Green",
+            minimap_icon_shape="Circle")
+    blue_circle_beam = Style(
+            play_effect_color="Blue",
+            minimap_icon_size=2,
+            minimap_icon_color="Blue",
+            minimap_icon_shape="Circle")
+    blue_circle_temp = Style(
+            play_effect_color="Blue",
+            play_effect_temp=True,
+            minimap_icon_size=2,
+            minimap_icon_color="Blue",
+            minimap_icon_shape="Circle")
+    blue_circle = Style(
+            minimap_icon_size=2,
+            minimap_icon_color="Blue",
+            minimap_icon_shape="Circle")
+    yellow_circle_beam = Style(
+            play_effect_color="Yellow",
+            minimap_icon_size=2,
+            minimap_icon_color="Yellow",
+            minimap_icon_shape="Circle")
+    yellow_circle_temp = Style(
+            play_effect_color="Yellow",
+            play_effect_temp=True,
+            minimap_icon_size=2,
+            minimap_icon_color="Yellow",
+            minimap_icon_shape="Circle")
+    yellow_circle = Style(
+            minimap_icon_size=2,
+            minimap_icon_color="Yellow",
+            minimap_icon_shape="Circle")
+    cyan_diamond_beam = Style(
+            play_effect_color="Cyan",
+            minimap_icon_size=2,
+            minimap_icon_color="Cyan",
+            minimap_icon_shape="Diamond")
+
+
