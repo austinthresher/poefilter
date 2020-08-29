@@ -103,10 +103,10 @@ def _apply(vals, text):
 
 class Style:
     def __init__(self,
-            border_color=None,
-            text_color=None,
-            background_color=None,
-            font_size=None,
+            border=None,
+            text=None,
+            background=None,
+            size=None,
             alert_sound_id=None,
             alert_sound_volume=None,
             alert_sound_positional=None,
@@ -118,10 +118,10 @@ class Style:
             play_effect_color=None,
             play_effect_temp=None,
             warn_if_unused=True):
-        self.border_color = _hex(border_color)
-        self.text_color = _hex(text_color)
-        self.background_color = _hex(background_color)
-        self.font_size = font_size
+        self.border = _hex(border)
+        self.text = _hex(text)
+        self.background = _hex(background)
+        self.size = size
         self.alert_sound_id = alert_sound_id
         self.alert_sound_volume = alert_sound_volume
         self.alert_sound_positional = alert_sound_positional
@@ -142,10 +142,10 @@ class Style:
 
     def apply(self):
         self.used = True
-        _apply(self.border_color, "SetBorderColor")
-        _apply(self.text_color, "SetTextColor")
-        _apply(self.background_color, "SetBackgroundColor")
-        _apply(self.font_size, "SetFontSize")
+        _apply(self.border, "SetBorderColor")
+        _apply(self.text, "SetTextColor")
+        _apply(self.background, "SetBackgroundColor")
+        _apply(self.size, "SetFontSize")
         if self.alert_sound_positional is not None and self.alert_sound_positional:
             if not _apply([self.alert_sound_id, self.alert_sound_volume], "PlayAlertSoundPositional"):
                 _apply(self.alert_sound_id, "PlayAlertSoundPositional")
