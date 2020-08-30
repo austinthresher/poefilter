@@ -113,9 +113,37 @@ def apply(config, colors, icons, sounds):
         with conditions(("BaseType", "Awakened Sextant")), show():
             colors.red_sextant.apply()
 
-        # TODO: Prophecy tiers
-        with conditions(("BaseType", "Prophecy")), show():
-            colors.prophecies.apply()
+        with conditions(("BaseType", "Prophecy")):
+            with show():
+                colors.prophecy_unknown.apply()
+
+            if tables.prophecy_bottom:
+                with conditions(("Prophecy", *tables.prophecy_bottom)), show():
+                    colors.prophecy_bottom.apply()
+            
+            if tables.prophecy_lower:
+                with conditions(("Prophecy", *tables.prophecy_lower)), show():
+                    colors.prophecy_lower.apply()
+
+            if tables.prophecy_low:
+                with conditions(("Prophecy", *tables.prophecy_low)), show():
+                    colors.prophecy_low.apply()
+
+            if tables.prophecy_mid:
+                with conditions(("Prophecy", *tables.prophecy_mid)), show():
+                    colors.prophecy_mid.apply()
+
+            if tables.prophecy_high:
+                with conditions(("Prophecy", *tables.prophecy_high)), show():
+                    colors.prophecy_high.apply()
+
+            if tables.prophecy_higher:
+                with conditions(("Prophecy", *tables.prophecy_higher)), show():
+                    colors.prophecy_higher.apply()
+
+            if tables.prophecy_top:
+                with conditions(("Prophecy", *tables.prophecy_top)), show():
+                    colors.prophecy_top.apply()
 
         # TODO: Shard types
         with conditions(("BaseType", "Shard")), show():
@@ -328,6 +356,7 @@ def apply(config, colors, icons, sounds):
                 with conditions(("Class", "Atlas")), show():
                     colors.watchstones[idx].apply()
 
+                # TODO: Map tiers
                 with conditions(("Class", "Maps")), show():
                     colors.maps[idx].apply()
 

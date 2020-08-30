@@ -97,3 +97,20 @@ class Icons:
             play_effect_color="Grey",
             play_effect_temp=True)
 
+    prophecy = Style(
+            play_effect_color="Purple",
+            minimap_icon_size=2,
+            minimap_icon_color="Purple",
+            minimap_icon_shape="Triangle")
+
+    prophecy_temp = Style(
+            play_effect_color="Purple",
+            play_effect_temp=True,
+            minimap_icon_size=2,
+            minimap_icon_color="Purple",
+            minimap_icon_shape="Triangle")
+
+    prophecy_temp_no_minimap = Style(
+            play_effect_color="Purple",
+            play_effect_temp=True)
+

@@ -46,9 +46,44 @@ class Colors:
     map_currency = Style(
             text="204 212 191",
             background="62 93 121")
-    prophecies = Style(
-            text="220 156 208",
-            background="126 34 103")
+
+    prophecy_unknown = Style(
+            text="255 0 0 255",
+            background=black)
+
+    prophecy_top = Style(
+            text="51 27 67 255",
+            border="181 71 254 255",
+            background=white,
+            size=Font.LARGE)
+    prophecy_higher = Style(
+            text=white,
+            border="65 1 97 255",
+            background="181 71 254 255",
+            size=Font.LARGE)
+    prophecy_high = Style(
+            text=white,
+            border="181 71 254 255",
+            background="65 1 97 255")
+    prophecy_mid = Style(
+            text="181 71 254 255",
+            border="181 71 254 255",
+            background="65 1 97 255")
+    prophecy_low = Style(
+            text="181 71 254 255",
+            border="181 71 254 255",
+            background="30 13 41 220")
+    prophecy_lower = Style(
+            text="181 71 254 255",
+            border=transparent,
+            background="30 13 41 220",
+            size=Font.REDUCED)
+    prophecy_bottom = Style(
+            text="181 71 254 255",
+            border=transparent,
+            background="30 13 41 192",
+            size=Font.SMALL)
+
     shards = Style(
             text=munsell.get("10G", 8, 2),
             background=munsell.get("10R", 1, 2))
@@ -232,9 +267,6 @@ class Colors:
     incubators = Style(
             text="201 192 179",
             background="78 38 13")
-    divination_munsell = Style(
-            text=munsell.get("2.5PB", 7, 10),
-            background=munsell.get("2.5PB", 2, 4))
 
     # For cards that aren't listed in the tier table
     divination_unknown = Style(
@@ -243,34 +275,36 @@ class Colors:
             background="1 44 139 220")
 
     divination_top = Style(
-            text="1 44 139 255",
+            text="1 4 35 255",
             border="14 186 255 255",
-            background=white)
+            background=white,
+            size=Font.LARGE)
     divination_higher = Style(
-            text="1 44 139 255",
+            text=white,
             border="1 44 139 255",
-            background="14 186 255 220")
+            background="14 186 255 255",
+            size=Font.LARGE)
     divination_high = Style(
             text=white,
-            border=white,
-            background="1 44 139 220")
-    divination_mid = Style(
-            text=white,
             border="14 186 255 255",
-            background="1 44 139 220")
+            background="1 44 139 255")
+    divination_mid = Style(
+            text="14 186 255 255",
+            border="14 186 255 255",
+            background="1 44 139 255")
     divination_low = Style(
             text="14 186 255 255",
             border="14 186 255 255",
-            background="1 44 139 220")
+            background="1 4 35 220")
     divination_lower = Style(
             text="14 186 255 255",
-            border="14 186 255 255",
+            border=transparent,
             background="1 4 35 220",
             size=Font.REDUCED)
     divination_bottom = Style(
             text="14 186 255 255",
             border=transparent,
-            background="1 4 35 220",
+            background="1 4 35 192",
             size=Font.SMALL)
 
     awakened_gems = Style(
@@ -434,6 +468,7 @@ class Colors:
             rarity_rare, 
             rarity_unique
         ]
+    # TODO: Map tiers
     maps = [
             rarity_normal,
             rarity_magic,

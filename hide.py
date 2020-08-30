@@ -210,3 +210,49 @@ def apply(config, colors, icons, sounds):
                 icons.divination_card.apply()
                 sounds.exalt.apply()
 
+    # Filter Prophecies by tier
+
+    with conditions(("BaseType", "Prophecy")):
+        if tables.prophecy_bottom and config.hide_proph_tier >= 0:
+            with conditions(("Prophecy", *tables.prophecy_bottom)), hide():
+                hidden.apply()
+        
+        if tables.prophecy_lower and config.hide_proph_tier >= 1:
+            with conditions(("Prophecy", *tables.prophecy_lower)), hide():
+                hidden.apply()
+
+        if tables.prophecy_low and config.hide_proph_tier >= 2:
+            with conditions(("Prophecy", *tables.prophecy_low)), hide():
+                hidden.apply()
+
+        if tables.prophecy_mid:
+            if config.hide_proph_tier >= 3:
+                with conditions(("Prophecy", *tables.prophecy_mid)), hide():
+                    hidden.apply()
+            else:
+                with conditions(("Prophecy", *tables.prophecy_mid)), show():
+                    icons.prophecy_temp_no_minimap.apply()
+
+        if tables.prophecy_high:
+            if config.hide_proph_tier >= 4:
+                with conditions(("Prophecy", *tables.prophecy_high)), hide():
+                    hidden.apply()
+            else:
+                with conditions(("Prophecy", *tables.prophecy_high)), show():
+                    icons.prophecy_temp_no_minimap.apply()
+                    sounds.echo_light.apply()
+
+        if tables.prophecy_higher:
+            if config.hide_proph_tier >= 5:
+                with conditions(("Prophecy", *tables.prophecy_higher)), hide():
+                    hidden.apply()
+            else:
+                with conditions(("Prophecy", *tables.prophecy_higher)), show():
+                    icons.prophecy_temp.apply()
+                    sounds.echo_heavy.apply()
+
+        if tables.prophecy_top:
+            with conditions(("Prophecy", *tables.prophecy_top)), show():
+                icons.prophecy.apply()
+                sounds.exalt.apply()
+

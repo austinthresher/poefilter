@@ -236,6 +236,7 @@ influences = ["Shaper", "Elder", "Warlord", "Crusader", "Hunter", "Redeemer"]
 drop_gems = ["Portal", "Enlighten", "Enhance", "Empower"]
 
 # Divination Card Tiers
+# =====================
 
 divination_top = [
         "House of Mirrors", "The Demon", "The Cheater", "The Immortal",
@@ -312,7 +313,7 @@ divination_low = [
         "The Gemcutter", "The Heroic Shot", "The Innocent", "The Inventor",
         "The Journey", "The Master Artisan", "The Seeker", "The Side Quest",
         "The Survivalist", "The Union", "The Wrath", "Three Faces in the Dark",
-        "Three Voices", "Vinia's Token"
+        "The Jeweller's Boon", "Three Voices", "Vinia's Token"
     ]
 
 divination_lower = [
@@ -336,7 +337,7 @@ divination_lower = [
         "Atziri's Arsenal", "The Opulent", "The Blazing Fire",
         "The Ruthless Ceinture", "The Eye of the Dragon", "The Realm",
         "The Obscured", "The Deceiver", "Forbidden Power",
-        "The Jeweller's Boon", "The Army of Blood", "The Beast",
+         "The Army of Blood", "The Beast",
         "The Sword King's Salute", "The Fathomless Depths",
         "The Rite of Elements", "The Witch", "Alone in the Darkness",
         "Dark Temptation", "The Messenger", "Thirst for Knowledge",
@@ -348,3 +349,174 @@ divination_lower = [
         ]
 
 divination_bottom = ["The Carrion Crow", "The King's Blade"]
+
+# Prophecy Tiers
+# ==============
+
+prophecy_top = [
+        "Trash to Treasure", "The Queen's Sacrifice", "The Forgotten Garrison",
+        "Fated Connections", "The Lady in Black", "From Death Springs Life",
+        "Darktongue's Shriek", "The Petrified", "A Dishonourable Death"
+    ]
+
+prophecy_higher = [
+        "Storm on the Horizon", "The Bowstring's Music", "Song of the Sekhema",
+        "Living Fires", "The King's Path", "Blind Faith", "Monstrous Treasure",
+        "Fire and Brimstone", "Twice Enchanted",
+        "The Great Leader of the North", "The Prison Key"
+    ]
+
+prophecy_high = [
+        "Cleanser of Sins", "The Jeweller's Touch", "A Whispered Prayer",
+        "The Mentor", "The Ward's Ward", "Roth's Legacy", "The Prison Guard",
+        "Echoes of Witchcraft", "The Feral Lord V", "The Plaguemaw V",
+        "The Unbreathing Queen V", "Unbearable Whispers V"
+    ]
+
+prophecy_mid = [
+        "A Master Seeks Help", "Anarchy's End III", "Anarchy's End IV",
+        "Beyond Sight III", "Beyond Sight IV", "Bountiful Traps",
+        "Crushing Squall", "Deadly Rivalry IV", "Deadly Rivalry V",
+        "Deadly Twins", "Fire from the Sky", "Hidden Reinforcements",
+        "Hidden Vaal Pathways", "Ice from Above", "Lightning Falls",
+        "Mysterious Invaders", "Overflowing Riches", "Plague of Frogs",
+        "Plague of Rats", "Possessed Foe", "Reforged Bonds",
+        "The Beautiful Guide", "The Cursed Choir", "The Dreamer's Dream",
+        "The Fortune Teller's Collection", "The Four Feral Exiles",
+        "The Hungering Swarm", "The Trembling Earth", "The Twins",
+        "The Undead Storm", "The Warmongers III", "The Warmongers IV",
+        "Vaal Winds", "Waiting in Ambush"
+    ]
+
+prophecy_low = [
+        "A Forest of False Idols", "Agony at Dusk", "Battle Hardened",
+        "Black Devotion", "Blinding Light", "Burning Dread",
+        "Cold Blooded Fury", "Cold Greed", "Crimson Hues", "Dance of Steel",
+        "Dark Instincts", "End of the Light", "Faith Exhumed", "From The Void",
+        "Greed's Folly", "Mouth of Horrors", "Nature's Resilience",
+        "Pleasure and Pain", "Power Magnified", "Sun's Punishment",
+        "The Beginning and the End", "The Bishop's Legacy",
+        "The Bloody Flowers Redux", "The Dreaded Rhoa",
+        "The Fall of an Empire", "The Flow of Energy",
+        "The King and the Brambles", "The Malevolent Witch",
+        "The Nightmare Awakens", "The Snuffed Flame", "The Storm Spire",
+        "Trapped in the Tower", "Winter's Mournful Melodies"
+    ]
+
+prophecy_lower = [
+        "A Prodigious Hand", "The Silverwood", "The Sword King's Passion",
+        "The Hollow Pledge", "The Misunderstood Queen",
+        "Custodians of Silence", "The Great Mind of the North", "Fire and Ice",
+        "Undead Uprising", "The Last Watch", "Flesh of the Beast",
+        "The Brutal Enforcer", "Visions of the Drowned", "Last of the Wildmen",
+        "A Rift in Time", "Wind and Thunder", "A Call into the Void",
+        "Touched by the Wind", "Against the Tide", "Resistant to Change",
+        "A Vision of Ice and Fire", "The Apex Predator",
+        "Fire, Wood and Stone", "Beyond Sight II", "The Karui Rebellion",
+        "The Dream Trial", "The Soulless Beast", "Anarchy's End I",
+        "Notched Flesh", "The Watcher's Watcher", "Blood in the Eyes",
+        "Deadly Rivalry I", "Day of Sacrifice III", "The Mysterious Gift",
+        "Lost in the Pages", "The Vanguard", "Weeping Death", "The Nest",
+        "Nemesis of Greed", "The Lost Undying", "The Flayed Man",
+        "The Walking Mountain", "Day of Sacrifice I",
+        "In the Grasp of Corruption", "Kalandra's Craft", "Baptism by Death",
+        "Fear's Wide Reach", "Storm on the Reef", "The Eagle's Cry"
+    ]
+
+prophecy_bottom = [
+        "Heart of the Fire", "Strong as a Bull", "Day of Sacrifice IV",
+        "Abnormal Effulgence", "Blood of the Betrayed", "Dying Cry",
+        "The Ambitious Bandit I", "Thaumaturgical History IV",
+        "A Firm Foothold", "A Regal Death", "An Unseen Peril",
+        "Anarchy's End II", "Ancient Doom", "Beyond Sight I",
+        "Day of Sacrifice II", "Deadly Rivalry II", "Deadly Rivalry III",
+        "Ending the Torment", "Erased from Memory", "Erasmus' Gift",
+        "Forceful Exorcism", "Gilded Within", "Golden Touch", "Heavy Blows",
+        "Hunter's Lesson", "Lasting Impressions", "Pools of Wealth", "Rebirth",
+        "Risen Blood", "Severed Limbs", "Smothering Tendrils",
+        "Soil, Worms and Blood", "Thaumaturgical History I",
+        "Thaumaturgical History II", "Thaumaturgical History III",
+        "The Alchemist", "The Ambitious Bandit II", "The Ambitious Bandit III",
+        "The Brothers of Necromancy", "The Corrupt", "The Feral Lord II",
+        "The Feral Lord IV", "The God of Misfortune", "The Hardened Armour",
+        "The Lost Maps", "The Plaguemaw I", "The Plaguemaw II",
+        "The Plaguemaw III", "The Plaguemaw IV", "The Queen's Vaults",
+        "The Scout", "The Servant's Heart", "The Sharpened Blade",
+        "The Singular Spirit", "The Sinner's Stone", "The Stockkeeper",
+        "The Unbreathing Queen I", "The Unbreathing Queen II",
+        "The Unbreathing Queen III", "The Unbreathing Queen IV",
+        "The Undead Brutes", "The Warmongers I", "The Warmongers II",
+        "The Wealthy Exile", "Unbearable Whispers I", "Unbearable Whispers II",
+        "Unbearable Whispers III", "Unbearable Whispers IV",
+        "Vital Transformation", "The Invader", "The Feral Lord III",
+        "Graceful Flames", "The Feral Lord I", "A Valuable Combination",
+        "Defiled in the Sceptre", "Fallow At Last", "Holding the Bridge",
+        "Path of Betrayal", "The Child of Lunaris", "The Forgotten Soldiers",
+        "Unnatural Energy", "Vaal Invasion"
+    ]
+
+# Unique Tiers
+# ============
+
+# TODO
+unique_top = [
+
+    ]
+
+unique_higher = [
+
+    ]
+
+unique_high = [
+
+    ]
+
+unique_mid = [
+
+    ]
+
+unique_low = [
+
+    ]
+
+unique_lower = [
+
+    ]
+
+unique_bottom = [
+
+    ]
+
+# Essence Tiers
+# ============
+
+# TODO
+essence_top = [
+
+    ]
+
+essence_higher = [
+
+    ]
+
+essence_high = [
+
+    ]
+
+essence_mid = [
+
+    ]
+
+essence_low = [
+
+    ]
+
+essence_lower = [
+
+    ]
+
+essence_bottom = [
+
+    ]
+
+

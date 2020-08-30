@@ -25,6 +25,7 @@ class Config:
     show_5_links = True
     # -1:none, 0:bottom, 1:lower, 2:low, 3:mid, 4:high, 5:higher
     hide_div_tier = 0
+    hide_proph_tier = 0
 
 # The first section of the filter is styling ONLY. There should be no
 # hide() statements here. After all styling is applied, items can then
