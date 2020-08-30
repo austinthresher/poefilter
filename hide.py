@@ -1,7 +1,7 @@
 from poefilter import *
 import tables
 
-hidden = Style(size=28)
+hidden = Style(size=20)
 
 # Some show() groups don't need anything additional, so this marks it as complete
 def done():
@@ -16,7 +16,7 @@ def apply(config, colors, icons, sounds):
     with conditions(("LinkedSockets", "6")), show():
         done()
 
-    with conditions(("BaseType", "Exalted", "Mirror", "Feather")), show():
+    with conditions(("BaseType", "Exalted", "Mirror of", "Mirror Shard", "Feather")), show():
         done()
 
     if config.show_5_links:
@@ -40,11 +40,42 @@ def apply(config, colors, icons, sounds):
             ("BaseType", "Portal Scroll")), hide():
         hidden.apply()
 
+    # Jeweller's Orb recipe
+    with conditions(("Sockets", "6")), show():
+        done()
+
+    # Chromatic Orb recipe
+    with conditions(
+            ("SocketGroup", "RGB"),
+            ("AreaLevel", "<=", tables.act_10_max_level)), show():
+        done()
+
+    # Hide non-quality gems in endgame
+    with conditions(("Class", "Gems"), ("AreaLevel", ">=", tables.act_10_max_level)):
+        with conditions(("BaseType", *tables.drop_gems)), show():
+            done()
+
+        with conditions(("Quality", ">", 0)), show():
+            done()
+
+        with conditions(("Corrupted", "True")), show():
+            done()
+
+        with conditions(("BaseType", "Awakened")), show():
+            done()
+
+        # Show high level gems that could reduce leveling time / make easy 20% recipe
+        with conditions(("GemLevel", ">=", 15)), show():
+            done()
+
+        with hide():
+            hidden.apply()
+
     # Show all Magic items until the end of Act 1
     with conditions(
             ("Rarity", "Magic"),
             ("AreaLevel", "<=", tables.act_1_max_level)), show():
-        icons.blue_circle.apply()
+        done()
 
     # Show all Rare items until the end of Act 4
     with conditions(
@@ -69,16 +100,25 @@ def apply(config, colors, icons, sounds):
         if w not in config.weapon_types:
             with conditions(("Rarity", "<", "Unique"), ("Class", w)), hide():
                 hidden.apply()
+        with conditions(
+                ("Rarity", "<", "Unique"),
+                ("Class", w),
+                ("AreaLevel", ">", tables.act_10_max_level)), hide():
+            hidden.apply()
 
     # Now that weapon and armour types have been filtered out, show anything
     # matching our socket groups regardless of rarity
     if config.main_socket_groups:
-        with conditions(("SocketGroup", *config.main_socket_groups)), show():
+        with conditions(
+                ("SocketGroup", *config.main_socket_groups),
+                ("AreaLevel", "<=", tables.act_10_max_level)), show():
             icons.green_circle_beam.apply()
             sounds.echo_light.apply()
 
     if config.other_socket_groups:
-        with conditions(("SocketGroup", *config.other_socket_groups)), show():
+        with conditions(
+                ("SocketGroup", *config.other_socket_groups),
+                ("AreaLevel", "<=", tables.act_10_max_level)), show():
             done()
 
     # Don't show bad corrupts with 0 mods
@@ -95,11 +135,12 @@ def apply(config, colors, icons, sounds):
 
     # Filter stuff out based on arealevel
     # ===================================
+
     # Hide Rare except trinkets and jewels after Act 10
     with conditions(
             ("Rarity", "<=", "Rare"),
             ("AreaLevel", ">", tables.act_10_max_level),
-            ("Class", *tables.weapon_classes, *tables.armour_classes, "Flasks"),
+            ("Class", *(tables.weapon_classes + tables.armour_classes), "Flasks"),
             ("Identified", "False")), hide():
         hidden.apply()
 
@@ -109,7 +150,7 @@ def apply(config, colors, icons, sounds):
         condition("Class",
                 "Amulets", "Rings", "Belts", "Quivers", "Mace",
                 "Sword", "Axe", "Bow", "Wand", "Sceptre", "taves", "Dagger",
-                "Claw", "Gloves", "Helmets", "Body", "Shields", "Boots")
+                "Claw", "Gloves", "Helmets", "Body", "Shields", "Boots", "Jewel")
         condition("Identified", "False")
         hidden.apply()
 
@@ -119,7 +160,53 @@ def apply(config, colors, icons, sounds):
         condition("Class",
                 "Amulets", "Rings", "Belts", "Quivers", "Mace",
                 "Sword", "Axe", "Bow", "Wand", "Sceptre", "taves", "Dagger",
-                "Claw", "Gloves", "Helmets", "Body", "Shields", "Boots")
+                "Claw", "Gloves", "Helmets", "Body", "Shield", "Boots")
         condition("Identified", "False")
         hidden.apply()
+
+    # Filter Divination cards by tier
+
+    with conditions(("Class", "Divination")):
+        if tables.divination_bottom and config.hide_div_tier >= 0:
+            with conditions(("BaseType", *tables.divination_bottom)), hide():
+                hidden.apply()
+        
+        if tables.divination_lower and config.hide_div_tier >= 1:
+            with conditions(("BaseType", *tables.divination_lower)), hide():
+                hidden.apply()
+
+        if tables.divination_low and config.hide_div_tier >= 2:
+            with conditions(("BaseType", *tables.divination_low)), hide():
+                hidden.apply()
+
+        if tables.divination_mid:
+            if config.hide_div_tier >= 3:
+                with conditions(("BaseType", *tables.divination_mid)), hide():
+                    hidden.apply()
+            else:
+                with conditions(("BaseType", *tables.divination_mid)), show():
+                    icons.divination_card_temp_no_minimap.apply()
+
+        if tables.divination_high:
+            if config.hide_div_tier >= 4:
+                with conditions(("BaseType", *tables.divination_high)), hide():
+                    hidden.apply()
+            else:
+                with conditions(("BaseType", *tables.divination_high)), show():
+                    icons.divination_card_temp_no_minimap.apply()
+                    sounds.echo_light.apply()
+
+        if tables.divination_higher:
+            if config.hide_div_tier >= 5:
+                with conditions(("BaseType", *tables.divination_higher)), hide():
+                    hidden.apply()
+            else:
+                with conditions(("BaseType", *tables.divination_higher)), show():
+                    icons.divination_card_temp.apply()
+                    sounds.echo_heavy.apply()
+
+        if tables.divination_top:
+            with conditions(("BaseType", *tables.divination_top)), show():
+                icons.divination_card.apply()
+                sounds.exalt.apply()
 

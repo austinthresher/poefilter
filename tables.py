@@ -232,3 +232,119 @@ dexint_armour = [
     ]
 
 influences = ["Shaper", "Elder", "Warlord", "Crusader", "Hunter", "Redeemer"]
+
+drop_gems = ["Portal", "Enlighten", "Enhance", "Empower"]
+
+# Divination Card Tiers
+
+divination_top = [
+        "House of Mirrors", "The Demon", "The Cheater", "The Immortal",
+        "The Doctor", "The Fiend", "The Greatest Intentions",
+        "Beauty Through Death", "Seven Years Bad Luck", "Nook's Crown",
+        "Gift of Asenath", "The Damned", "The Hive of Knowledge",
+        "Alluring Bounty", "Succor of the Sinless", "The Iron Bard",
+        "The Samurai's Eye", "A Familiar Call", "Hunter's Reward",
+        "Abandoned Wealth", "Pride of the First Ones", "Immortal Resolve",
+        "The Nurse", "Etched in Blood", "The Sustenance", "The Fishmonger",
+        "The Progeny of Lunaris", "The Spark and the Flame",
+        "The White Knight", "The Long Con", "Wealth and Power"
+    ]
+
+divination_higher = [
+        "The Mayor", "The Price of Loyalty", "The Eye of Terror", "The Queen",
+        "The Life Thief", "Void of the Elements", "Squandered Prosperity",
+        "The Artist", "The Strategist", "The Saint's Treasure", "The Bargain",
+        "Azyran's Reward", "Council of Cats", "The Tumbleweed",
+        "The Dragon's Heart", "Mawr Blaidd", "The Escape", "The Sephirot",
+        "The Old Man", "Chaotic Disposition", "The Soul", "The Undaunted",
+        "The Celestial Stone", "A Note in the Wind", "The World Eater",
+        "The Deep Ones", "The Awakened", "Dark Dreams", "Prometheus' Armoury",
+        "Peaceful Moments", "The Hoarder", "The Eldritch Decay"
+    ]
+
+divination_high = [
+        "Divine Justice", "The Undisputed", "Time-Lost Relic", "The Demoness",
+        "The Trial", "Rebirth", "Remembrance", "The Valkyrie", "The Avenger",
+        "Deathly Designs", "The Dreamer", "The Last One Standing",
+        "The Professor", "The Celestial Justicar", "Blessing of God",
+        "The Cartographer", "Arrogance of the Vaal", "Burning Blood",
+        "The Enlightened", "The Wolf", "The Landing", "Merciless Armament",
+        "Perfection", "The Sacrifice", "The Warlord", "The Hale Heart",
+        "The Lord in Black", "The Jester", "The Spoiled Prince",
+        "The Thaumaturgist", "The Wolven King's Bite", "Left to Fate",
+        "Boon of the First Ones", "The Wolf's Legacy", "Baited Expectations",
+        "The Ethereal", "Birth of the Three", "The Craving"
+    ]
+
+divination_mid = [
+        "The Fletcher", "The Endless Darkness", "The Mad King", "The Chosen",
+        "Underground Forest", "The Easy Stroll", "The Primordial",
+        "The Insatiable", "The King's Heart", "The Throne",
+        "The One With All", "The Dark Mage", "Echoes of Love",
+        "Heterochromia", "Blind Venture", "Rain Tempter", "The Betrayal",
+        "The Tyrant", "Treasure Hunter", "The Porcupine", "The Admirer",
+        "The Golden Era", "The Siren", "The Void", "The Risk", "The Polymath",
+        "Pride Before the Fall", "The Cursed King", "The Dapper Prodigy",
+        "The Offering", "The Wretched", "The Master", "The Darkest Dream",
+        "The Lord of Celebration", "Akil's Prophecy", "Cameria's Cut",
+        "The Tinkerer's Table", "The Dreamland", "Humility",
+        "The Road to Power", "Lost Worlds", "The Brittle Emperor",
+        "The Wolverine", "The Sigil", "The Price of Protection", "Friendship",
+        "The Archmage's Right Hand", "The Stormcaller", "Audacity",
+        "Shard of Fate", "The Battle Born", "The Conduit", "The Hunger",
+        "The Oath", "The Scavenger", "Lingering Remnants", "The Standoff",
+        "The Forsaken", "The Breach", "The Wilted Rose", "Vanity",
+        "Buried Treasure", "The Lion", "The Gladiator", "The Penitent",
+        "The Body", "A Dab of Ink", "The Valley of Steel Boxes",
+        "The Twilight Moon", "The Mercenary", "The Inoculated",
+        "Lysah's Respite", "The Cataclysm", "The Garish Power",
+        "Glimmer of Hope", "The Skeleton", "The Arena Champion", "Hope",
+        "The Wind", "Vile Power", "The Harvester", "The Vast"
+    ]
+
+divination_low = [
+        "Boon of Justice", "Bowyer's Dream", "Coveted Possession",
+        "Demigod's Wager", "Emperor of Purity", "Emperor's Luck",
+        "Harmony of Souls", "Imperial Legacy", "Last Hope", "Loyalty",
+        "Lucky Connections", "Lucky Deck", "Monochrome",
+        "More is Never Enough", "No Traces", "Sambodhi's Vow", "The Cacophony",
+        "The Catalyst", "The Chains that Bind", "The Deal", "The Fool",
+        "The Gemcutter", "The Heroic Shot", "The Innocent", "The Inventor",
+        "The Journey", "The Master Artisan", "The Seeker", "The Side Quest",
+        "The Survivalist", "The Union", "The Wrath", "Three Faces in the Dark",
+        "Three Voices", "Vinia's Token"
+    ]
+
+divination_lower = [
+        "The Calling", "Dying Anguish", "A Mother's Parting Gift",
+        "Anarchy's Price", "Assassin's Favour", "Boundless Realms", "Death",
+        "Dialla's Subjugation", "Doedre's Madness", "Earth Drinker",
+        "Gemcutter's Promise", "Gift of the Gemling Queen", "Grave Knowledge",
+        "Hubris", "Hunter's Resolve", "Jack in the Box",
+        "Lantador's Lost Love", "Light and Truth", "Prosperity", "Rats",
+        "Scholar of the Seas", "The Aesthete",
+        "The Doppelganger", "The Dragon", "The Drunken Aristocrat",
+        "The Encroaching Darkness", "The Endurance", "The Explorer",
+        "The Feast", "The Formless Sea", "The Fox", "The Gentleman",
+        "The Hermit", "The Incantation",
+        "The Metalsmith's Gift", "The Pack Leader", "The Pact", "The Poet",
+        "The Rabid Rhoa", "The Scarred Meadow", "The Summoner", "The Sun",
+        "The Surveyor", "The Tower", "The Traitor", "The Twins",
+        "The Visionary", "The Watcher", "The Web", "The Wolf's Shadow",
+        "Tranquillity", "Turn the Other Cheek", "Volatile Power", "Mitts",
+        "Call to the First Ones", "The Coming Storm", "Might is Right",
+        "Atziri's Arsenal", "The Opulent", "The Blazing Fire",
+        "The Ruthless Ceinture", "The Eye of the Dragon", "The Realm",
+        "The Obscured", "The Deceiver", "Forbidden Power",
+        "The Jeweller's Boon", "The Army of Blood", "The Beast",
+        "The Sword King's Salute", "The Fathomless Depths",
+        "The Rite of Elements", "The Witch", "Alone in the Darkness",
+        "Dark Temptation", "The Messenger", "Thirst for Knowledge",
+        "The Mountain", "The Bones", "Struck by Lightning", "The Lich",
+        "The Lunaris Priestess", "The Surgeon", "Thunderous Skies",
+        "The Lover", "The Warden", "Cartographer's Delight",
+        "Destined to Crumble", "Her Mask", "Rain of Chaos", "The Flora's Gift",
+        "The Gambler", "The Puzzle", "The Scholar"
+        ]
+
+divination_bottom = ["The Carrion Crow", "The King's Blade"]

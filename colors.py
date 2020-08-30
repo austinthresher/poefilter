@@ -2,14 +2,28 @@ from poefilter import *
 import munsell
 
 class Colors:
+
+    # Color constants (probably should be in CAPS)
+    white = "255 255 255 255"
+    black = "0 0 0 255"
+    transparent = "0 0 0 0"
+
+    # Text sizes
+
+    class Font:
+        LARGE = 45
+        REGULAR = 40
+        REDUCED = 35
+        SMALL = 30
+        TINY = 25
+            
+
     default = Style(
             background="0 0 0",
             text="255 0 255",
             border="255 255 255 0",
-            size=45)
+            size=Font.REGULAR)
 
-    white = "255 255 255 255"
-    black = "0 0 0 255"
 
     # Class Currency
     extremely_valuable = Style(
@@ -82,9 +96,6 @@ class Colors:
     chance = Style(
             text=munsell.get("10BG", 8, 2),
             background=munsell.get("10BG", 2, 2))
-    alchemy = Style(
-            text=munsell.get("10Y", 8, 2),
-            background=munsell.get("10Y", 2, 2))
     binding = Style(
             text=munsell.get("10GY", 8, 2),
             background=munsell.get("10GY", 2, 2))
@@ -97,9 +108,12 @@ class Colors:
     vaal = Style(
             text=munsell.get("7.5R", 9, 2),
             background=munsell.get("7.5R", 3, 10))
-    blessed = Style(
+    alchemy = Style(
             text=munsell.get("2.5Y", 9, 2),
             background=munsell.get("2.5Y", 5, 8))
+    blessed = Style(
+            text=munsell.get("10Y", 8, 2),
+            background=munsell.get("10Y", 2, 2))
     jewelers = Style(
             text=munsell.get("10B", 8, 2),
             background=munsell.get("10B", 4, 4))
@@ -218,9 +232,47 @@ class Colors:
     incubators = Style(
             text="201 192 179",
             background="78 38 13")
-    divination = Style(
+    divination_munsell = Style(
             text=munsell.get("2.5PB", 7, 10),
             background=munsell.get("2.5PB", 2, 4))
+
+    # For cards that aren't listed in the tier table
+    divination_unknown = Style(
+            text="255 0 0 255",
+            border="14 186 255 255",
+            background="1 44 139 220")
+
+    divination_top = Style(
+            text="1 44 139 255",
+            border="14 186 255 255",
+            background=white)
+    divination_higher = Style(
+            text="1 44 139 255",
+            border="1 44 139 255",
+            background="14 186 255 220")
+    divination_high = Style(
+            text=white,
+            border=white,
+            background="1 44 139 220")
+    divination_mid = Style(
+            text=white,
+            border="14 186 255 255",
+            background="1 44 139 220")
+    divination_low = Style(
+            text="14 186 255 255",
+            border="14 186 255 255",
+            background="1 44 139 220")
+    divination_lower = Style(
+            text="14 186 255 255",
+            border="14 186 255 255",
+            background="1 4 35 220",
+            size=Font.REDUCED)
+    divination_bottom = Style(
+            text="14 186 255 255",
+            border=transparent,
+            background="1 4 35 220",
+            size=Font.SMALL)
+
     awakened_gems = Style(
             text="0 0 0 255",
             background="240 92 36 255",
@@ -235,9 +287,12 @@ class Colors:
             minimap_icon_color="Cyan",
             minimap_icon_shape="Hexagon",
             play_effect_color="Cyan")
-    gems = Style(
+    quality_gems = Style(
             text=munsell.get("5BG", 8, 8),
             background=munsell.get("2.5BG", 4, 4))
+    gems = Style(
+            text=munsell.get("2.5BG", 5, 6),
+            background=munsell.get("2.5BG", 1, 2))
     metamorph = Style(
             text=munsell.get("7.5Y", 9, 8),
             background=munsell.get("7.5GY", 4, 6))
@@ -267,7 +322,7 @@ class Colors:
 
     rarity_unique = Style(
             text="239 132 18 255",
-            #border="239 132 18 255",
+            border="239 132 18 255",
             background="20 20 20 255",
             size=45,
             play_effect_color="Brown",
@@ -340,13 +395,15 @@ class Colors:
             border=white,
             size=45)
 
-    # Notable highlights
+    # Border highlights
     corrupted = Style(border="210 0 0 255")
     veiled = Style(border="70 207 119 255")
     enchanted = Style(border="242 205 233 255")
     corrupted_enchanted = Style(border="255 0 255 255")
     good_sockets = Style(border="0 255 0 255")
     ok_sockets = Style(border="30 128 30 255")
+    chrome_recipe = Style(border="200 200 200 255")
+    jewellers_recipe = Style(border="200 200 255 255")
 
     ring_color = munsell.get("7.5PB", 1, 2) + " 255"
     belt_color = munsell.get("7.5BG", 1, 2) + " 255"

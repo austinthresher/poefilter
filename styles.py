@@ -57,7 +57,7 @@ def apply(config, colors, icons, sounds):
             colors.regal.apply()
 
         with conditions(("BaseType", "Chaos Orb")), show():
-            icons.valuable.apply()
+            icons.chaos.apply()
             colors.chaos.apply()
             sounds.chaos.apply()
 
@@ -113,12 +113,15 @@ def apply(config, colors, icons, sounds):
         with conditions(("BaseType", "Awakened Sextant")), show():
             colors.red_sextant.apply()
 
+        # TODO: Prophecy tiers
         with conditions(("BaseType", "Prophecy")), show():
             colors.prophecies.apply()
 
+        # TODO: Shard types
         with conditions(("BaseType", "Shard")), show():
             colors.shards.apply()
 
+        # TODO: Essence tiers
         with conditions(("BaseType", "Essence")), show():
             colors.essences.apply()
 
@@ -131,9 +134,11 @@ def apply(config, colors, icons, sounds):
         with conditions(("BaseType", "Resonator")), show():
             colors.resonator.apply()
 
+        # TODO: Oil tiers
         with conditions(("BaseType", "Oil")), show():
             colors.oils.apply()
 
+        # TODO: Catalyst tiers
         with conditions(("BaseType", "Catalyst")), show():
             colors.catalysts.apply()
 
@@ -144,6 +149,7 @@ def apply(config, colors, icons, sounds):
             colors.delirium_orb.apply()
 
         with conditions(("BaseType", "Simulacrum Splinter")), show():
+            icons.splinter.apply()
             colors.simulacrum_splinter.apply()
 
         with conditions(("BaseType", "Silver Coin")), show():
@@ -172,9 +178,11 @@ def apply(config, colors, icons, sounds):
                 "BaseType", "Esh", "Tul", "Chayula", "Xoph", "Netol"
                 )), show():
             colors.breach_splinter.apply()
+            icons.splinter.apply()
 
         with conditions(("BaseType", "Timeless")), show():
             colors.timeless_splinter.apply()
+            icons.splinter.apply()
         
 
     with conditions(("Class", "Fragment")):
@@ -220,29 +228,64 @@ def apply(config, colors, icons, sounds):
         with conditions(("BaseType", "Winged")), show():
             colors.winged_scarabs.apply()
 
-
-
     with conditions(("Class", "Quest", "Labyrinth")), show():
         colors.quest.apply()
 
     with conditions(("Class", "Incubator")), show():
         colors.incubators.apply()
 
-    with conditions(("Class", "Divination")), show():
-        colors.divination.apply()
+    with conditions(("Class", "Divination")):
+        with show():
+            colors.divination_unknown.apply()
+
+        if tables.divination_bottom:
+            with conditions(("BaseType", *tables.divination_bottom)), show():
+                colors.divination_bottom.apply()
+        
+        if tables.divination_lower:
+            with conditions(("BaseType", *tables.divination_lower)), show():
+                colors.divination_lower.apply()
+
+        if tables.divination_low:
+            with conditions(("BaseType", *tables.divination_low)), show():
+                colors.divination_low.apply()
+
+        if tables.divination_mid:
+            with conditions(("BaseType", *tables.divination_mid)), show():
+                colors.divination_mid.apply()
+
+        if tables.divination_high:
+            with conditions(("BaseType", *tables.divination_high)), show():
+                colors.divination_high.apply()
+
+        if tables.divination_higher:
+            with conditions(("BaseType", *tables.divination_higher)), show():
+                colors.divination_higher.apply()
+
+        if tables.divination_top:
+            with conditions(("BaseType", *tables.divination_top)), show():
+                colors.divination_top.apply()
 
     with conditions(("Class", "Gems")):
+        with show():
+            colors.gems.apply()
+
+        with conditions(("Quality", ">", 0)), show():
+            colors.quality_gems.apply()
+
         with conditions(("Corrupted", "True")), show():
             colors.corrupted.apply()
 
         with conditions(("BaseType", "Awakened")), show():
             colors.awakened_gems.apply()
+            icons.valuable.apply()
+            sounds.bang.apply()
 
-        with conditions(("BaseType", "Enlighten", "Enhance", "Empower")), show():
+        with conditions(("BaseType", *tables.drop_gems)), show():
+            icons.valuable.apply()
             colors.drop_gems.apply()
+            sounds.chaos.apply()
 
-        with show():
-            colors.gems.apply()
 
     with conditions(("Class", "Metamorph")), show():
         colors.metamorph.apply()
@@ -290,21 +333,25 @@ def apply(config, colors, icons, sounds):
 
                 with conditions(("Class", "Amulets")):
                     if config.highlighted_amulets:
-                        with conditions(("BaseType", *config.highlighted_amulets)), show():
+                        with conditions(("BaseType", *config.highlighted_amulets),
+                                ("Rarity", "<", "Unique")), show():
                             colors.highlighted_amulets[idx].apply()
                     with show():
                         colors.amulets[idx].apply()
 
                 with conditions(("Class", "Rings")):
                     if config.highlighted_rings:
-                        with conditions(("BaseType", *config.highlighted_rings)), show():
+                        with conditions(
+                                ("BaseType", *config.highlighted_rings),
+                                ("Rarity", "<", "Unique")), show():
                             colors.highlighted_rings[idx].apply()
                     with show():
                         colors.rings[idx].apply()
 
                 with conditions(("Class", "Belts")):
                     if config.highlighted_belts:
-                        with conditions(("BaseType", *config.highlighted_belts)), show():
+                        with conditions(("BaseType", *config.highlighted_belts),
+                                ("Rarity", "<", "Unique")), show():
                             colors.highlighted_belts[idx].apply()
                     with show():
                         colors.belts[idx].apply()
@@ -366,6 +413,14 @@ def apply(config, colors, icons, sounds):
 
         # Misc highlights / emphasis
         # ==========================
+
+        # Chromatic Orb Recipe
+        with conditions(("SocketGroup", "RGB")), show():
+            colors.chrome_recipe.apply()
+
+        # Jeweller's recipe
+        with conditions(("Sockets", "6")), show():
+            colors.jewellers_recipe.apply()
 
         # Leveling socket types
         with conditions(
