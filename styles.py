@@ -149,9 +149,24 @@ def apply(config, colors, icons, sounds):
         with conditions(("BaseType", "Shard")), show():
             colors.shards.apply()
 
-        # TODO: Essence tiers
-        with conditions(("BaseType", "Essence")), show():
-            colors.essences.apply()
+        with conditions(("BaseType", "Whispering Essence")), show():
+            colors.essence_bottom.apply()
+        with conditions(("BaseType", "Muttering Essence")), show():
+            colors.essence_lower.apply()
+        with conditions(("BaseType", "Weeping Essence")), show():
+            colors.essence_low.apply()
+        with conditions(("BaseType", "Wailing Essence")), show():
+            colors.essence_mid.apply()
+        with conditions(("BaseType", "Screaming Essence")), show():
+            colors.essence_high.apply()
+        with conditions(("BaseType", "Shrieking Essence")), show():
+            colors.essence_higher.apply()
+        with conditions(
+                ("BaseType",
+                    "Deafening Essence", "Essence of Hysteria",
+                    "Essence of Insanity", "Essence of Horror",
+                    "Essence of Delirium")), show():
+            colors.essence_top.apply()
 
         with conditions(("BaseType", "Remnant of Corruption")), show():
             colors.remnant.apply()

@@ -621,37 +621,3 @@ unique_lower = [
 unique_bottom = [
 
     ]
-
-# Essence Tiers
-# ============
-
-# TODO
-essence_top = [
-
-    ]
-
-essence_higher = [
-
-    ]
-
-essence_high = [
-
-    ]
-
-essence_mid = [
-
-    ]
-
-essence_low = [
-
-    ]
-
-essence_lower = [
-
-    ]
-
-essence_bottom = [
-
-    ]
-
-
