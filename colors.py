@@ -562,6 +562,31 @@ class Colors:
     amulet_color = munsell.get("7.5RP", 1, 2) + " 255"
 
     # Styles applied for each rarity
+
+    # TODO: Collapse redundant lists into single values
+
+    map_white_bg = "57 62 58 250"
+    map_yellow_bg = "97 92 11 250"
+    map_red_bg = "96 30 6 250"
+
+    maps_white = [
+            Style(background=map_white_bg, size=Font.REDUCED),
+            Style(background=map_white_bg, size=Font.REDUCED),
+            Style(background=map_white_bg, size=Font.REDUCED),
+            Style(background=map_white_bg, size=Font.REDUCED)
+        ]
+    maps_yellow = [
+            Style(background=map_yellow_bg, size=Font.REGULAR),
+            Style(background=map_yellow_bg, size=Font.REGULAR),
+            Style(background=map_yellow_bg, size=Font.REGULAR),
+            Style(background=map_yellow_bg, size=Font.REGULAR)
+        ]
+    maps_red = [
+            Style(background=map_red_bg, size=Font.LARGE),
+            Style(background=map_red_bg, size=Font.LARGE),
+            Style(background=map_red_bg, size=Font.LARGE),
+            Style(background=map_red_bg, size=Font.LARGE)
+        ]
     abyss = [
             rarity_normal,
             rarity_magic,
@@ -581,13 +606,6 @@ class Colors:
             rarity_unique
         ]
     watchstones = [
-            rarity_normal,
-            rarity_magic,
-            rarity_rare, 
-            rarity_unique
-        ]
-    # TODO: Map tiers
-    maps = [
             rarity_normal,
             rarity_magic,
             rarity_rare, 
@@ -732,8 +750,8 @@ class Colors:
             Style(background=attr_dex[3]) 
         ]
     fishing = [
-            Style(text="#ff0000", background="#ffffff", size=45),
-            Style(text="#ff0000", background="#ffffff", size=45),
-            Style(text="#ff0000", background="#ffffff", size=45),
-            Style(text="#ff0000", background="#ffffff", size=45)
+            Style(text="255 0 0 255", background=white, size=Font.LARGE),
+            Style(text="255 0 0 255", background=white, size=Font.LARGE),
+            Style(text="255 0 0 255", background=white, size=Font.LARGE),
+            Style(text="255 0 0 255", background=white, size=Font.LARGE)
         ]

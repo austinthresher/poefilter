@@ -28,14 +28,14 @@ def apply(config, colors, icons, sounds):
                 "BaseType", "Exalted Orb", "Mirror of Kalandra",
                 "Albino Rhoa Feather"
                 )), show():
-            icons.extremely_valuable.apply()
+            icons.currency_top.apply()
             colors.extremely_valuable.apply()
-            sounds.exalt.apply()
+            sounds.currency_most.apply()
 
         with conditions((
                 "BaseType", "Ancient Orb", "Divine Orb"
                 )), show():
-            icons.very_valuable.apply()
+            icons.currency_higher.apply()
             colors.very_valuable.apply()
 
         with conditions(("BaseType", "of Transmutation")), show():
@@ -57,19 +57,19 @@ def apply(config, colors, icons, sounds):
             colors.regal.apply()
 
         with conditions(("BaseType", "Chaos Orb")), show():
-            icons.chaos.apply()
+            icons.currency_high.apply()
             colors.chaos.apply()
-            sounds.chaos.apply()
+            sounds.bang.apply()
 
         with conditions(("BaseType", "Vaal Orb")), show():
-            icons.valuable.apply()
+            icons.currency_high.apply()
             colors.vaal.apply()
-            sounds.chaos.apply()
+            sounds.currency.apply()
 
         with conditions(("BaseType", "Orb of Annulment")), show():
-            icons.valuable.apply()
+            icons.currency_higher.apply()
             colors.valuable.apply()
-            sounds.chaos.apply()
+            sounds.currency.apply()
 
         with conditions(("BaseType", "Jeweller's Orb")), show():
             colors.jewelers.apply()
@@ -192,7 +192,7 @@ def apply(config, colors, icons, sounds):
             colors.delirium_orb.apply()
 
         with conditions(("BaseType", "Simulacrum Splinter")), show():
-            icons.splinter.apply()
+            icons.fragment_high.apply()
             colors.simulacrum_splinter.apply()
 
         with conditions(("BaseType", "Silver Coin")), show():
@@ -221,11 +221,11 @@ def apply(config, colors, icons, sounds):
                 "BaseType", "Esh", "Tul", "Chayula", "Xoph", "Netol"
                 )), show():
             colors.breach_splinter.apply()
-            icons.splinter.apply()
+            icons.fragment_high.apply()
 
         with conditions(("BaseType", "Timeless")), show():
             colors.timeless_splinter.apply()
-            icons.splinter.apply()
+            icons.fragment_high.apply()
         
 
     with conditions(("Class", "Fragment")):
@@ -321,13 +321,13 @@ def apply(config, colors, icons, sounds):
 
         with conditions(("BaseType", "Awakened")), show():
             colors.awakened_gems.apply()
-            icons.valuable.apply()
-            sounds.bang.apply()
+            icons.other_top.apply()
+            sounds.boom.apply()
 
         with conditions(("BaseType", *tables.drop_gems)), show():
-            icons.valuable.apply()
+            icons.other_higher.apply()
             colors.drop_gems.apply()
-            sounds.chaos.apply()
+            sounds.pong.apply()
 
 
     with conditions(("Class", "Metamorph")), show():
@@ -372,8 +372,13 @@ def apply(config, colors, icons, sounds):
                     colors.watchstones[idx].apply()
 
                 # TODO: Map tiers
-                with conditions(("Class", "Maps")), show():
-                    colors.maps[idx].apply()
+                with conditions(("Class", "Maps")):
+                    with conditions(("MapTier", "<=", 5)), show():
+                        colors.maps_white[idx].apply()
+                    with conditions(("MapTier", ">=", 6), ("MapTier", "<=", 10)), show():
+                        colors.maps_yellow[idx].apply()
+                    with conditions(("MapTier", ">=", 11)), show():
+                        colors.maps_red[idx].apply()
 
                 with conditions(("Class", "Amulets")):
                     if config.highlighted_amulets:
@@ -520,58 +525,63 @@ def apply(config, colors, icons, sounds):
         # 5 & 6 links
         with conditions(("LinkedSockets", "5")), show():
             colors.valuable.apply()
+            icons.other_mid.apply()
 
         with conditions(("LinkedSockets", "6")):
             with conditions(("Rarity", "<", "Unique")), show():
-                icons.very_valuable.apply()
                 colors.very_valuable.apply()
-                sounds.divine.apply()
+                icons.other_top.apply()
+                sounds.bang_more.apply()
 
             with conditions( # Tabula
                     ("Rarity", "=", "Unique"),
                     ("SocketGroup", "WWWWWW")), show():
-                icons.valuable.apply()
                 colors.unique_high.apply()
-                sounds.divine.apply()
+                sounds.unique_more.apply()
 
             with conditions(
                     ("Rarity", "=", "Unique"),
                     ("SocketGroup", "6R", "6G", "6B")), show():
-                icons.extremely_valuable.apply()
                 colors.extremely_valuable.apply()
-                sounds.exalt.apply()
+                sounds.unique_most.apply()
 
 
         with conditions(("Class", "Fishing")), show():
-            icons.very_valuable.apply()
+            icons.other_top.apply()
             colors.very_valuable.apply()
-            sounds.great_unique.apply()
+            sounds.unique_most.apply()
 
         # Influences
         # TODO: Different colors for top tier bases
         with conditions(("HasInfluence", "Shaper")), show():
             colors.shaper.apply()
-            icons.valuable.apply()
+            icons.other_higher.apply()
+            sounds.vroom.apply()
 
         with conditions(("HasInfluence", "Elder")), show():
             colors.elder.apply()
-            icons.valuable.apply()
+            icons.other_higher.apply()
+            sounds.vroom.apply()
 
         with conditions(("HasInfluence", "Warlord")), show():
             colors.warlord.apply()
-            icons.valuable.apply()
+            icons.other_higher.apply()
+            sounds.vroom.apply()
 
         with conditions(("HasInfluence", "Hunter")), show():
             colors.hunter.apply()
-            icons.valuable.apply()
+            icons.other_higher.apply()
+            sounds.vroom.apply()
 
         with conditions(("HasInfluence", "Redeemer")), show():
             colors.redeemer.apply()
-            icons.valuable.apply()
+            icons.other_higher.apply()
+            sounds.vroom.apply()
 
         with conditions(("HasInfluence", "Crusader")), show():
             colors.crusader.apply()
-            icons.valuable.apply()
+            icons.other_higher.apply()
+            sounds.vroom.apply()
 
         # Corruptions and Enchantments
         with conditions(
@@ -591,3 +601,17 @@ def apply(config, colors, icons, sounds):
 
         with conditions(("HasExplicitMod", "Veil")), show():
             colors.veiled.apply()
+            sounds.pong.apply()
+
+    with conditions(("Class", "Maps")):
+        with conditions(("MapTier", "<=", 5)), show():
+            icons.map_white.apply()
+            sounds.maps.apply()
+
+        with conditions(("MapTier", ">=", 6), ("MapTier", "<=", 10)), show():
+            icons.map_yellow.apply()
+            sounds.maps_more.apply()
+
+        with conditions(("MapTier", ">=", 11)), show():
+            icons.map_red.apply()
+            sounds.maps_most.apply()

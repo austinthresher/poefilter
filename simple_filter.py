@@ -2,7 +2,7 @@ from poefilter import *
 import tables
 import colors
 import styles
-import hide
+import visibility
 
 from sounds import Sounds
 from icons import Icons
@@ -37,4 +37,4 @@ styles.apply(config=Config, colors=Colors, icons=Icons, sounds=Sounds)
 # This section of the filter is where items are actually hidden.
 # Up to this point, every block had an implicit Continue.
 set_always_continue(False)
-hide.apply(config=Config, colors=Colors, icons=Icons, sounds=Sounds)
+visibility.apply(config=Config)

@@ -7,7 +7,7 @@ hidden = Style(size=20)
 def done():
     pass
 
-def apply(config, colors, icons, sounds):
+def apply(config):
 
     # Always show Fishing Rods, top tier currency, and 6Ls
     with conditions(("Class", "Fishing")), show():
@@ -21,14 +21,12 @@ def apply(config, colors, icons, sounds):
 
     if config.show_5_links:
         with conditions(("LinkedSockets", "5")), show():
-            icons.valuable.apply()
-            sounds.swish.apply()
+            done()
 
     # Always show influenced items
     # TODO: Emphasize top tier bases
     with conditions(("HasInfluence", *tables.influences)), show():
-        icons.cyan_diamond_beam.apply()
-        sounds.swish.apply()
+        done()
 
     # Hide Scrolls of Wisdom after act 5, Portal Scrolls after act 10
     with conditions(
@@ -81,7 +79,7 @@ def apply(config, colors, icons, sounds):
     with conditions(
             ("Rarity", "Rare"),
             ("AreaLevel", "<=", tables.act_4_max_level)), show():
-        icons.yellow_circle.apply()
+        done()
 
     # Filter out undesirable armour types
     for tag, armour in [
@@ -112,8 +110,7 @@ def apply(config, colors, icons, sounds):
         with conditions(
                 ("SocketGroup", *config.main_socket_groups),
                 ("AreaLevel", "<=", tables.act_10_max_level)), show():
-            icons.green_circle_beam.apply()
-            sounds.echo_light.apply()
+            done()
 
     if config.other_socket_groups:
         with conditions(
@@ -198,7 +195,7 @@ def apply(config, colors, icons, sounds):
                     hidden.apply()
             else:
                 with conditions(("BaseType", *tables.unique_mid)), show():
-                    icons.unique_temp_no_minimap.apply()
+                    done()
 
         if tables.unique_high:
             if config.hide_unique_tier >= 4:
@@ -206,8 +203,7 @@ def apply(config, colors, icons, sounds):
                     hidden.apply()
             else:
                 with conditions(("BaseType", *tables.unique_high)), show():
-                    icons.unique_temp_no_minimap.apply()
-                    sounds.echo_light.apply()
+                    done()
 
         if tables.unique_higher:
             if config.hide_unique_tier >= 5:
@@ -215,13 +211,11 @@ def apply(config, colors, icons, sounds):
                     hidden.apply()
             else:
                 with conditions(("BaseType", *tables.unique_higher)), show():
-                    icons.unique_temp.apply()
-                    sounds.echo_heavy.apply()
+                    done()
 
         if tables.unique_top:
             with conditions(("BaseType", *tables.unique_top)), show():
-                icons.unique.apply()
-                sounds.exalt.apply()
+                done()
 
     # Filter Divination cards by tier
 
@@ -244,7 +238,7 @@ def apply(config, colors, icons, sounds):
                     hidden.apply()
             else:
                 with conditions(("BaseType", *tables.divination_mid)), show():
-                    icons.divination_card_temp_no_minimap.apply()
+                    done()
 
         if tables.divination_high:
             if config.hide_div_tier >= 4:
@@ -252,8 +246,7 @@ def apply(config, colors, icons, sounds):
                     hidden.apply()
             else:
                 with conditions(("BaseType", *tables.divination_high)), show():
-                    icons.divination_card_temp_no_minimap.apply()
-                    sounds.echo_light.apply()
+                    done()
 
         if tables.divination_higher:
             if config.hide_div_tier >= 5:
@@ -261,13 +254,11 @@ def apply(config, colors, icons, sounds):
                     hidden.apply()
             else:
                 with conditions(("BaseType", *tables.divination_higher)), show():
-                    icons.divination_card_temp.apply()
-                    sounds.echo_heavy.apply()
+                    done()
 
         if tables.divination_top:
             with conditions(("BaseType", *tables.divination_top)), show():
-                icons.divination_card.apply()
-                sounds.exalt.apply()
+                done()
 
     # Filter Prophecies by tier
 
@@ -290,7 +281,7 @@ def apply(config, colors, icons, sounds):
                     hidden.apply()
             else:
                 with conditions(("Prophecy", *tables.prophecy_mid)), show():
-                    icons.prophecy_temp_no_minimap.apply()
+                    done()
 
         if tables.prophecy_high:
             if config.hide_proph_tier >= 4:
@@ -298,8 +289,7 @@ def apply(config, colors, icons, sounds):
                     hidden.apply()
             else:
                 with conditions(("Prophecy", *tables.prophecy_high)), show():
-                    icons.prophecy_temp_no_minimap.apply()
-                    sounds.echo_light.apply()
+                    done()
 
         if tables.prophecy_higher:
             if config.hide_proph_tier >= 5:
@@ -307,11 +297,8 @@ def apply(config, colors, icons, sounds):
                     hidden.apply()
             else:
                 with conditions(("Prophecy", *tables.prophecy_higher)), show():
-                    icons.prophecy_temp.apply()
-                    sounds.echo_heavy.apply()
+                    done()
 
         if tables.prophecy_top:
             with conditions(("Prophecy", *tables.prophecy_top)), show():
-                icons.prophecy.apply()
-                sounds.exalt.apply()
-
+                done()
