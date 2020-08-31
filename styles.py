@@ -52,15 +52,18 @@ def apply(config, colors, icons, sounds):
             colors.chance.apply()
 
         with conditions(("BaseType", "Orb of Alchemy")), show():
+            icons.currency_mid.apply()
             colors.alchemy.apply()
 
         with conditions(("BaseType", "Regal Orb")), show():
+            icons.currency_high.apply()
             colors.regal.apply()
+            sounds.currency.apply()
 
         with conditions(("BaseType", "Chaos Orb")), show():
             icons.currency_high.apply()
             colors.chaos.apply()
-            sounds.bang.apply()
+            sounds.currency.apply()
 
         with conditions(("BaseType", "Vaal Orb")), show():
             icons.currency_high.apply()
@@ -77,6 +80,7 @@ def apply(config, colors, icons, sounds):
 
         with conditions(("BaseType", "Orb of Fusing")), show():
             colors.fuse.apply()
+            sounds.currency.apply()
 
         with conditions(("BaseType", "Chromatic Orb")), show():
             colors.chromatic.apply()
@@ -86,6 +90,7 @@ def apply(config, colors, icons, sounds):
 
         with conditions(("BaseType", "Orb of Regret")), show():
             colors.regret.apply()
+            sounds.currency.apply()
 
         with conditions(("BaseType", "Scrap")), show():
             colors.scrap.apply()
@@ -95,12 +100,15 @@ def apply(config, colors, icons, sounds):
 
         with conditions(("BaseType", "Prism")), show():
             colors.prism.apply()
+            sounds.currency_more.apply()
 
         with conditions(("BaseType", "Bauble")), show():
             colors.bauble.apply()
+            sounds.currency.apply()
 
         with conditions(("BaseType", "Engineer's")), show():
             colors.engineer.apply()
+            sounds.currency.apply()
 
         with conditions(("BaseType", "Chisel")), show():
             colors.chisel.apply()
@@ -110,9 +118,11 @@ def apply(config, colors, icons, sounds):
 
         with conditions(("BaseType", "Prime Sextant")), show():
             colors.yellow_sextant.apply()
+            sounds.bang.apply()
 
         with conditions(("BaseType", "Awakened Sextant")), show():
             colors.red_sextant.apply()
+            sounds.bang_more.apply()
 
         with conditions(("BaseType", "Prophecy")):
             with show():
@@ -137,14 +147,17 @@ def apply(config, colors, icons, sounds):
             if tables.prophecy_high:
                 with conditions(("Prophecy", *tables.prophecy_high)), show():
                     colors.prophecy_high.apply()
+                    sounds.currency.apply()
 
             if tables.prophecy_higher:
                 with conditions(("Prophecy", *tables.prophecy_higher)), show():
                     colors.prophecy_higher.apply()
+                    sounds.currency_more.apply()
 
             if tables.prophecy_top:
                 with conditions(("Prophecy", *tables.prophecy_top)), show():
                     colors.prophecy_top.apply()
+                    sounds.currency_most.apply()
 
         # TODO: Shard types
         with conditions(("BaseType", "Shard")), show():
@@ -160,62 +173,82 @@ def apply(config, colors, icons, sounds):
             colors.essence_mid.apply()
         with conditions(("BaseType", "Screaming Essence")), show():
             colors.essence_high.apply()
+            sounds.stutter.apply()
         with conditions(("BaseType", "Shrieking Essence")), show():
             colors.essence_higher.apply()
+            sounds.stutter.apply()
         with conditions(
                 ("BaseType",
                     "Deafening Essence", "Essence of Hysteria",
                     "Essence of Insanity", "Essence of Horror",
                     "Essence of Delirium")), show():
             colors.essence_top.apply()
+            sounds.stutter_more.apply()
 
         with conditions(("BaseType", "Remnant of Corruption")), show():
             colors.remnant.apply()
+            sounds.stutter_more.apply()
 
+        # TODO: Fossil and resonator tiers
         with conditions(("BaseType", "Fossil")), show():
             colors.fossil.apply()
+            sounds.stutter.apply()
 
         with conditions(("BaseType", "Resonator")), show():
             colors.resonator.apply()
+            sounds.stutter.apply()
 
         # TODO: Oil tiers
         with conditions(("BaseType", "Oil")), show():
             colors.oils.apply()
+            sounds.pong.apply()
 
         # TODO: Catalyst tiers
         with conditions(("BaseType", "Catalyst")), show():
             colors.catalysts.apply()
+            sounds.pong.apply()
 
         with conditions(("BaseType", "Vial")), show():
             colors.vials.apply()
+            sounds.currency.apply()
 
         with conditions(("BaseType", "Delirium Orb")), show():
+            icons.currency_higher.apply()
             colors.delirium_orb.apply()
+            sounds.heavy_more.apply()
 
         with conditions(("BaseType", "Simulacrum Splinter")), show():
             icons.fragment_high.apply()
             colors.simulacrum_splinter.apply()
+            sounds.heavy.apply()
 
         with conditions(("BaseType", "Silver Coin")), show():
             colors.silver_coin.apply()
+            icons.prophecy_mid.apply()
+            sounds.pong.apply()
 
         with conditions(("BaseType", "Perandus Coin")), show():
             colors.perandus.apply()
 
         with conditions(("BaseType", "Harbinger")), show():
             colors.harbingers.apply()
+            sounds.currency_more.apply()
         
         with conditions(("BaseType", "Orb of Horizons")), show():
             colors.horizons.apply()
+            sounds.currency.apply()
 
         with conditions(("BaseType", "Stacked Deck")), show():
             colors.stacked_deck.apply()
+            sounds.heavy.apply()
 
         with conditions(("BaseType", "Blessed Orb")), show():
             colors.blessed.apply()
+            sounds.currency.apply()
 
         with conditions(("BaseType", "Orb of Binding")), show():
             colors.binding.apply()
+            sounds.currency.apply()
 
         # Splinters
         with conditions((
@@ -223,10 +256,12 @@ def apply(config, colors, icons, sounds):
                 )), show():
             colors.breach_splinter.apply()
             icons.fragment_high.apply()
+            sounds.heavy.apply()
 
         with conditions(("BaseType", "Timeless")), show():
             colors.timeless_splinter.apply()
             icons.fragment_high.apply()
+            sounds.heavy.apply()
         
 
     with conditions(("Class", "Fragment")):
@@ -237,40 +272,62 @@ def apply(config, colors, icons, sounds):
         with conditions((
                 "BaseType", "Esh", "Tul", "Chayula", "Xoph", "Netol"
                 )), show():
+            icons.fragment_higher.apply()
             colors.breachstones.apply()
+            sounds.heavy_more.apply()
 
         with conditions(("BaseType", "Sacrifice at")), show():
+            icons.fragment_mid.apply()
             colors.sacrifice.apply()
 
         with conditions(("BaseType", "Mortal ")), show():
+            icons.fragment_high.apply()
             colors.mortal.apply()
+            sounds.heavy.apply()
 
         with conditions(("BaseType", "Hydra", "Phoenix", "Chimera", "Minotaur")), show():
             colors.shaper_frags.apply()
+            sounds.heavy_more.apply()
+            icons.fragment_higher.apply()
 
         with conditions(("BaseType", "Purification", "Constriction", "Eradication", "Enslavement")), show():
             colors.elder_frags.apply()
+            sounds.heavy_more.apply()
+            icons.fragment_higher.apply()
 
         with conditions(("BaseType", "Knowledge", "Shape", "Emptiness", "Terror")), show():
             colors.uber.apply()
+            sounds.vroom.apply()
+            icons.fragment_top.apply()
 
         with conditions(("BaseType", "'s Key")), show():
             colors.pale.apply()
+            sounds.heavy_more.apply()
+            icons.fragment_higher.apply()
 
         with conditions(("BaseType", "Timeless")), show():
             colors.emblems.apply()
+            sounds.heavy_more.apply()
+            icons.fragment_high.apply()
 
         with conditions(("BaseType", "Rusted")), show():
             colors.rusted_scarabs.apply()
+            icons.fragment_mid.apply()
 
         with conditions(("BaseType", "Polished")), show():
             colors.polished_scarabs.apply()
+            sounds.heavy.apply()
+            icons.fragment_high.apply()
 
         with conditions(("BaseType", "Gilded")), show():
             colors.gilded_scarabs.apply()
+            sounds.heavy_more.apply()
+            icons.fragment_higher.apply()
 
         with conditions(("BaseType", "Winged")), show():
             colors.winged_scarabs.apply()
+            sounds.heavy_more.apply()
+            icons.fragment_top.apply()
 
     with conditions(("Class", "Quest", "Labyrinth")), show():
         colors.quest.apply()
@@ -296,19 +353,27 @@ def apply(config, colors, icons, sounds):
 
         if tables.divination_mid:
             with conditions(("BaseType", *tables.divination_mid)), show():
+                icons.divination_mid.apply()
                 colors.divination_mid.apply()
+                sounds.unique_less.apply()
 
         if tables.divination_high:
             with conditions(("BaseType", *tables.divination_high)), show():
+                icons.divination_high.apply()
                 colors.divination_high.apply()
+                sounds.unique.apply()
 
         if tables.divination_higher:
             with conditions(("BaseType", *tables.divination_higher)), show():
+                icons.divination_higher.apply()
                 colors.divination_higher.apply()
+                sounds.unique_more.apply()
 
         if tables.divination_top:
             with conditions(("BaseType", *tables.divination_top)), show():
+                icons.divination_top.apply()
                 colors.divination_top.apply()
+                sounds.unique_most.apply()
 
     with conditions(("Class", "Gems")):
         with show():
@@ -333,9 +398,12 @@ def apply(config, colors, icons, sounds):
 
     with conditions(("Class", "Metamorph")), show():
         colors.metamorph.apply()
+        sounds.heavy.apply()
+        icons.other_high.apply()
 
     with conditions(("Class", "Seed")), show():
         colors.seeds.apply()
+        sounds.pong.apply()
 
 
     # Apply styles to items with rarity
@@ -372,7 +440,6 @@ def apply(config, colors, icons, sounds):
                 with conditions(("Class", "Atlas")), show():
                     colors.watchstones[idx].apply()
 
-                # TODO: Map tiers
                 with conditions(("Class", "Maps")):
                     with conditions(("MapTier", "<=", 5)), show():
                         colors.maps_white[idx].apply()
@@ -477,26 +544,37 @@ def apply(config, colors, icons, sounds):
             if tables.unique_lower:
                 with conditions(("BaseType", *tables.unique_lower)), show():
                     colors.unique_lower.apply()
+                    sounds.unique_less.apply()
 
             if tables.unique_low:
                 with conditions(("BaseType", *tables.unique_low)), show():
                     colors.unique_low.apply()
+                    sounds.unique.apply()
+                    icons.unique_mid.apply()
 
             if tables.unique_mid:
                 with conditions(("BaseType", *tables.unique_mid)), show():
                     colors.unique_mid.apply()
+                    sounds.unique.apply()
+                    icons.unique_mid.apply()
 
             if tables.unique_high:
                 with conditions(("BaseType", *tables.unique_high)), show():
                     colors.unique_high.apply()
+                    sounds.unique.apply()
+                    icons.unique_high.apply()
 
             if tables.unique_higher:
                 with conditions(("BaseType", *tables.unique_higher)), show():
                     colors.unique_higher.apply()
+                    sounds.unique_more.apply()
+                    icons.unique_higher.apply()
 
             if tables.unique_top:
                 with conditions(("BaseType", *tables.unique_top)), show():
                     colors.unique_top.apply()
+                    sounds.unique_most.apply()
+                    icons.unique_top.apply()
 
 
         # Misc highlights / emphasis

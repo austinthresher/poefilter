@@ -17,6 +17,7 @@ class Sounds:
     unique_most = Style(alert_sound_id=5, alert_sound_volume=300)
     unique_more = Style(alert_sound_id=4, alert_sound_volume=250)
     unique = Style(alert_sound_id=13, alert_sound_volume=200)
+    unique_less = Style(alert_sound_id=13, alert_sound_volume=100)
 
     maps_most = Style(alert_sound_id=7, alert_sound_volume=200, disable_drop_sound=True)
     maps_more = Style(alert_sound_id=8, alert_sound_volume=200, disable_drop_sound=True)

@@ -1,7 +1,12 @@
 from poefilter import *
 import tables
 
-hidden = Style(size=30, disable_drop_sound=True)
+hidden = Style(
+        size=30,
+        disable_drop_sound=True,
+        minimap_icon_size=-1,
+        play_effect_color="None",
+        alert_sound_id="None")
 
 # Some show() groups don't need anything additional, so this marks it as complete
 def done():
