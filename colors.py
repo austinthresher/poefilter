@@ -7,6 +7,7 @@ class Colors:
     white = "255 255 255 255"
     black = "0 0 0 255"
     transparent = "0 0 0 0"
+    error = "255 0 0 255"
 
     # Text sizes
 
@@ -47,41 +48,47 @@ class Colors:
             text="204 212 191",
             background="62 93 121")
 
-    prophecy_unknown = Style(
-            text="255 0 0 255",
-            background=black)
+    # Prophecy tiers
+
+    prophecy_color_0a = "30 13 41 192"
+    prophecy_color_0b = "30 13 41 220"
+    prophecy_color_0c = "30 13 41 255"
+    prophecy_color_1 = "65 1 97 255"
+    prophecy_color_2 = "181 71 254 255"
+
+    prophecy_unknown = Style(text=error, border=error, background=black)
 
     prophecy_top = Style(
-            text="51 27 67 255",
-            border="181 71 254 255",
+            text=prophecy_color_0c,
+            border=prophecy_color_2,
             background=white,
             size=Font.LARGE)
     prophecy_higher = Style(
             text=white,
-            border="65 1 97 255",
-            background="181 71 254 255",
+            border=prophecy_color_1,
+            background=prophecy_color_2,
             size=Font.LARGE)
     prophecy_high = Style(
             text=white,
-            border="181 71 254 255",
-            background="65 1 97 255")
+            border=prophecy_color_2,
+            background=prophecy_color_1)
     prophecy_mid = Style(
-            text="181 71 254 255",
-            border="181 71 254 255",
-            background="65 1 97 255")
+            text=prophecy_color_2,
+            border=prophecy_color_2,
+            background=prophecy_color_1)
     prophecy_low = Style(
-            text="181 71 254 255",
-            border="181 71 254 255",
-            background="30 13 41 220")
+            text=prophecy_color_2,
+            border=prophecy_color_2,
+            background=prophecy_color_0b)
     prophecy_lower = Style(
-            text="181 71 254 255",
+            text=prophecy_color_2,
             border=transparent,
-            background="30 13 41 220",
+            background=prophecy_color_0b,
             size=Font.REDUCED)
     prophecy_bottom = Style(
-            text="181 71 254 255",
+            text=prophecy_color_2,
             border=transparent,
-            background="30 13 41 192",
+            background=prophecy_color_0a,
             size=Font.SMALL)
 
     shards = Style(
@@ -268,43 +275,47 @@ class Colors:
             text="201 192 179",
             background="78 38 13")
 
-    # For cards that aren't listed in the tier table
-    divination_unknown = Style(
-            text="255 0 0 255",
-            border="14 186 255 255",
-            background="1 44 139 220")
+    # Divination tiers
+
+    divination_color_0a = "1 4 35 192"
+    divination_color_0b = "1 4 35 220"
+    divination_color_0c = "1 4 25 255"
+    divination_color_1  = "1 44 139 255"
+    divination_color_2  = "14 186 255 255"
+
+    divination_unknown = Style(text=error, border=error, background=black)
 
     divination_top = Style(
-            text="1 4 35 255",
-            border="14 186 255 255",
+            text=divination_color_0c,
+            border=divination_color_2,
             background=white,
             size=Font.LARGE)
     divination_higher = Style(
             text=white,
-            border="1 44 139 255",
-            background="14 186 255 255",
+            border=divination_color_1,
+            background=divination_color_2,
             size=Font.LARGE)
     divination_high = Style(
             text=white,
-            border="14 186 255 255",
-            background="1 44 139 255")
+            border=divination_color_2,
+            background=divination_color_1)
     divination_mid = Style(
-            text="14 186 255 255",
-            border="14 186 255 255",
-            background="1 44 139 255")
+            text=divination_color_2,
+            border=divination_color_2,
+            background=divination_color_1)
     divination_low = Style(
-            text="14 186 255 255",
-            border="14 186 255 255",
-            background="1 4 35 220")
+            text=divination_color_2,
+            border=divination_color_2,
+            background=divination_color_0b)
     divination_lower = Style(
-            text="14 186 255 255",
+            text=divination_color_2,
             border=transparent,
-            background="1 4 35 220",
+            background=divination_color_0b,
             size=Font.REDUCED)
     divination_bottom = Style(
-            text="14 186 255 255",
+            text=divination_color_2,
             border=transparent,
-            background="1 4 35 192",
+            background=divination_color_0a,
             size=Font.SMALL)
 
     awakened_gems = Style(
@@ -363,6 +374,49 @@ class Colors:
             minimap_icon_size=1,
             minimap_icon_color="Brown",
             minimap_icon_shape="Diamond")
+
+    # Unique tier colors
+
+    unique_color_0a = "73 33 0 192"
+    unique_color_0b = "73 33 0 220"
+    unique_color_0c = "73 33 0 255"
+    unique_color_2  = "254 170 56 255"
+    unique_color_1  = "175 96 37 255"
+
+    unique_unknown = Style(text=error, border=error, background=black)
+
+    unique_top = Style(
+            text=unique_color_0c,
+            border=unique_color_2,
+            background=white,
+            size=Font.LARGE)
+    unique_higher = Style(
+            text=white,
+            border=unique_color_1,
+            background=unique_color_2,
+            size=Font.LARGE)
+    unique_high = Style(
+            text=white,
+            border=unique_color_2,
+            background=unique_color_1)
+    unique_mid = Style(
+            text=unique_color_0c,
+            border=unique_color_2,
+            background=unique_color_1)
+    unique_low = Style(
+            text=unique_color_2,
+            border=unique_color_2,
+            background=unique_color_0b)
+    unique_lower = Style(
+            text=unique_color_2,
+            border=transparent,
+            background=unique_color_0b,
+            size=Font.REDUCED)
+    unique_bottom = Style(
+            text=unique_color_2,
+            border=transparent,
+            background=unique_color_0a,
+            size=Font.SMALL)
 
     # Colors for attribute gear
 

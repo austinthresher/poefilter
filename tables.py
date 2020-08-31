@@ -458,29 +458,164 @@ prophecy_bottom = [
 # Unique Tiers
 # ============
 
-# TODO
-unique_top = [
+# TODO: Make this smarter by including drop level / other identifying
+# traits to try and differentiate unidentified uniques
 
+# Current tiers are snapshotted from Crymsius' Auto-Tiering Filter
+
+unique_top = [
+        "Siege Axe", "Arcanist Gloves", "Carnal Boots", "Crusader Boots",
+        "Deerskin Gloves", "Ezomyte Tower Shield", "Ornate Quiver",
+        "Rawhide Boots", "Silk Gloves", "Chateau Map", "Maze Map",
+        "Relic Chambers Map", "Occultist's Vestment"
     ]
 
 unique_higher = [
-
+        "Large Hybrid Flask", "Imperial Staff Piece", "Jewelled Foil",
+        "Legion Sword Piece", "Prophecy Wand", "Royal Axe", "Vaal Rapier",
+        "Variscite Blade", "Archon Kite Shield Piece", "Assassin's Boots",
+        "Blunt Arrow Quiver Piece", "Callous Mask Piece", "Crusader Helmet",
+        "Gladiator Plate", "Jingling Spirit Shield", "Occultist's Vestment",
+        "Shackled Boots", "Wyrmscale Doublet", "Cloth Belt Piece",
+        "Large Cluster Jewel", "Medium Cluster Jewel", "Basilica Map",
+        "Courthouse Map", "Courtyard Map", "Cursed Crypt Map", "Museum Map",
+        "Park Map", "Siege Map"
     ]
 
 unique_high = [
-
+        "Amethyst Flask", "Bismuth Flask", "Diamond Flask", "Grand Mana Flask",
+        "Granite Flask", "Hallowed Hybrid Flask", "Quicksilver Flask",
+        "Sanctified Life Flask", "Sanctified Mana Flask", "Sapphire Flask",
+        "Topaz Flask", "Abyssal Axe", "Blinder", "Blood Sceptre", "Bone Bow",
+        "Brass Maul", "Bronze Sceptre", "Carnal Sceptre", "Citadel Bow",
+        "Cleaver", "Coiled Staff", "Corsair Sword", "Crystal Sceptre",
+        "Cutlass", "Demon Dagger", "Driftwood Wand", "Dusk Blade",
+        "Elder Sword", "Elegant Foil", "Elegant Sword", "Engraved Wand",
+        "Etched Greatsword", "Eternal Sword", "Ezomyte Axe", "Ezomyte Blade",
+        "Ezomyte Dagger", "Ezomyte Staff", "Fright Claw", "Gemstone Sword",
+        "Gnarled Branch", "Great Mallet", "Gut Ripper", "Harbinger Bow",
+        "Hellion's Paw", "Highborn Staff", "Imperial Bow", "Imperial Claw",
+        "Imperial Maul", "Iron Sceptre", "Iron Staff", "Jagged Maul",
+        "Jasper Chopper", "Karui Chopper", "Karui Maul", "Karui Sceptre",
+        "Labrys", "Lathi", "Lion Sword", "Meatgrinder", "Midnight Blade",
+        "Military Staff", "Nightmare Mace", "Opal Sceptre", "Opal Wand",
+        "Platinum Sceptre", "Primordial Staff", "Ranger Bow", "Ritual Sceptre",
+        "Rock Breaker", "Royal Bow", "Royal Sceptre", "Royal Skean",
+        "Royal Staff", "Rusted Sword", "Sabre", "Shadow Axe", "Shadow Sceptre",
+        "Short Bow", "Skinning Knife", "Slaughter Knife", "Sledgehammer",
+        "Spine Bow", "Spiraled Wand", "Steelhead", "Steelwood Bow",
+        "Terror Claw", "Terror Maul", "Throat Stabber", "Tiger Sword",
+        "Timeworn Claw", "Tornado Wand", "Tyrant's Sekhem", "Vaal Claw",
+        "Vaal Hatchet", "Vaal Sceptre", "Vile Staff", "Void Axe", "War Hammer",
+        "War Sword", "Whalebone Rapier", "Ancient Gauntlets",
+        "Ancient Greaves", "Ancient Spirit Shield", "Arcanist Slippers",
+        "Assassin's Garb", "Assassin's Mitts", "Astral Plate",
+        "Aventail Helmet", "Bone Armour", "Bone Circlet",
+        "Branded Kite Shield", "Brass Spirit Shield", "Broadhead Arrow Quiver",
+        "Bronzescale Boots", "Bronzescale Gauntlets",
+        "Burnished Spiked Shield", "Cardinal Round Shield",
+        "Cedar Tower Shield", "Champion Kite Shield", "Clasped Boots",
+        "Clasped Mitts", "Close Helmet", "Conjurer Boots", "Conjurer Gloves",
+        "Coronal Leather", "Corrugated Buckler", "Crusader Chainmail",
+        "Cutthroat's Garb", "Deicide Mask", "Desert Brigandine",
+        "Destiny Leather", "Destroyer Regalia", "Dragonscale Boots",
+        "Dragonscale Gauntlets", "Eelskin Gloves", "Embroidered Gloves",
+        "Enameled Buckler", "Exquisite Leather", "Ezomyte Burgonet",
+        "Ezomyte Spiked Shield", "Festival Mask", "Fossilised Spirit Shield",
+        "Full Dragonscale", "Full Scale Armour", "Full Wyrmscale",
+        "Goathide Boots", "Goliath Gauntlets", "Harmonic Spirit Shield",
+        "Holy Chainmail", "Hydrascale Boots", "Iron Gauntlets", "Iron Hat",
+        "Iron Mask", "Ironscale Boots", "Ironscale Gauntlets",
+        "Lacquered Buckler", "Lacquered Helmet", "Laminated Kite Shield",
+        "Latticed Ringmail", "Leather Cap", "Legion Boots", "Lion Pelt",
+        "Loricated Ringmail", "Mesh Gloves", "Mind Cage",
+        "Mirrored Spiked Shield", "Mosaic Kite Shield", "Necromancer Silks",
+        "Nightmare Bascinet", "Nubuck Boots", "Nubuck Gloves",
+        "Painted Buckler", "Painted Tower Shield", "Plate Vest",
+        "Polished Spiked Shield", "Praetor Crown", "Prophet Crown",
+        "Raven Mask", "Rawhide Tower Shield", "Regicide Mask",
+        "Reinforced Tower Shield", "Riveted Gloves", "Royal Burgonet",
+        "Saintly Chainmail", "Satin Gloves", "Scholar Boots",
+        "Serpentscale Boots", "Serpentscale Gauntlets",
+        "Serrated Arrow Quiver", "Shagreen Gloves", "Sharkskin Boots",
+        "Sharkskin Tunic", "Siege Helmet", "Silken Hood", "Sinner Tricorne",
+        "Solaris Circlet", "Soldier Boots", "Soldier Gloves", "Soldier Helmet",
+        "Sorcerer Gloves", "Spidersilk Robe", "Spike-Point Arrow Quiver",
+        "Steel Circlet", "Steel Gauntlets", "Strapped Leather",
+        "Thorium Spirit Shield", "Titanium Spirit Shield", "Trapper Boots",
+        "Two-Toned Boots", "Ursine Pelt", "Vaal Mask", "Vaal Regalia",
+        "Varnished Coat", "Velvet Slippers", "Vine Circlet", "War Buckler",
+        "Wild Leather", "Wool Gloves", "Wool Shoes", "Zealot Gloves",
+        "Zealot Helmet", "Zodiac Leather", "Agate Amulet", "Blue Pearl Amulet",
+        "Citrine Amulet", "Crystal Belt", "Diamond Ring", "Iron Ring",
+        "Marble Amulet", "Opal Ring", "Paua Ring", "Rustic Sash", "Steel Ring",
+        "Stygian Vise", "Unset Ring", "Vanguard Belt", "Atoll Map",
+        "Bone Crypt Map", "Cemetery Map", "Dunes Map", "Moon Temple Map",
+        "Necropolis Map", "Overgrown Shrine Map", "Promenade Map", "Shore Map",
+        "Strand Map", "Temple Map", "Underground River Map",
+        "Underground Sea Map", "Vaal Pyramid Map"
     ]
 
 unique_mid = [
-
+        "Decimation Bow", "Demon's Horn", "Grinning Fetish", "Ornate Mace",
+        "Serpentine Staff", "Thresher Claw", "Tomahawk", "Chain Gloves",
+        "Great Helmet", "Pine Buckler", "Silk Slippers", "Steel Kite Shield",
+        "Tribal Circlet"
     ]
 
-unique_low = [
-
+unique_low = [ # Ambiguous bases
+        "Quartz Flask", "Ruby Flask", "Silver Flask", "Stibnite Flask",
+        "Sulphur Flask", "Assassin Bow", "Carved Wand", "Crude Bow",
+        "Crystal Wand", "Death Bow", "Despot Axe", "Fiend Dagger", "Gavel",
+        "Imperial Skean", "Imperial Staff", "Infernal Sword", "Jade Hatchet",
+        "Judgement Staff", "Legion Sword", "Long Bow", "Maelstrom Staff",
+        "Ornate Sword", "Reaver Sword", "Sage Wand", "Vaal Axe", "Vaal Blade",
+        "Void Sceptre", "Woodsplitter", "Ambush Mitts", "Archon Kite Shield",
+        "Blood Raiment", "Blunt Arrow Quiver", "Callous Mask", "Carnal Armour",
+        "Carnal Mitts", "Crusader Gloves", "Crusader Plate",
+        "Ebony Tower Shield", "Elegant Ringmail", "Fire Arrow Quiver",
+        "Gilded Sallet", "Glorious Plate", "Goathide Gloves", "Golden Buckler",
+        "Golden Plate", "Goliath Greaves", "Great Crown", "Harlequin Mask",
+        "Hubris Circlet", "Hydrascale Gauntlets", "Iron Circlet",
+        "Lacquered Garb", "Leather Hood", "Legion Gloves", "Magistrate Crown",
+        "Murder Boots", "Murder Mitts", "Necromancer Circlet",
+        "Penetrating Arrow Quiver", "Pinnacle Tower Shield",
+        "Plank Kite Shield", "Reinforced Greaves", "Sacrificial Garb",
+        "Sadist Garb", "Saint's Hauberk", "Savant's Robe",
+        "Sharktooth Arrow Quiver", "Slink Boots", "Sorcerer Boots",
+        "Stealth Boots", "Steelscale Gauntlets", "Strapped Mitts",
+        "Tarnished Spirit Shield", "Titan Gauntlets", "Titan Greaves",
+        "Triumphant Lamellar", "Two-Point Arrow Quiver", "Vaal Gauntlets",
+        "Vaal Spirit Shield", "Velvet Gloves", "Widowsilk Robe",
+        "Amber Amulet", "Amethyst Ring", "Chain Belt", "Cloth Belt",
+        "Coral Amulet", "Coral Ring", "Gold Amulet", "Gold Ring", "Heavy Belt",
+        "Jade Amulet", "Lapis Amulet", "Leather Belt", "Moonstone Ring",
+        "Onyx Amulet", "Paua Amulet", "Prismatic Ring", "Ruby Ring",
+        "Sapphire Ring", "Studded Belt", "Topaz Ring", "Turquoise Amulet",
+        "Two-Stone Ring", "Cobalt Jewel", "Crimson Jewel", "Prismatic Jewel",
+        "Small Cluster Jewel", "Timeless Jewel", "Viridian Jewel",
+        "Harbinger Map"
     ]
 
 unique_lower = [
-
+        "Greater Mana Flask", "Ambusher", "Antique Rapier", "Auric Mace",
+        "Awl", "Basket Rapier", "Bastard Sword", "Boot Blade", "Boot Knife",
+        "Decorative Axe", "Dread Maul", "Dream Mace", "Estoc", "Flaying Knife",
+        "Gladius", "Goat's Horn", "Headsman Axe", "Highland Blade",
+        "Imbued Wand", "Infernal Axe", "Jagged Foil", "Nailed Fist",
+        "Platinum Kris", "Poleaxe", "Quartz Wand", "Recurve Bow",
+        "Spiked Club", "Stiletto", "Twilight Blade", "Antique Greaves",
+        "Baroque Round Shield", "Bronze Gauntlets", "Buckskin Tunic",
+        "Chiming Spirit Shield", "Colossal Tower Shield",
+        "Compound Spiked Shield", "Conquest Chainmail", "Copper Plate",
+        "Deerskin Boots", "Golden Mask", "Ivory Spirit Shield",
+        "Lunaris Circlet", "Mesh Boots", "Ornate Ringmail", "Plague Mask",
+        "Plated Greaves", "Riveted Boots", "Rotted Round Shield",
+        "Sage's Robe", "Samite Gloves", "Samite Helmet", "Scholar's Robe",
+        "Secutor Helm", "Sentinel Jacket", "Shagreen Boots", "Simple Robe",
+        "Strapped Boots", "Studded Round Shield", "Supreme Spiked Shield",
+        "Tricorne", "Vaal Buckler", "Visored Sallet", "Wrapped Mitts",
+        "Wyrmscale Gauntlets"
     ]
 
 unique_bottom = [

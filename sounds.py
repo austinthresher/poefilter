@@ -1,5 +1,23 @@
 from poefilter import *
 
+# From StupidFatHobbit's Sovereign Filter
+#1 - clashgong - levelling 4L's, 5L
+#2 - stone drop - mid tier currency / div card
+#3 - sour stone drop -  currency / div card
+#4 - rising wind - variable value or multiple basetype unique, divine vessels
+#5 - rising metal - high value unique
+#6 - sharper rising metal? - top tier currency / div card / unique
+#7 - ALIENS - unique jewel, unique map
+#8 - dadadadada - red tier map
+#9 - quieter #8 - all other maps
+#10 - hard metal drop - high tier special items
+#11 - soft metal drop - mid tier special items
+#12 - crystal drop - quality gems
+#13 - synth metal reverb? -  generic high value (rare atlas basetypes, high ilvl abyss jewels)
+#14 - metal echo - levelling flasks
+#15 - rapid metal echo - max tier maps
+#16 - muffled drop - shaped/elder items
+
 class Sounds:
     exalt = Style(alert_sound_id=1, alert_sound_volume=300)
     divine = Style(alert_sound_id=2, alert_sound_volume=300)

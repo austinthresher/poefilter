@@ -41,7 +41,7 @@ def apply(config, colors, icons, sounds):
         hidden.apply()
 
     # Jeweller's Orb recipe
-    with conditions(("Sockets", "6")), show():
+    with conditions(("Sockets", "6"), ("LinkedSockets", "<", 5)), show():
         done()
 
     # Chromatic Orb recipe
@@ -126,6 +126,7 @@ def apply(config, colors, icons, sounds):
         condition("Corrupted", "True")
         condition("FracturedItem", "False")
         condition("SynthesisedItem", "False")
+        condition("Rarity", "<=", "Rare")
         condition("Class",
                 "Rings", "Belts", "Quivers", "Mace", "Sword",
                 "Axe", "Bow", "Wand", "Sceptre", "taves", "Dagger",
@@ -163,6 +164,64 @@ def apply(config, colors, icons, sounds):
                 "Claw", "Gloves", "Helmets", "Body", "Shield", "Boots")
         condition("Identified", "False")
         hidden.apply()
+
+    # Filter Uniques by tier
+
+    with conditions(("Rarity", "Unique")):
+        if tables.unique_bottom:
+            if config.hide_unique_tier >= 0:
+                with conditions(("BaseType", *tables.unique_bottom)), hide():
+                    hidden.apply()
+            else:
+                with conditions(("BaseType", *tables.unique_bottom)), show():
+                    done()
+        
+        if tables.unique_lower:
+            if config.hide_unique_tier >= 1:
+                with conditions(("BaseType", *tables.unique_lower)), hide():
+                    hidden.apply()
+            else:
+                with conditions(("BaseType", *tables.unique_lower)), show():
+                    done()
+
+        if tables.unique_low:
+            if config.hide_unique_tier >= 2:
+                with conditions(("BaseType", *tables.unique_low)), hide():
+                    hidden.apply()
+            else:
+                with conditions(("BaseType", *tables.unique_low)), show():
+                    done()
+
+        if tables.unique_mid:
+            if config.hide_unique_tier >= 3:
+                with conditions(("BaseType", *tables.unique_mid)), hide():
+                    hidden.apply()
+            else:
+                with conditions(("BaseType", *tables.unique_mid)), show():
+                    icons.unique_temp_no_minimap.apply()
+
+        if tables.unique_high:
+            if config.hide_unique_tier >= 4:
+                with conditions(("BaseType", *tables.unique_high)), hide():
+                    hidden.apply()
+            else:
+                with conditions(("BaseType", *tables.unique_high)), show():
+                    icons.unique_temp_no_minimap.apply()
+                    sounds.echo_light.apply()
+
+        if tables.unique_higher:
+            if config.hide_unique_tier >= 5:
+                with conditions(("BaseType", *tables.unique_higher)), hide():
+                    hidden.apply()
+            else:
+                with conditions(("BaseType", *tables.unique_higher)), show():
+                    icons.unique_temp.apply()
+                    sounds.echo_heavy.apply()
+
+        if tables.unique_top:
+            with conditions(("BaseType", *tables.unique_top)), show():
+                icons.unique.apply()
+                sounds.exalt.apply()
 
     # Filter Divination cards by tier
 

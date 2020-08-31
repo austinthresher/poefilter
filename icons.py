@@ -114,3 +114,21 @@ class Icons:
             play_effect_color="Purple",
             play_effect_temp=True)
 
+    unique = Style(
+            play_effect_color="Orange",
+            minimap_icon_size=1,
+            minimap_icon_color="Orange",
+            minimap_icon_shape="Diamond")
+
+    unique_temp = Style(
+            play_effect_color="Orange",
+            play_effect_temp=True,
+            minimap_icon_size=2,
+            minimap_icon_color="Orange",
+            minimap_icon_shape="Diamond")
+
+    unique_temp_no_minimap = Style(
+            play_effect_color="Orange",
+            play_effect_temp=True)
+
+

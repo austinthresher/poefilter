@@ -439,6 +439,44 @@ def apply(config, colors, icons, sounds):
 
                     with conditions(("BaseType", *tables.dexint_armour)), show():
                         colors.dexint_armour[idx].apply()
+        
+        # Unique tiers
+        # ============
+
+        # TODO: Highlight 6L uniques
+
+        with conditions(("Rarity", "Unique")):
+            with show():
+                colors.unique_unknown.apply()
+
+            if tables.unique_bottom:
+                with conditions(("BaseType", *tables.unique_bottom)), show():
+                    colors.unique_bottom.apply()
+            
+            if tables.unique_lower:
+                with conditions(("BaseType", *tables.unique_lower)), show():
+                    colors.unique_lower.apply()
+
+            if tables.unique_low:
+                with conditions(("BaseType", *tables.unique_low)), show():
+                    colors.unique_low.apply()
+
+            if tables.unique_mid:
+                with conditions(("BaseType", *tables.unique_mid)), show():
+                    colors.unique_mid.apply()
+
+            if tables.unique_high:
+                with conditions(("BaseType", *tables.unique_high)), show():
+                    colors.unique_high.apply()
+
+            if tables.unique_higher:
+                with conditions(("BaseType", *tables.unique_higher)), show():
+                    colors.unique_higher.apply()
+
+            if tables.unique_top:
+                with conditions(("BaseType", *tables.unique_top)), show():
+                    colors.unique_top.apply()
+
 
         # Misc highlights / emphasis
         # ==========================
@@ -448,28 +486,46 @@ def apply(config, colors, icons, sounds):
             colors.chrome_recipe.apply()
 
         # Jeweller's recipe
-        with conditions(("Sockets", "6")), show():
+        with conditions(("Sockets", "6"), ("LinkedSockets", "<", 5)), show():
             colors.jewellers_recipe.apply()
 
         # Leveling socket types
         with conditions(
+                ("Rarity", "<", "Unique"),
                 ("AreaLevel", "<=", tables.act_10_max_level),
                 ("SocketGroup", *config.other_socket_groups)), show():
             colors.ok_sockets.apply()
 
         with conditions(
-                    ("AreaLevel", "<=", tables.act_10_max_level),
-                    ("SocketGroup", *config.main_socket_groups)), show():
+                ("Rarity", "<", "Unique"),
+                ("AreaLevel", "<=", tables.act_10_max_level),
+                ("SocketGroup", *config.main_socket_groups)), show():
             colors.good_sockets.apply()
 
         # 5 & 6 links
         with conditions(("LinkedSockets", "5")), show():
             colors.valuable.apply()
 
-        with conditions(("LinkedSockets", "6")), show():
-            icons.very_valuable.apply()
-            colors.very_valuable.apply()
-            sounds.very_interesting.apply()
+        with conditions(("LinkedSockets", "6")):
+            with conditions(("Rarity", "<", "Unique")), show():
+                icons.very_valuable.apply()
+                colors.very_valuable.apply()
+                sounds.divine.apply()
+
+            with conditions( # Tabula
+                    ("Rarity", "=", "Unique"),
+                    ("SocketGroup", "WWWWWW")), show():
+                icons.valuable.apply()
+                colors.unique_high.apply()
+                sounds.divine.apply()
+
+            with conditions(
+                    ("Rarity", "=", "Unique"),
+                    ("SocketGroup", "6R", "6G", "6B")), show():
+                icons.extremely_valuable.apply()
+                colors.extremely_valuable.apply()
+                sounds.exalt.apply()
+
 
         with conditions(("Class", "Fishing")), show():
             icons.very_valuable.apply()
