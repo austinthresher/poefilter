@@ -37,6 +37,7 @@ def apply(config, colors, icons, sounds):
                 )), show():
             icons.currency_higher.apply()
             colors.very_valuable.apply()
+            sounds.currency_more.apply()
 
         with conditions(("BaseType", "of Transmutation")), show():
             colors.transmute.apply()

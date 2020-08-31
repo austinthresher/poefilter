@@ -13,10 +13,10 @@ class Colors:
 
     class Font:
         LARGE = 45
-        REGULAR = 40
-        REDUCED = 35
-        SMALL = 30
-        TINY = 25
+        REGULAR = 42
+        REDUCED = 39
+        SMALL = 35
+        TINY = 32
             
 
     default = Style(
@@ -613,9 +613,9 @@ class Colors:
         ]
     highlighted_amulets = [
             Style(text=white, background=amulet_color, border=white),
-            Style(text=white, background=amulet_color, border=white),
-            Style(text=white, background=amulet_color, border=white),
-            Style(text=white, background=amulet_color, border=white),
+            Style(background=amulet_color, border=white),
+            Style(background=amulet_color, border=white),
+            Style(background=amulet_color, border=white),
         ]
     amulets = [
             Style(background=amulet_color),
@@ -625,9 +625,9 @@ class Colors:
         ]
     highlighted_rings = [
             Style(text=white, background=ring_color, border=white),
-            Style(text=white, background=ring_color, border=white),
-            Style(text=white, background=ring_color, border=white),
-            Style(text=white, background=ring_color, border=white),
+            Style(background=ring_color, border=white),
+            Style(background=ring_color, border=white),
+            Style(background=ring_color, border=white),
         ]
     rings = [
             Style(background=ring_color),
@@ -637,9 +637,9 @@ class Colors:
         ]
     highlighted_belts = [
             Style(text=white, background=belt_color, border=white),
-            Style(text=white, background=belt_color, border=white),
-            Style(text=white, background=belt_color, border=white),
-            Style(text=white, background=belt_color, border=white),
+            Style(background=belt_color, border=white),
+            Style(background=belt_color, border=white),
+            Style(background=belt_color, border=white),
         ]
     belts = [
             Style(background=belt_color),

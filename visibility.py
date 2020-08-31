@@ -1,7 +1,7 @@
 from poefilter import *
 import tables
 
-hidden = Style(size=20)
+hidden = Style(size=30, disable_drop_sound=True)
 
 # Some show() groups don't need anything additional, so this marks it as complete
 def done():
@@ -26,6 +26,9 @@ def apply(config):
     # Always show influenced items
     # TODO: Emphasize top tier bases
     with conditions(("HasInfluence", *tables.influences)), show():
+        done()
+
+    with conditions(("HasExplicitMod", "Veil")), show():
         done()
 
     # Hide Scrolls of Wisdom after act 5, Portal Scrolls after act 10
