@@ -8,17 +8,17 @@ from sounds import Sounds
 from icons import Icons
 from colors import Colors
 
+
 # Filter configuration
 # ====================
 class Config:
     main_socket_groups = ["BBG", "BBB"]
-    other_socket_groups = ["BG"]
     # str, dex, int, strdex, strint, dexint
     armour_types = ["int"]
     # List of weapon item classes to show. Strings must be the exact item class.
     weapon_types = ["Wands", "Rune Daggers"]
     # Trinket BaseTypes to add highlights to
-    highlighted_rings = ["Sapphire"]
+    highlighted_rings = []
     highlighted_belts = ["Leather"]
     highlighted_amulets = ["Jade"]
     # Other options

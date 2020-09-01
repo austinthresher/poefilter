@@ -120,11 +120,10 @@ def apply(config):
                 ("AreaLevel", "<=", tables.act_10_max_level)), show():
             done()
 
-    if config.other_socket_groups:
-        with conditions(
-                ("SocketGroup", *config.other_socket_groups),
-                ("AreaLevel", "<=", tables.act_10_max_level)), show():
-            done()
+    with conditions(
+            ("LinkedSockets", 4),
+            ("AreaLevel", "<=", tables.act_10_max_level)), show():
+        done()
 
     # Don't show bad corrupts with 0 mods
     with hide():
@@ -310,3 +309,28 @@ def apply(config):
         if tables.prophecy_top:
             with conditions(("Prophecy", *tables.prophecy_top)), show():
                 done()
+
+    # Hide flasks as you level. This hides all hybrid flasks.
+    with conditions(("Class", "Flask"), ("Rarity", "<", "Unique")):
+        with conditions(("BaseType", "Small"), ("AreaLevel", ">=", 3)), hide():
+            hidden.apply()
+        with conditions(("BaseType", "Medium"), ("AreaLevel", ">=", 6)), hide():
+            hidden.apply()
+        with conditions(("BaseType", "Large"), ("AreaLevel", ">=", 12)), hide():
+            hidden.apply()
+        with conditions(("BaseType", "Greater"), ("AreaLevel", ">=", 18)), hide():
+            hidden.apply()
+        with conditions(("BaseType", "Grand"), ("AreaLevel", ">=", 24)), hide():
+            hidden.apply()
+        with conditions(("BaseType", "Giant"), ("AreaLevel", ">=", 30)), hide():
+            hidden.apply()
+        with conditions(("BaseType", "Colossal"), ("AreaLevel", ">=", 36)), hide():
+            hidden.apply()
+        with conditions(("BaseType", "Sacred"), ("AreaLevel", ">=", 42)), hide():
+            hidden.apply()
+        with conditions(("BaseType", "Hallowed"), ("AreaLevel", ">=", 50)), hide():
+            hidden.apply()
+        with conditions(("BaseType", "Sanctified"), ("AreaLevel", ">=", 60)), hide():
+            hidden.apply()
+        with conditions(("BaseType", "Divine", "Eternal"), ("AreaLevel", ">=", tables.act_10_max_level)), hide():
+            hidden.apply()

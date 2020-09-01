@@ -553,7 +553,7 @@ class Colors:
     enchanted = Style(border="242 205 233 255")
     corrupted_enchanted = Style(border="255 0 255 255")
     good_sockets = Style(border="0 255 0 255")
-    ok_sockets = Style(border="30 128 30 255")
+    four_link= Style(border="0 255 255 255")
     chrome_recipe = Style(border="200 200 200 255")
     jewellers_recipe = Style(border="200 200 255 255")
 

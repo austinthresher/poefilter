@@ -592,8 +592,8 @@ def apply(config, colors, icons, sounds):
         with conditions(
                 ("Rarity", "<", "Unique"),
                 ("AreaLevel", "<=", tables.act_10_max_level),
-                ("SocketGroup", *config.other_socket_groups)), show():
-            colors.ok_sockets.apply()
+                ("LinkedSockets", 4)), show():
+            colors.four_link.apply()
 
         with conditions(
                 ("Rarity", "<", "Unique"),
