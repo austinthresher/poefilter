@@ -1,30 +1,78 @@
 from poefilter import *
 import munsell
 
+# Color constants (probably should be in CAPS)
+white = "255 255 255 255"
+black = "0 0 0 255"
+transparent = "0 0 0 0"
+error = "255 0 0 255"
+
+
+# Text sizes
+class Font:
+    LARGE = 45
+    REGULAR = 43
+    REDUCED = 41
+    SMALL = 38
+    TINY = 32
+
+# Many items are grouped into 7 tiers of rarity. These
+# functions define a consistent theme across item types.
+# pal is a 3-tuple of space separated RGB colors (no alpha)
+def series_top(pal):
+    return Style(
+            text=pal[0] + " 255",
+            border=pal[2] + " 255",
+            background=white,
+            size=Font.LARGE)
+
+def series_higher(pal):
+    return Style(
+            text=white,
+            border=pal[1] + " 255",
+            background=pal[2] + " 255",
+            size=Font.LARGE)
+
+def series_high(pal):
+    return Style(
+            text=white,
+            border=pal[2] + " 255",
+            background=pal[1] + " 255")
+
+def series_mid(pal):
+    return Style(
+            text=pal[0] + " 255",
+            border=pal[2] + " 255",
+            background=pal[1] + " 255")
+
+def series_low(pal):
+    return Style(
+            text=pal[2] + " 255",
+            border=pal[2] + " 255",
+            background=pal[0] + " 220")
+
+def series_lower(pal):
+    return Style(
+            text=pal[2] + " 255",
+            border=pal[2] + " 128",
+            background=pal[0] + " 220",
+            size=Font.REDUCED)
+
+def series_bottom(pal):
+    return Style(
+            text=pal[2] + " 255",
+            border=pal[2] + " 128",
+            background=pal[0] + " 192",
+            size=Font.REDUCED)
+
+
 class Colors:
-
-    # Color constants (probably should be in CAPS)
-    white = "255 255 255 255"
-    black = "0 0 0 255"
-    transparent = "0 0 0 0"
-    error = "255 0 0 255"
-
-    # Text sizes
-
-    class Font:
-        LARGE = 45
-        REGULAR = 42
-        REDUCED = 39
-        SMALL = 35
-        TINY = 32
-            
 
     default = Style(
             background="0 0 0",
             text="255 0 255",
             border="255 255 255 0",
             size=Font.REGULAR)
-
 
     # Class Currency
     extremely_valuable = Style(
@@ -43,75 +91,26 @@ class Colors:
             background="20 20 20")
 
     # Prophecy tiers
-
-    prophecy_color_0a = "30 13 41 192"
-    prophecy_color_0b = "30 13 41 220"
-    prophecy_color_0c = "30 13 41 255"
-    prophecy_color_1 = "65 1 97 255"
-    prophecy_color_2 = "181 71 254 255"
-
+    prophecy_pal = ("30 13 41", "65 1 97", "181 71 254")
     prophecy_unknown = Style(text=error, border=error, background=black)
 
-    prophecy_top = Style(
-            text=prophecy_color_0c,
-            border=prophecy_color_2,
-            background=white,
-            size=Font.LARGE)
-    prophecy_higher = Style(
-            text=white,
-            border=prophecy_color_1,
-            background=prophecy_color_2,
-            size=Font.LARGE)
-    prophecy_high = Style(
-            text=white,
-            border=prophecy_color_2,
-            background=prophecy_color_1)
-    prophecy_mid = Style(
-            text=prophecy_color_2,
-            border=prophecy_color_2,
-            background=prophecy_color_1)
-    prophecy_low = Style(
-            text=prophecy_color_2,
-            border=prophecy_color_2,
-            background=prophecy_color_0b)
-    prophecy_lower = Style(
-            text=prophecy_color_2,
-            border=transparent,
-            background=prophecy_color_0b,
-            size=Font.REDUCED)
-    prophecy_bottom = Style(
-            text=prophecy_color_2,
-            border=transparent,
-            background=prophecy_color_0a,
-            size=Font.SMALL)
+    prophecy_top = series_top(prophecy_pal)
+    prophecy_higher = series_higher(prophecy_pal)
+    prophecy_high = series_high(prophecy_pal)
+    prophecy_mid = series_mid(prophecy_pal)
+    prophecy_low = series_low(prophecy_pal)
+    prophecy_lower = series_lower(prophecy_pal)
+    prophecy_bottom = series_bottom(prophecy_pal)
 
     shards = Style(
             text=munsell.get("10G", 8, 2),
             background=munsell.get("10R", 1, 2))
-    essences = Style(
-            text=munsell.get("5R", 9, 4),
-            background=munsell.get("10R", 6, 14))
     remnant = Style(
             text=munsell.get("5B", 9, 4),
             background=munsell.get("10RP", 6, 14))
     other_currency = Style(
             text="225 211 191",
             background="20 20 20")
-    vials = Style(
-            text="239 166 172",
-            background="225 109 118")
-    resonator = Style(
-            text=munsell.get("7.5YR", 7, 10),
-            background=munsell.get("7.5YR", 1, 2))
-    fossil = Style(
-            text=munsell.get("7.5YR", 1, 2),
-            background=munsell.get("7.5YR", 7, 10))
-    catalysts = Style(
-            text="255 250 165",
-            background="154 170 252")
-    oils = Style(
-            text=munsell.get("5YR", 2, 2),
-            background=munsell.get("5YR", 7, 10))
 
     # Individual currencies
     wisdom = Style(
@@ -210,10 +209,6 @@ class Colors:
     silver_coin = Style(
             text=munsell.get("2.5P", 2, 4),
             background=munsell.get("5P", 8, 10))
-    perandus = Style(
-            text=munsell.get("2.5Y", 4, 4),
-            background=munsell.get("5Y", 8, 10),
-            size=Font.SMALL)
     horizons = Style(
             text=munsell.get("7.5BG", 8, 2),
             background=munsell.get("2.5BG", 4, 2),
@@ -252,20 +247,6 @@ class Colors:
     frags = Style(
             text=munsell.get("10RP", 9, 4),
             background=munsell.get("5P", 3, 4))
-    breachstones = Style(
-            text=munsell.get("10R", 9, 4),
-            background=munsell.get("10R", 1, 2),
-            size=Font.LARGE)
-    emblems = Style(
-            text=munsell.get("10R", 9, 4),
-            background=munsell.get("10R", 2, 2),
-            size=Font.LARGE)
-    breach_splinter = Style(
-            text=munsell.get("10GY", 2, 6),
-            background=munsell.get("10P", 7, 4))
-    timeless_splinter = Style(
-            text=munsell.get("10RP", 1, 6),
-            background=munsell.get("10G", 7, 4))
     rusted_scarabs = Style(
             text=munsell.get("2.5YR", 7, 4),
             background=munsell.get("2.5Y", 2, 2),
@@ -281,68 +262,38 @@ class Colors:
             text=munsell.get("5Y", 4, 6),
             background=munsell.get("10YR", 9, 4),
             size=Font.LARGE)
-    simulacrum_splinter = Style(
-            text=munsell.get("10YR", 3, 6),
-            background=munsell.get("10B", 9, 2))
-    delirium_orb = Style(
-            text=munsell.get("10YR", 4, 6),
-            background=munsell.get("10B", 9, 2))
 
     # Other classes
     quest = Style(
             text="59 192 41",
+            border="59 192 41 255",
             background="20 20 20")
-    incubators = Style(
-            text="201 192 179",
-            background="78 38 13")
 
     # Divination tiers
-
-    divination_color_0a = "1 4 35 192"
-    divination_color_0b = "1 4 35 220"
-    divination_color_0c = "1 4 25 255"
-    divination_color_1  = "1 44 139 255"
-    divination_color_2  = "14 186 255 255"
-
+    divination_pal = ("1 4 35", "1 44 139", "14 186 255")
     divination_unknown = Style(text=error, border=error, background=black)
 
-    divination_top = Style(
-            text=divination_color_0c,
-            border=divination_color_2,
-            background=white,
-            size=Font.LARGE)
-    divination_higher = Style(
-            text=white,
-            border=divination_color_1,
-            background=divination_color_2,
-            size=Font.LARGE)
-    divination_high = Style(
-            text=white,
-            border=divination_color_2,
-            background=divination_color_1)
-    divination_mid = Style(
-            text=divination_color_2,
-            border=divination_color_2,
-            background=divination_color_1)
-    divination_low = Style(
-            text=divination_color_2,
-            border=divination_color_2,
-            background=divination_color_0b)
-    divination_lower = Style(
-            text=divination_color_2,
-            border=transparent,
-            background=divination_color_0b,
-            size=Font.REDUCED)
-    divination_bottom = Style(
-            text=divination_color_2,
-            border=transparent,
-            background=divination_color_0a,
-            size=Font.SMALL)
+    divination_top = series_top(divination_pal)
+    divination_higher = series_higher(divination_pal)
+    divination_high = series_high(divination_pal)
+    divination_mid = series_mid(divination_pal)
+    divination_low = series_low(divination_pal)
+    divination_lower = series_lower(divination_pal)
+    divination_bottom = series_bottom(divination_pal)
 
     awakened_gems = Style(
             text="0 0 0 255",
+            border="255 0 0 255",
             background="240 92 36 255",
             minimap_icon_size=1,
+            minimap_icon_color="Cyan",
+            minimap_icon_shape="Hexagon",
+            play_effect_color="Cyan")
+    alt_gems = Style(
+            text="0 0 0 255",
+            border="0 255 0 255",
+            background="106 212 177 255",
+            minimap_icon_size=2,
             minimap_icon_color="Cyan",
             minimap_icon_shape="Hexagon",
             play_effect_color="Cyan")
@@ -359,30 +310,115 @@ class Colors:
     gems = Style(
             text=munsell.get("2.5BG", 5, 6),
             background=munsell.get("2.5BG", 1, 2))
+
+    # League stuff
+    perandus = Style(
+            text=munsell.get("2.5Y", 4, 4),
+            background=munsell.get("5Y", 8, 10),
+            size=Font.SMALL)
+    vials = Style(
+            text="239 166 172",
+            background="225 109 118")
+    resonator = Style(
+            text=munsell.get("7.5YR", 7, 10),
+            background=munsell.get("7.5YR", 1, 2))
+    fossil = Style(
+            text=munsell.get("7.5YR", 1, 2),
+            background=munsell.get("7.5YR", 7, 10))
+    catalysts = Style(
+            text="255 250 165",
+            background="154 170 252")
+    oils = Style(
+            text=munsell.get("5YR", 2, 2),
+            background=munsell.get("5YR", 7, 10))
     metamorph = Style(
             text=munsell.get("7.5Y", 9, 8),
             background=munsell.get("7.5GY", 4, 6))
     seeds = Style(
             text="227 214 195",
             background="103 89 71")
+    simulacrum_splinter = Style(
+            text=munsell.get("10YR", 3, 6),
+            background=munsell.get("10B", 9, 2))
+    delirium_orb = Style(
+            text=munsell.get("10YR", 4, 6),
+            background=munsell.get("10B", 9, 2))
+    breachstones = Style(
+            text=munsell.get("10R", 9, 4),
+            background=munsell.get("10R", 1, 2),
+            size=Font.LARGE)
+    emblems = Style(
+            text=munsell.get("10R", 9, 4),
+            background=munsell.get("10R", 2, 2),
+            size=Font.LARGE)
+    breach_splinter = Style(
+            text=munsell.get("10GY", 2, 6),
+            background=munsell.get("10P", 7, 4))
+    timeless_splinter = Style(
+            text=munsell.get("10RP", 1, 6),
+            background=munsell.get("10G", 7, 4))
+    incubators = Style(
+            text="201 192 179",
+            background="78 38 13")
+    # Heist stuff, WIP:
+    rogue_marker = Style(
+            text="200 251 232 255",
+            border="126 168 154 255",
+            background="136 124 100 255",
+            size=Font.REDUCED)
+    trinket = Style(
+            text="254 224 234",
+            background="227 116 154 255")
+    contract = Style(
+            text="224 225 220 255",
+            border="208 207 213 255",
+            background="29 45 78 255")
+    quest_contract = Style(
+            text="224 225 220 255",
+            border="59 192 41 255",
+            background="29 45 78 255")
+    blueprint = Style(
+            text="255 247 180 255",
+            border="204 232 207 255",
+            background="27 34 62 255",
+            size=Font.LARGE)
+    heist_target = Style(
+            text="198 230 122",
+            border="108 135 44 255",
+            background="20 20 20 255",
+            size=Font.LARGE)
+    heist_cloak = Style(
+            text="248 193 132",
+            border="152 101 45 255",
+            background="20 20 20 255")
+    heist_brooch = Style(
+            text="226 152 129",
+            border="124 62 42 255",
+            background="20 20 20 255")
+    heist_gear = Style(
+            text="236 220 147",
+            border="156 138 59 255",
+            background="20 20 20 255")
+    heist_tool = Style(
+            text="244 233 189",
+            border="139 129 90 255",
+            background="20 20 20 255")
+
     # TODO: pieces, lures
 
     # Default colors for rarity
     rarity_normal = Style(
             text="200 200 200 220",
-            #border="200 200 200 128",
             background="20 20 20 200",
             size=35)
 
     rarity_magic = Style(
             text="56 171 255 255",
-            #border="56 171 255 192",
             background="20 20 20 220",
             size=38)
 
     rarity_rare = Style(
             text="255 255 119 255",
-            #border="255 255 119 220",
             background="20 20 20 255",
             size=42)
 
@@ -396,124 +432,62 @@ class Colors:
             minimap_icon_color="Brown",
             minimap_icon_shape="Diamond")
 
-    # Unique tier colors
-
-    unique_color_0a = "73 33 0 192"
-    unique_color_0b = "73 33 0 220"
-    unique_color_0c = "73 33 0 255"
-    unique_color_1  = "175 96 37 255"
-    unique_color_2  = "254 170 56 255"
-
+    # Unique tiers
+    unique_pal = ("73 33 0", "175 96 37", "254 170 56")
     unique_unknown = Style(text=error, border=error, background=black)
 
-    unique_top = Style(
-            text=unique_color_0c,
-            border=unique_color_2,
-            background=white,
-            size=Font.LARGE)
-    unique_higher = Style(
-            text=white,
-            border=unique_color_1,
-            background=unique_color_2,
-            size=Font.LARGE)
-    unique_high = Style(
-            text=white,
-            border=unique_color_2,
-            background=unique_color_1)
-    unique_mid = Style(
-            text=unique_color_0c,
-            border=unique_color_2,
-            background=unique_color_1)
-    unique_low = Style(
-            text=unique_color_2,
-            border=unique_color_2,
-            background=unique_color_0b)
-    unique_lower = Style(
-            text=unique_color_2,
-            border=transparent,
-            background=unique_color_0b,
-            size=Font.REDUCED)
-    unique_bottom = Style(
-            text=unique_color_2,
-            border=transparent,
-            background=unique_color_0a,
-            size=Font.SMALL)
+    unique_top = series_top(unique_pal)
+    unique_higher = series_higher(unique_pal)
+    unique_high = series_high(unique_pal)
+    unique_mid = series_mid(unique_pal)
+    unique_low = series_low(unique_pal)
+    unique_lower = series_lower(unique_pal)
+    unique_bottom = series_bottom(unique_pal)
 
-    # Essence tier colors
-
-    essence_color_0a = "65 23 26 192"
-    essence_color_0b = "65 23 26 220"
-    essence_color_0c = "65 23 26 255"
-    essence_color_1  = "157 55 50 255"
-    essence_color_2  = "208 109 89 255"
-
+    # Essence tiers
+    essence_pal = ("65 23 26", "157 55 50", "208 109 89")
     essence_unknown = Style(text=error, border=error, background=black)
 
-    essence_top = Style(
-            text=essence_color_0c,
-            border=essence_color_2,
-            background=white,
-            size=Font.LARGE)
-    essence_higher = Style(
-            text=white,
-            border=essence_color_1,
-            background=essence_color_2,
-            size=Font.LARGE)
-    essence_high = Style(
-            text=white,
-            border=essence_color_2,
-            background=essence_color_1)
-    essence_mid = Style(
-            text=essence_color_0c,
-            border=essence_color_2,
-            background=essence_color_1)
-    essence_low = Style(
-            text=essence_color_2,
-            border=essence_color_2,
-            background=essence_color_0b)
-    essence_lower = Style(
-            text=essence_color_2,
-            border=transparent,
-            background=essence_color_0b,
-            size=Font.REDUCED)
-    essence_bottom = Style(
-            text=essence_color_2,
-            border=transparent,
-            background=essence_color_0a,
-            size=Font.SMALL)
+    essence_top = series_top(essence_pal)
+    essence_higher = series_higher(essence_pal)
+    essence_high = series_high(essence_pal)
+    essence_mid = series_mid(essence_pal)
+    essence_low = series_low(essence_pal)
+    essence_lower = series_lower(essence_pal)
+    essence_bottom = series_bottom(essence_pal)
 
     # Colors for attribute gear
 
     attr_str = [
-            "40 0 0 192",
-            "40 0 0 220",
-            "40 0 0 255",
-            "40 0 0 255"]
+            "60 0 0 192",
+            "60 0 0 220",
+            "60 0 0 255",
+            "60 0 0 255"]
     attr_dex = [
-            "0 40 0 192",
-            "0 40 0 220",
-            "0 40 0 255",
-            "0 40 0 255"]
+            "0 60 0 192",
+            "0 60 0 220",
+            "0 60 0 255",
+            "0 60 0 255"]
     attr_int = [
-            "0 0 40 192",
-            "0 0 40 220",
-            "0 0 40 255",
-            "0 0 40 255"]
+            "0 0 60 192",
+            "0 0 60 220",
+            "0 0 60 255",
+            "0 0 60 255"]
     attr_strdex = [
-            "25 25 0 192",
-            "25 25 0 220",
-            "25 25 0 255",
-            "25 25 0 255"]
+            "33 33 0 192",
+            "33 33 0 220",
+            "33 33 0 255",
+            "33 33 0 255"]
     attr_strint = [
-            "25 0 25 192",
-            "25 0 25 220",
-            "25 0 25 255",
-            "25 0 25 255"]
+            "33 0 33 192",
+            "33 0 33 220",
+            "33 0 33 255",
+            "33 0 33 255"]
     attr_dexint = [
-            "0 25 25 192",
-            "0 25 25 220",
-            "0 25 25 255", 
-            "0 25 25 255"]
+            "0 33 33 192",
+            "0 33 33 220",
+            "0 33 33 255", 
+            "0 33 33 255"]
 
     # Influences
     shaper = Style(
@@ -552,41 +526,40 @@ class Colors:
     veiled = Style(border="70 207 119 255")
     enchanted = Style(border="242 205 233 255")
     corrupted_enchanted = Style(border="255 0 255 255")
-    good_sockets = Style(border="0 255 0 255")
-    four_link= Style(border="0 255 255 255")
-    chrome_recipe = Style(border="200 200 200 255")
-    jewellers_recipe = Style(border="200 200 255 255")
+    three_link_highlighted = Style(border="0 200 0 200")
+    highlighted = Style(border=white, size=Font.LARGE)
+    four_link = Style(border="0 0 255 255")
+    five_link = Style(border="0 255 255 255")
+    chrome_recipe = Style(border="100 100 100 255", background="50 50 50 200")
+    jewellers_recipe = Style(border="200 200 200 200", background="100 100 100 255")
+    replica_unique = Style(border="255 255 0 255")
 
     ring_color = munsell.get("7.5PB", 1, 2) + " 255"
     belt_color = munsell.get("7.5BG", 1, 2) + " 255"
     amulet_color = munsell.get("7.5RP", 1, 2) + " 255"
 
-    # Styles applied for each rarity
-
-    # TODO: Collapse redundant lists into single values
+    experimented_base = Style(
+            text="174 219 138",
+            border="255 137 45 255",
+            background="19 57 46 255")
 
     map_white_bg = "57 62 58 250"
     map_yellow_bg = "97 92 11 250"
     map_red_bg = "96 30 6 250"
 
-    maps_white = [
-            Style(background=map_white_bg, size=Font.REDUCED),
-            Style(background=map_white_bg, size=Font.REDUCED),
-            Style(background=map_white_bg, size=Font.REDUCED),
-            Style(background=map_white_bg, size=Font.REDUCED)
-        ]
-    maps_yellow = [
-            Style(background=map_yellow_bg, size=Font.REGULAR),
-            Style(background=map_yellow_bg, size=Font.REGULAR),
-            Style(background=map_yellow_bg, size=Font.REGULAR),
-            Style(background=map_yellow_bg, size=Font.REGULAR)
-        ]
-    maps_red = [
-            Style(background=map_red_bg, size=Font.LARGE),
-            Style(background=map_red_bg, size=Font.LARGE),
-            Style(background=map_red_bg, size=Font.LARGE),
-            Style(background=map_red_bg, size=Font.LARGE)
-        ]
+    maps_white = Style(background=map_white_bg, size=Font.REDUCED)
+    maps_yellow = Style(background=map_yellow_bg, size=Font.REGULAR)
+    maps_red = Style(background=map_red_bg, size=Font.LARGE)
+
+    highlighted_amulets = Style(background=amulet_color, border=white)
+    amulets = Style(background=amulet_color)
+    highlighted_rings = Style(background=ring_color, border=white)
+    rings = Style(background=ring_color)
+    highlighted_belts = Style(background=belt_color, border=white)
+    belts = Style(background=belt_color)
+
+    # Styles applied for each rarity
+
     abyss = [
             rarity_normal,
             rarity_magic,
@@ -611,63 +584,27 @@ class Colors:
             rarity_rare, 
             rarity_unique
         ]
-    highlighted_amulets = [
-            Style(text=white, background=amulet_color, border=white),
-            Style(background=amulet_color, border=white),
-            Style(background=amulet_color, border=white),
-            Style(background=amulet_color, border=white),
-        ]
-    amulets = [
-            Style(background=amulet_color),
-            Style(background=amulet_color),
-            Style(background=amulet_color),
-            Style(background=amulet_color),
-        ]
-    highlighted_rings = [
-            Style(text=white, background=ring_color, border=white),
-            Style(background=ring_color, border=white),
-            Style(background=ring_color, border=white),
-            Style(background=ring_color, border=white),
-        ]
-    rings = [
-            Style(background=ring_color),
-            Style(background=ring_color),
-            Style(background=ring_color),
-            Style(background=ring_color),
-        ]
-    highlighted_belts = [
-            Style(text=white, background=belt_color, border=white),
-            Style(background=belt_color, border=white),
-            Style(background=belt_color, border=white),
-            Style(background=belt_color, border=white),
-        ]
-    belts = [
-            Style(background=belt_color),
-            Style(background=belt_color),
-            Style(background=belt_color),
-            Style(background=belt_color),
-        ]
     life_flasks = [
-            Style(background="125 13 53 220"),
+            Style(background="125 13 53 128"),
             Style(background="125 13 53 220"),
             rarity_rare, 
             Style(background="125 13 53 255"),
         ]
     mana_flasks = [
-            Style(background="32 48 126 220"),
+            Style(background="32 48 126 128"),
             Style(background="32 48 126 220"),
             rarity_rare, 
             Style(background="32 48 126 255"),
         ]
     hybrid_flasks = [
-            Style(background="73 27 76 220"),
+            Style(background="74 27 76 128"),
             Style(background="73 27 76 220"),
             rarity_rare, 
             Style(background="73 27 76 255"),
         ]
     utility_flasks = [
-            Style(background="0 77 67 220"),
-            Style(background="0 77 67 220"),
+            Style(background="0 77 67 255"),
+            Style(background="0 77 67 255"),
             rarity_rare, 
             Style(background="0 77 67 255"),
         ]
@@ -748,10 +685,4 @@ class Colors:
             Style(background=attr_dex[1]),
             Style(background=attr_dex[2]), 
             Style(background=attr_dex[3]) 
-        ]
-    fishing = [
-            Style(text="255 0 0 255", background=white, size=Font.LARGE),
-            Style(text="255 0 0 255", background=white, size=Font.LARGE),
-            Style(text="255 0 0 255", background=white, size=Font.LARGE),
-            Style(text="255 0 0 255", background=white, size=Font.LARGE)
         ]

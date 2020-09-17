@@ -9,6 +9,311 @@ act_8_max_level = 60
 act_9_max_level = 64
 act_10_max_level = 67
 
+weapon_drop_levels = {
+        "One Hand Maces": [
+                1, 5, 10, 15,
+                20, 24, 28, 32,
+                34, 35, 38, 41,
+                44, 47, 50, 53,
+                55, 56, 58, 60,
+                62, 64, 66, 68,
+                70
+            ],
+        "Two Hand Maces": [
+                3, 8, 12, 17,
+                22, 27, 32, 34,
+                36, 40, 44, 48,
+                51, 54, 56, 57,
+                59, 61, 63, 65,
+                67, 69
+            ],
+        "One Hand Axes": [
+                2, 6, 11, 16,
+                21, 25, 29, 33,
+                35, 36, 39, 42,
+                45, 48, 51, 54,
+                56, 57, 59, 61,
+                63, 65, 67, 69,
+                71
+            ],
+        "Two Hand Axes": [
+                4, 9, 13, 18,
+                23, 28, 33, 36,
+                37, 41, 45, 49,
+                52, 55, 58, 59,
+                60, 62, 64, 66,
+                68, 70
+            ],
+        "One Hand Swords": [
+                1, 5, 10, 15,
+                20, 24, 28, 32,
+                34, 35, 38, 41,
+                44, 47, 50, 53,
+                55, 56, 58, 60,
+                62, 64, 66, 68,
+                70
+            ],
+        "Two Hand Swords": [
+                3, 8, 12, 17,
+                22, 27, 32, 35,
+                36, 40, 44, 48,
+                51, 54, 56, 57,
+                59, 61, 63, 65,
+                67, 70
+            ],
+        "Thrusting One Hand Swords": [
+                3, 7, 12, 17,
+                22, 26, 30, 34,
+                36, 37, 40, 43,
+                46, 49, 52, 55,
+                57, 58, 60, 62,
+                64, 66, 68, 70,
+                72
+            ],
+        "Bows": [
+                1, 5, 9, 14,
+                18, 23, 28, 32,
+                35, 36, 38, 41,
+                44, 47, 50, 53,
+                56, 57, 58, 60,
+                62, 64, 66, 68,
+                71
+            ],
+        "Claws": [
+                3, 7, 12, 17,
+                22, 26, 30, 34,
+                36, 37, 40, 43,
+                46, 49, 52, 55,
+                57, 58, 60, 62,
+                64, 66, 68, 70,
+                72
+            ],
+        "Daggers": [
+                1, 5, 15, 30,
+                36, 41, 51, 56,
+                60, 70
+            ],
+        "Rune Daggers": [
+                10, 20, 24, 28,
+                32, 38, 44, 50,
+                53, 58, 62, 64,
+                66, 68
+            ],
+        "Sceptres": [
+                1, 5, 10, 15,
+                20, 24, 28, 32,
+                35, 36, 38, 41,
+                44, 47, 50, 53,
+                55, 56, 58, 60,
+                62, 64, 66, 68,
+                70
+            ],
+        "Staves": [
+                4, 9, 18, 28,
+                36, 37, 45, 52,
+                57, 58, 62, 66,
+                70
+            ],
+        "Warstaves": [
+                13, 23, 33, 41,
+                49, 55, 60, 64,
+                68
+            ],
+        "Wands": [ 
+                1, 6, 12, 18,
+                24, 30, 34, 35,
+                40, 45, 49, 53,
+                55, 56, 59, 62,
+                65, 68, 70, 72
+            ]
+    }
+
+armour_drop_levels = {
+        "str": {
+            "Body Armours": [
+                    1, 6, 17, 21,
+                    28, 32, 35, 37,
+                    41, 45, 49, 53,
+                    56, 59, 62, 65,
+                    68
+                ],
+            "Boots": [
+                    1, 9, 23, 33,
+                    37, 46, 54, 62,
+                    68
+                ],
+            "Gloves": [
+                    1, 11, 23, 35,
+                    39, 47, 53, 63,
+                    69, 70
+                ],
+            "Helmets": [
+                    1, 7, 18, 26,
+                    35, 40, 48, 55,
+                    60, 65, 69
+                ],
+            "Shields": [
+                    1, 5, 11, 17,
+                    24, 30, 35, 39,
+                    43, 47, 51, 55,
+                    58, 61, 64, 67,
+                    70
+                ]
+            },
+        "dex": {
+            "Body Armours": [
+                    2, 9, 17, 25,
+                    28, 32, 35, 37,
+                    41, 45, 49, 53,
+                    56, 59, 62, 65,
+                    68
+                ],
+            "Boots": [
+                    3, 12, 22, 34,
+                    39, 44, 55, 62,
+                    69
+                ],
+            "Gloves": [
+                    3, 9, 21, 33,
+                    38, 45, 54, 62,
+                    70
+                ],
+            "Helmets": [
+                    3, 10, 20, 30,
+                    41, 47, 55, 60,
+                    64, 70
+                ],
+            "Shields": [
+                    2, 8, 16, 23,
+                    29, 34, 38, 42,
+                    46, 50, 54, 57,
+                    60, 63, 66, 69
+                ]
+            },
+        "int": {
+            "Body Armours": [
+                    1, 11, 18, 25,
+                    28, 32, 35, 37,
+                    41, 45, 49, 53,
+                    56, 59, 62, 65,
+                    68
+                ],
+            "Boots": [
+                    3, 9, 22, 32,
+                    38, 44, 53, 61,
+                    67
+                ],
+            "Gloves": [
+                    3, 12, 25, 36,
+                    41, 47, 55, 60,
+                    69, 70
+                ],
+            "Helmets": [
+                    3, 8, 17, 26,
+                    34, 39, 48, 54,
+                    59, 65, 69
+                ],
+            "Shields": [
+                    3, 9, 15, 23,
+                    28, 33, 37, 41,
+                    45, 49, 53, 56,
+                    59, 62, 65, 68
+                ]
+            },
+        "strdex": {
+            "Body Armours": [
+                    4, 8, 17, 21,
+                    28, 32, 35, 38,
+                    42, 46, 50, 54,
+                    57, 60, 63, 66,
+                    69
+                ],
+            "Boots": [
+                    6, 18, 30, 36,
+                    42, 51, 59, 65,
+                    70
+                ],
+            "Gloves": [
+                    4, 15, 27, 36,
+                    43, 49, 59, 67
+                ],
+            "Helmets": [
+                    4, 13, 23, 33,
+                    36, 43, 51, 58,
+                    63, 67
+                ],
+            "Shields": [
+                    5, 12, 20, 27,
+                    33, 39, 45, 49,
+                    54, 58, 62, 66,
+                    70
+                ]
+            },
+        "strint": {
+            "Body Armours": [
+                    4, 8, 17, 21,
+                    28, 32, 35, 39,
+                    43, 47, 51, 55,
+                    58, 61, 64, 67,
+                    70
+                ],
+            "Boots": [
+                    5, 13, 28, 36,
+                    40, 49, 58, 64,
+                    70
+                ],
+            "Gloves": [
+                    7, 19, 32, 37,
+                    43, 51, 57, 66,
+                ],
+            "Helmets": [
+                    5, 12, 22, 31,
+                    37, 44, 53, 58,
+                    63, 68, 73
+                ],
+            "Shields": [
+                    7, 13, 20, 27,
+                    34, 40, 46, 50,
+                    55, 59, 62, 65,
+                    68
+                ]
+            },
+        "dexint": {
+            "Body Armours": [
+                    4, 9, 18, 22,
+                    28, 32, 35, 40,
+                    44, 48, 52, 56,
+                    59, 62, 65, 68,
+                    71
+                ],
+            "Boots": [
+                    6, 16, 27, 34,
+                    41, 47, 55, 63,
+                    69, 70
+                ],
+            "Gloves": [
+                    5, 16, 31, 36,
+                    45, 50, 58, 67
+                ],
+            "Helmets": [
+                    4, 10, 17, 28,
+                    35, 38, 45, 52,
+                    57, 62, 67
+                ],
+            "Shields": [
+                    5, 12, 20, 27,
+                    33, 39, 45, 49,
+                    54, 58, 62, 66,
+                    70
+                ]
+            }
+    }
+
+
+three_socket_max = [
+        "Claws", "Rune Daggers", "Daggers", "Wands", "One Hand Swords",
+        "Sceptres", "One Hand Axes", "One Hand Maces"]
+
 weapon_classes = [
         "Claws", "Rune Daggers", "Daggers", "Wands", "One Hand Swords",
         "Two Hand Swords", "Bows", "Warstaves", "Staves",
@@ -21,6 +326,10 @@ trinket_classes = [
 armour_classes = [
         "Helmets", "Gloves", "Boots", "Body Armours", "Shields"]
 
+weapon_armour_classes = [
+        *weapon_classes,
+        *armour_classes]
+
 equipment_classes = [
         *weapon_classes,
         *armour_classes,
@@ -30,6 +339,27 @@ equipment_classes = [
 rarity_classes = [
         *equipment_classes,
         "Maps", "Flasks", "Fishing", "Jewel"] # Not sure where Watchstones go
+
+# New in 3.12
+experimented_bases = [
+    "Assembler Wand", "Congregator Wand", "Accumulator Wand",
+    "Hollowpoint Dagger", "Pressurised Dagger", "Pneumatic Dagger",
+    "Flickerflame Blade", "Flashfire Blade", "Infernal Blade", "Shadow Fangs",
+    "Malign Fangs", "Void Fangs", "Maltreatment Axe", "Disapprobation Axe",
+    "Psychotic Axe", "Fickle Spiritblade", "Capricious Spiritblade",
+    "Anarchic Spiritblade", "Flare Hammer", "Crack Hammer", "Boom Hammer",
+    "Oscillating Sceptre", "Stabilising Sceptre", "Alternating Sceptre",
+    "Hedron Bow", "Foundry Bow", "Solarine Bow", "Transformer Staff",
+    "Accumulator Staff", "Battery Staff", "Capacity Rod", "Potentiality Rod",
+    "Eventuality Rod", "Prime Cleaver", "Honed Cleaver", "Apex Cleaver",
+    "Rebuking Blade", "Blasting Blade", "Banishing Blade",
+    "Blunt Force Condenser", "Crushing Force Magnifier",
+    "Impact Force Propagator", "Micro-Distillery Belt", "Mechalarm Belt",
+    "Astrolabe Amulet", "Simplex Amulet", "Cogwork Ring", "Geodisic Ring",
+    "Exhausting Spirit Shield", "Subsuming Spirit Shield",
+    "Transfer-attuned Spirit Shield", "Endothermic Buckler", "Polar Buckler",
+    "Cold-attuned Buckler", "Exothermic Tower Shield", "Magmatic Tower Shield",
+    "Heat-attuned Tower Shield"]
 
 str_armour = [
         # Str Gloves
@@ -248,7 +578,8 @@ divination_top = [
         "Abandoned Wealth", "Pride of the First Ones", "Immortal Resolve",
         "The Nurse", "Etched in Blood", "The Sustenance", "The Fishmonger",
         "The Progeny of Lunaris", "The Spark and the Flame",
-        "The White Knight", "The Long Con", "Wealth and Power"
+        "The White Knight", "The Long Con", "Wealth and Power",
+#        "Brother's Stash"
     ]
 
 divination_higher = [
@@ -260,7 +591,13 @@ divination_higher = [
         "The Old Man", "Chaotic Disposition", "The Soul", "The Undaunted",
         "The Celestial Stone", "A Note in the Wind", "The World Eater",
         "The Deep Ones", "The Awakened", "Dark Dreams", "Prometheus' Armoury",
-        "Peaceful Moments", "The Hoarder", "The Eldritch Decay"
+        "Peaceful Moments", "The Hoarder", "The Eldritch Decay",
+        # These are new in 3.12
+        # FIXME: Sort into correct tiers
+#        "The Gulf", "The Bitter Blossom", "Triskaidekaphobia",
+#        "Unrequited Love", "The Cache", "The Academic",
+#        "Desecrated Virtue", "Unchained", "The Unexpected Prize",
+#        "Cursed Words", "The Journalist"
     ]
 
 divination_high = [

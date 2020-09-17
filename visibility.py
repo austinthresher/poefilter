@@ -24,6 +24,12 @@ def apply(config):
     with conditions(("BaseType", "Exalted", "Mirror of", "Mirror Shard", "Feather")), show():
         done()
 
+    # Show all Heist items
+#    with conditions("BaseType", "Marker"), show():
+#        done()
+#    with conditions(("Class", "Trinket", "Heist", "Contract", "Blueprint")), show():
+#        done()
+
     if config.show_5_links:
         with conditions(("LinkedSockets", "5")), show():
             done()
@@ -58,24 +64,29 @@ def apply(config):
 
     # Hide non-quality gems in endgame
     with conditions(("Class", "Gems"), ("AreaLevel", ">=", tables.act_10_max_level)):
+#        with conditions(("AlternateQuality", "True")), show():
+#            done()
         with conditions(("BaseType", *tables.drop_gems)), show():
             done()
-
         with conditions(("Quality", ">", 0)), show():
             done()
-
         with conditions(("Corrupted", "True")), show():
             done()
-
         with conditions(("BaseType", "Awakened")), show():
             done()
-
         # Show high level gems that could reduce leveling time / make easy 20% recipe
         with conditions(("GemLevel", ">=", 15)), show():
             done()
-
         with hide():
             hidden.apply()
+
+    # Show all cluster jewels
+    with conditions(("BaseType", "Cluster Jewel")), show():
+        done()
+    
+    # Show all experimented base types
+#    with conditions(("BaseType", *tables.experimented_bases)), show():
+#        done()
 
     # Show all Magic items until the end of Act 1
     with conditions(
@@ -114,9 +125,23 @@ def apply(config):
 
     # Now that weapon and armour types have been filtered out, show anything
     # matching our socket groups regardless of rarity
-    if config.main_socket_groups:
+    if config.highlighted_3L:
+        # For early game, highlight any 3L that matches
         with conditions(
-                ("SocketGroup", *config.main_socket_groups),
+                ("SocketGroup", *config.highlighted_3L),
+                ("AreaLevel", "<=", tables.act_2_max_level)), show():
+            done()
+        # For Act 3 and up, only highlight a 3L if that's the max socket count
+        with conditions(
+                ("Class", *tables.three_socket_max),
+                ("SocketGroup", *config.highlighted_3L),
+                ("AreaLevel", ">", tables.act_2_max_level)), show():
+            done()
+
+    if config.highlighted_4L:
+        with conditions(
+                ("LinkedSockets", 4),
+                ("SocketGroup", *config.highlighted_4L),
                 ("AreaLevel", "<=", tables.act_10_max_level)), show():
             done()
 
@@ -149,9 +174,9 @@ def apply(config):
             ("Identified", "False")), hide():
         hidden.apply()
 
-    with hide(): # Hide Magic after Act 3, except flasks
+    with hide(): # Hide Magic after Act 2, except flasks
         condition("Rarity", "<", "Rare")
-        condition("AreaLevel", ">=", tables.act_3_max_level)
+        condition("AreaLevel", ">=", tables.act_2_max_level)
         condition("Class",
                 "Amulets", "Rings", "Belts", "Quivers", "Mace",
                 "Sword", "Axe", "Bow", "Wand", "Sceptre", "taves", "Dagger",
@@ -159,9 +184,9 @@ def apply(config):
         condition("Identified", "False")
         hidden.apply()
 
-    with hide(): # Hide Normal after Act 2, except flasks
+    with hide(): # Hide Normal after Act 1, except flasks
         condition("Rarity", "<", "Magic")
-        condition("AreaLevel", ">", tables.act_2_max_level)
+        condition("AreaLevel", ">", tables.act_1_max_level)
         condition("Class",
                 "Amulets", "Rings", "Belts", "Quivers", "Mace",
                 "Sword", "Axe", "Bow", "Wand", "Sceptre", "taves", "Dagger",
@@ -172,6 +197,8 @@ def apply(config):
     # Filter Uniques by tier
 
     with conditions(("Rarity", "Unique")):
+#        with conditions(("Replica", "True")), show():
+#            done()
         if tables.unique_bottom:
             if config.hide_unique_tier >= 0:
                 with conditions(("BaseType", *tables.unique_bottom)), hide():
@@ -310,27 +337,55 @@ def apply(config):
             with conditions(("Prophecy", *tables.prophecy_top)), show():
                 done()
 
-    # Hide flasks as you level. This hides all hybrid flasks.
-    with conditions(("Class", "Flask"), ("Rarity", "<", "Unique")):
-        with conditions(("BaseType", "Small"), ("AreaLevel", ">=", 3)), hide():
+    # Hide weapons and armour that are outleveled
+    equipment_overlap = 1
+                    
+    for weap in tables.weapon_drop_levels.keys():
+        drops = tables.weapon_drop_levels[weap]
+        for i in range(len(drops)-1):
+            drops_at = drops[i]
+            drops_until = drops[i+1] + equipment_overlap
+            with conditions(
+                    ("Class", "=", weap),
+                    ("DropLevel", drops_at),
+                    ("AreaLevel", ">=", drops_until)), hide():
+                hidden.apply()
+        
+    for stat in ["str", "dex", "int", "strdex", "strint", "dexint"]:
+        for armour in tables.armour_drop_levels[stat].keys():
+            drops = tables.armour_drop_levels[stat][armour]
+            for i in range(len(drops)-1):
+                drops_at = drops[i]
+                drops_until = drops[i+1] + equipment_overlap
+                with conditions(
+                        ("Class", "=", armour),
+                        ("DropLevel", drops_at),
+                        ("AreaLevel", ">=", drops_until)), hide():
+                    hidden.apply()
+
+    # Hide flasks as you level
+    flask_overlap_early = 10
+    flask_overlap = 5
+    with conditions(("Class", "Life Flask", "Mana Flask"), ("Rarity", "<", "Unique")):
+        with conditions(("BaseType", "Small"), ("AreaLevel", ">=", 3+flask_overlap_early)), hide():
             hidden.apply()
-        with conditions(("BaseType", "Medium"), ("AreaLevel", ">=", 6)), hide():
+        with conditions(("BaseType", "Medium"), ("AreaLevel", ">=", 6+flask_overlap_early)), hide():
             hidden.apply()
-        with conditions(("BaseType", "Large"), ("AreaLevel", ">=", 12)), hide():
+        with conditions(("BaseType", "Large"), ("AreaLevel", ">=", 12+flask_overlap_early)), hide():
             hidden.apply()
-        with conditions(("BaseType", "Greater"), ("AreaLevel", ">=", 18)), hide():
+        with conditions(("BaseType", "Greater"), ("AreaLevel", ">=", 18+flask_overlap_early)), hide():
             hidden.apply()
-        with conditions(("BaseType", "Grand"), ("AreaLevel", ">=", 24)), hide():
+        with conditions(("BaseType", "Grand"), ("AreaLevel", ">=", 24+flask_overlap)), hide():
             hidden.apply()
-        with conditions(("BaseType", "Giant"), ("AreaLevel", ">=", 30)), hide():
+        with conditions(("BaseType", "Giant"), ("AreaLevel", ">=", 30+flask_overlap)), hide():
             hidden.apply()
-        with conditions(("BaseType", "Colossal"), ("AreaLevel", ">=", 36)), hide():
+        with conditions(("BaseType", "Colossal"), ("AreaLevel", ">=", 36+flask_overlap)), hide():
             hidden.apply()
-        with conditions(("BaseType", "Sacred"), ("AreaLevel", ">=", 42)), hide():
+        with conditions(("BaseType", "Sacred"), ("AreaLevel", ">=", 42+flask_overlap)), hide():
             hidden.apply()
-        with conditions(("BaseType", "Hallowed"), ("AreaLevel", ">=", 50)), hide():
+        with conditions(("BaseType", "Hallowed"), ("AreaLevel", ">=", 50+flask_overlap)), hide():
             hidden.apply()
-        with conditions(("BaseType", "Sanctified"), ("AreaLevel", ">=", 60)), hide():
+        with conditions(("BaseType", "Sanctified"), ("AreaLevel", ">=", 60+flask_overlap)), hide():
             hidden.apply()
-        with conditions(("BaseType", "Divine", "Eternal"), ("AreaLevel", ">=", tables.act_10_max_level)), hide():
+        with conditions(("BaseType", "Divine", "Eternal"), ("AreaLevel", ">=", tables.act_10_max_level+flask_overlap)), hide():
             hidden.apply()

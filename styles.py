@@ -15,19 +15,32 @@ def apply(config, colors, icons, sounds):
         with show():
             colors.other_currency.apply()
 
+# Uncomment for 3.12
+#        with conditions(("BaseType", "Marker")), show():
+#            colors.rogue_marker.apply()
+#            sounds.currency.apply()
+
         with conditions(("BaseType", "Orb")), show():
             colors.other_orbs.apply()
 
-        with conditions(("BaseType", "Scroll of Wisdom", "Scroll Fragment")), show():
-            colors.wisdom.apply()
+        with conditions(("BaseType", "Scroll of Wisdom", "Scroll Fragment")):
+            with show():
+                colors.wisdom.apply()
+            with conditions(("AreaLevel", "<=", tables.act_5_max_level)), show():
+                colors.highlighted.apply()
 
-        with conditions(("BaseType", "Portal Scroll")), show():
-            colors.portal.apply()
+
+        with conditions(("BaseType", "Portal Scroll")):
+            with show():
+                colors.portal.apply()
+            with conditions(("AreaLevel", "<=", tables.act_5_max_level)), show():
+                colors.highlighted.apply()
 
         with conditions((
                 "BaseType", "Exalted Orb", "Mirror of Kalandra",
                 "Albino Rhoa Feather"
                 )), show():
+            colors.highlighted.apply()
             icons.currency_top.apply()
             colors.extremely_valuable.apply()
             sounds.currency_most.apply()
@@ -35,92 +48,131 @@ def apply(config, colors, icons, sounds):
         with conditions((
                 "BaseType", "Ancient Orb", "Divine Orb"
                 )), show():
+            colors.highlighted.apply()
             icons.currency_higher.apply()
             colors.very_valuable.apply()
             sounds.currency_more.apply()
 
-        with conditions(("BaseType", "of Transmutation")), show():
-            colors.transmute.apply()
+        with conditions(("BaseType", "of Transmutation")):
+            with show():
+                colors.transmute.apply()
+            with conditions(("AreaLevel", "<=", tables.act_10_max_level)), show():
+                colors.highlighted.apply()
 
-        with conditions(("BaseType", "of Augmentation")), show():
-            colors.augmentation.apply()
+        with conditions(("BaseType", "of Augmentation")):
+            with show():
+                colors.augmentation.apply()
+            with conditions(("AreaLevel", "<=", tables.act_10_max_level)), show():
+                colors.highlighted.apply()
 
-        with conditions(("BaseType", "of Alteration")), show():
-            colors.alteration.apply()
+        with conditions(("BaseType", "of Alteration")):
+            with show():
+                colors.alteration.apply()
+            with conditions(("AreaLevel", "<=", tables.act_10_max_level)), show():
+                colors.highlighted.apply()
 
-        with conditions(("BaseType", "Orb of Chance")), show():
-            colors.chance.apply()
+        with conditions(("BaseType", "of Chance")):
+            with show():
+                colors.chance.apply()
+            with conditions(("AreaLevel", "<=", tables.act_10_max_level)), show():
+                colors.highlighted.apply()
 
-        with conditions(("BaseType", "Orb of Alchemy")), show():
-            icons.currency_mid.apply()
-            colors.alchemy.apply()
+        with conditions(("BaseType", "of Alchemy")):
+            with show():
+                colors.alchemy.apply()
+                icons.currency_mid.apply()
+            with conditions(("AreaLevel", "<=", tables.act_10_max_level)), show():
+                colors.highlighted.apply()
+
 
         with conditions(("BaseType", "Regal Orb")), show():
+            colors.highlighted.apply()
             icons.currency_high.apply()
             colors.regal.apply()
             sounds.currency.apply()
 
         with conditions(("BaseType", "Chaos Orb")), show():
+            colors.highlighted.apply()
             icons.currency_high.apply()
             colors.chaos.apply()
             sounds.currency.apply()
 
         with conditions(("BaseType", "Vaal Orb")), show():
+            colors.highlighted.apply()
             icons.currency_high.apply()
             colors.vaal.apply()
             sounds.currency.apply()
 
         with conditions(("BaseType", "Orb of Annulment")), show():
+            colors.highlighted.apply()
             icons.currency_higher.apply()
             colors.valuable.apply()
             sounds.currency.apply()
 
         with conditions(("BaseType", "Jeweller's Orb")), show():
+            colors.highlighted.apply()
             colors.jewelers.apply()
 
         with conditions(("BaseType", "Orb of Fusing")), show():
+            colors.highlighted.apply()
             colors.fuse.apply()
             sounds.currency.apply()
 
         with conditions(("BaseType", "Chromatic Orb")), show():
+            colors.highlighted.apply()
             colors.chromatic.apply()
 
         with conditions(("BaseType", "Orb of Scouring")), show():
+            colors.highlighted.apply()
             colors.scouring.apply()
 
         with conditions(("BaseType", "Orb of Regret")), show():
+            colors.highlighted.apply()
             colors.regret.apply()
             sounds.currency.apply()
 
-        with conditions(("BaseType", "Scrap")), show():
-            colors.scrap.apply()
+        with conditions(("BaseType", "Scrap")):
+            with show():
+                colors.scrap.apply()
+            with conditions(("AreaLevel", "<=", tables.act_10_max_level)), show():
+                colors.highlighted.apply()
 
-        with conditions(("BaseType", "Whetstone")), show():
-            colors.whetstone.apply()
+        with conditions(("BaseType", "Whetstone")):
+            with show():
+                colors.whetstone.apply()
+            with conditions(("AreaLevel", "<=", tables.act_10_max_level)), show():
+                colors.highlighted.apply()
 
         with conditions(("BaseType", "Prism")), show():
+            colors.highlighted.apply()
             colors.prism.apply()
             sounds.currency_more.apply()
 
         with conditions(("BaseType", "Bauble")), show():
+            colors.highlighted.apply()
             colors.bauble.apply()
             sounds.currency.apply()
 
         with conditions(("BaseType", "Engineer's")), show():
+            colors.highlighted.apply()
             colors.engineer.apply()
             sounds.currency.apply()
 
         with conditions(("BaseType", "Chisel")), show():
+            colors.highlighted.apply()
             colors.chisel.apply()
 
         with conditions(("BaseType", "Simple Sextant")), show():
+            colors.highlighted.apply()
             colors.white_sextant.apply()
 
         with conditions(("BaseType", "Prime Sextant")), show():
+            colors.highlighted.apply()
             colors.yellow_sextant.apply()
             sounds.bang.apply()
 
         with conditions(("BaseType", "Awakened Sextant")), show():
+            colors.highlighted.apply()
             colors.red_sextant.apply()
             sounds.bang_more.apply()
 
@@ -390,6 +442,11 @@ def apply(config, colors, icons, sounds):
             icons.other_top.apply()
             sounds.boom.apply()
 
+#        with conditions(("AlternateQuality", "True")), show():
+#            icons.other_higher.apply()
+#            colors.drop_gems.apply()
+#            sounds.pong.apply()
+
         with conditions(("BaseType", *tables.drop_gems)), show():
             icons.other_higher.apply()
             colors.drop_gems.apply()
@@ -404,6 +461,46 @@ def apply(config, colors, icons, sounds):
     with conditions(("Class", "Seed")), show():
         colors.seeds.apply()
         sounds.pong.apply()
+
+#    with conditions(("Class", "Heist Target")), show():
+#        colors.heist_target.apply()
+#        icons.other_higher.apply()
+#        sounds.vroom.apply()
+#
+#    with conditions(("Class", "Contract")), show():
+#        colors.contract.apply()
+#        icons.league_mid.apply()
+#        sounds.heavy.apply()
+#
+#    with conditions(("Class", "Quest Item"), ("BaseType", "Contract:")), show():
+#        colors.quest_contract.apply()
+#        icons.league_high.apply()
+#        sounds.heavy.apply()
+#
+#    with conditions(("Class", "Blueprint")), show():
+#        colors.blueprint.apply()
+#        icons.league_higher.apply()
+#        sounds.heavy_more.apply()
+#
+#    with conditions(("Class", "Heist Cloak")), show():
+#        colors.heist_cloak.apply()
+#        icons.league_high.apply()
+#        sounds.pong.apply()
+#
+#    with conditions(("Class", "Heist Brooch")), show():
+#        colors.heist_brooch.apply()
+#        icons.league_high.apply()
+#        sounds.pong.apply()
+#
+#    with conditions(("Class", "Heist Tool")), show():
+#        colors.heist_tool.apply()
+#        icons.league_high.apply()
+#        sounds.pong.apply()
+#
+#    with conditions(("Class", "Heist Gear")), show():
+#        colors.heist_gear.apply()
+#        icons.league_high.apply()
+#        sounds.pong.apply()
 
 
     # Apply styles to items with rarity
@@ -423,6 +520,38 @@ def apply(config, colors, icons, sounds):
         with conditions(("Rarity", "Unique")), show():
             colors.rarity_unique.apply()
 
+        with conditions(("Class", "Maps")):
+            with conditions(("MapTier", "<=", 5)), show():
+                colors.maps_white.apply()
+            with conditions(("MapTier", ">=", 6), ("MapTier", "<=", 10)), show():
+                colors.maps_yellow.apply()
+            with conditions(("MapTier", ">=", 11)), show():
+                colors.maps_red.apply()
+
+        with conditions(("Class", "Amulets")):
+            if config.highlighted_amulets:
+                with conditions(("BaseType", *config.highlighted_amulets),
+                        ("Rarity", "<", "Unique")), show():
+                    colors.highlighted_amulets.apply()
+            with show():
+                colors.amulets.apply()
+
+        with conditions(("Class", "Rings")):
+            if config.highlighted_rings:
+                with conditions(
+                        ("BaseType", *config.highlighted_rings),
+                        ("Rarity", "<", "Unique")), show():
+                    colors.highlighted_rings.apply()
+            with show():
+                colors.rings.apply()
+
+        with conditions(("Class", "Belts")):
+            if config.highlighted_belts:
+                with conditions(("BaseType", *config.highlighted_belts),
+                        ("Rarity", "<", "Unique")), show():
+                    colors.highlighted_belts.apply()
+            with show():
+                colors.belts.apply()
 
         # Apply specific styles to each class / basetype
         for idx, rarity in enumerate(["Normal", "Magic", "Rare", "Unique"]):
@@ -440,39 +569,6 @@ def apply(config, colors, icons, sounds):
                 with conditions(("Class", "Atlas")), show():
                     colors.watchstones[idx].apply()
 
-                with conditions(("Class", "Maps")):
-                    with conditions(("MapTier", "<=", 5)), show():
-                        colors.maps_white[idx].apply()
-                    with conditions(("MapTier", ">=", 6), ("MapTier", "<=", 10)), show():
-                        colors.maps_yellow[idx].apply()
-                    with conditions(("MapTier", ">=", 11)), show():
-                        colors.maps_red[idx].apply()
-
-                with conditions(("Class", "Amulets")):
-                    if config.highlighted_amulets:
-                        with conditions(("BaseType", *config.highlighted_amulets),
-                                ("Rarity", "<", "Unique")), show():
-                            colors.highlighted_amulets[idx].apply()
-                    with show():
-                        colors.amulets[idx].apply()
-
-                with conditions(("Class", "Rings")):
-                    if config.highlighted_rings:
-                        with conditions(
-                                ("BaseType", *config.highlighted_rings),
-                                ("Rarity", "<", "Unique")), show():
-                            colors.highlighted_rings[idx].apply()
-                    with show():
-                        colors.rings[idx].apply()
-
-                with conditions(("Class", "Belts")):
-                    if config.highlighted_belts:
-                        with conditions(("BaseType", *config.highlighted_belts),
-                                ("Rarity", "<", "Unique")), show():
-                            colors.highlighted_belts[idx].apply()
-                    with show():
-                        colors.belts[idx].apply()
-
                 with conditions(("Class", "Life Flasks")), show():
                     colors.life_flasks[idx].apply()
 
@@ -484,9 +580,6 @@ def apply(config, colors, icons, sounds):
 
                 with conditions(("Class", "Hybrid Flasks")), show():
                     colors.hybrid_flasks[idx].apply()
-
-                with conditions(("Class", "Fishing")), show():
-                    colors.fishing[idx].apply()
 
                 with conditions(("Class", "Thrusting", "Bow")), show():
                     colors.dex_weapons[idx].apply()
@@ -596,10 +689,29 @@ def apply(config, colors, icons, sounds):
             colors.four_link.apply()
 
         with conditions(
+                ("SocketGroup", *config.highlighted_4L),
                 ("Rarity", "<", "Unique"),
                 ("AreaLevel", "<=", tables.act_10_max_level),
-                ("SocketGroup", *config.main_socket_groups)), show():
-            colors.good_sockets.apply()
+                ("LinkedSockets", 4)), show():
+            colors.highlighted.apply()
+
+        # Before Act 3, every gear is maxed at 3L
+        with conditions(
+                ("Rarity", "<", "Unique"),
+                ("AreaLevel", "<=", tables.act_2_max_level),
+                ("SocketGroup", *config.highlighted_3L),
+                ("LinkedSockets", "<=", 3)), show():
+            colors.three_link_highlighted.apply()
+
+        # Act 3 and up, highlight only if 3L is the max
+        with conditions(
+                ("Class", *tables.three_socket_max),
+                ("Rarity", "<", "Unique"),
+                ("AreaLevel", ">", tables.act_2_max_level),
+                ("SocketGroup", *config.highlighted_3L),
+                ("LinkedSockets", "<=", 3)), show():
+            colors.three_link_highlighted.apply()
+
 
         # 5 & 6 links
         with conditions(("LinkedSockets", "5")), show():
@@ -624,6 +736,15 @@ def apply(config, colors, icons, sounds):
                 colors.extremely_valuable.apply()
                 sounds.unique_most.apply()
 
+#        with conditions(("BaseType", *tables.experimented_bases)), show():
+#            colors.experimented_base.apply()
+#            icons.other_high.apply()
+#            sounds.stutter.apply()
+
+#        with conditions(("Replica", "True")), show():
+#            colors.replica_unique.apply()
+#            icons.other_higher.apply()
+#            sounds.stutter_more.apply()
 
         with conditions(("Class", "Fishing")), show():
             icons.other_top.apply()

@@ -9,18 +9,24 @@ from icons import Icons
 from colors import Colors
 
 
+# Notes:
+# Different color for 4link + desired sockets
+# Don't overwrite the 4link color with desired socket color
+# Filter out more normal gear without good links
+
 # Filter configuration
 # ====================
 class Config:
-    main_socket_groups = ["BBG", "BBB"]
+    highlighted_3L = [ "RRG", "GGR" ] #["BBG", "BBB", "GGB"]
+    highlighted_4L = [ "RRR", "GGG", "RRG", "GGR" ] #["BBG", "BBB", "GGB", "GGG"]
     # str, dex, int, strdex, strint, dexint
-    armour_types = ["int"]
+    armour_types = ["dex", "strdex", "str"]
     # List of weapon item classes to show. Strings must be the exact item class.
-    weapon_types = ["Wands", "Rune Daggers"]
+    weapon_types = ["One Hand Axes"]
     # Trinket BaseTypes to add highlights to
-    highlighted_rings = []
-    highlighted_belts = ["Leather"]
-    highlighted_amulets = ["Jade"]
+    highlighted_rings = ["Ruby", "Sapphire", "Topaz", "Iron"]
+    highlighted_belts = ["Rustic"]
+    highlighted_amulets = ["Lapis"]
     # Other options
     show_5_links = True
     # -1:none, 0:bottom, 1:lower, 2:low, 3:mid, 4:high, 5:higher
