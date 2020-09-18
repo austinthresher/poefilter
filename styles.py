@@ -432,7 +432,20 @@ def apply(config, colors, icons, sounds):
             colors.gems.apply()
 
         with conditions(("Quality", ">", 0)), show():
-            colors.quality_gems.apply()
+            colors.superior_gems.apply()
+
+#        with conditions(("AlternateQuality", "True")), show():
+#            icons.other_higher.apply()
+#            sounds.pong.apply()
+#
+#        with conditions(("GemQualityType", "Divergent")), show():
+#            colors.divergent_gems.apply()
+#
+#        with conditions(("GemQualityType", "Phantasmal")), show():
+#            colors.phantasmal_gems.apply()
+#
+#        with conditions(("GemQualityType", "Anomalous")), show():
+#            colors.anomalous_gems.apply()
 
         with conditions(("Corrupted", "True")), show():
             colors.corrupted.apply()
@@ -442,10 +455,6 @@ def apply(config, colors, icons, sounds):
             icons.other_top.apply()
             sounds.boom.apply()
 
-#        with conditions(("AlternateQuality", "True")), show():
-#            icons.other_higher.apply()
-#            colors.drop_gems.apply()
-#            sounds.pong.apply()
 
         with conditions(("BaseType", *tables.drop_gems)), show():
             icons.other_higher.apply()
@@ -502,6 +511,25 @@ def apply(config, colors, icons, sounds):
 #        icons.league_high.apply()
 #        sounds.pong.apply()
 
+#    with conditions(("BaseType", "Prime Regrading Lens")), show():
+#        colors.prime_regrading_lens.apply()
+#        icons.league_higher.apply()
+#        sounds.heavy_more.apply()
+#
+#    with conditions(("BaseType", "Secondary Regrading Lens")), show():
+#        colors.secondary_regrading_lens.apply()
+#        icons.league_high.apply()
+#        sounds.heavy.apply()
+#
+#    with conditions(("BaseType", "Tailoring Orb")), show():
+#        colors.tailoring_orb.apply()
+#        icons.currency_high.apply()
+#        sounds.currency.apply()
+#
+#    with conditions(("BaseType", "Tempering Orb")), show():
+#        colors.tempering_orb.apply()
+#        icons.currency_high.apply()
+#        sounds.currency.apply()
 
     # Apply styles to items with rarity
     # =================================
