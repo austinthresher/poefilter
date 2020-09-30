@@ -1,8 +1,5 @@
 from poefilter import *
 
-# TODO: Come up with a consistent color / shape / beam system so that drop
-# value is communicated effectively
-
 # Top 3 tiers have map icons + beams
 # Mid tier has temp beam, no icons
 

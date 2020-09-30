@@ -25,10 +25,10 @@ def apply(config):
         done()
 
     # Show all Heist items
-#    with conditions("BaseType", "Marker"), show():
-#        done()
-#    with conditions(("Class", "Trinket", "Heist", "Contract", "Blueprint")), show():
-#        done()
+    with conditions(("BaseType", "Marker")), show():
+        done()
+    with conditions(("Class", "Trinket", "Heist", "Contract", "Blueprint")), show():
+        done()
 
     if config.show_5_links:
         with conditions(("LinkedSockets", "5")), show():
@@ -64,8 +64,8 @@ def apply(config):
 
     # Hide non-quality gems in endgame
     with conditions(("Class", "Gems"), ("AreaLevel", ">=", tables.act_10_max_level)):
-#        with conditions(("AlternateQuality", "True")), show():
-#            done()
+        with conditions(("AlternateQuality", "True")), show():
+            done()
         with conditions(("BaseType", *tables.drop_gems)), show():
             done()
         with conditions(("Quality", ">", 0)), show():
@@ -85,8 +85,8 @@ def apply(config):
         done()
     
     # Show all experimented base types
-#    with conditions(("BaseType", *tables.experimented_bases)), show():
-#        done()
+    with conditions(("BaseType", *tables.experimented_bases)), show():
+        done()
 
     # Show all Magic items until the end of Act 1
     with conditions(
@@ -197,8 +197,8 @@ def apply(config):
     # Filter Uniques by tier
 
     with conditions(("Rarity", "Unique")):
-#        with conditions(("Replica", "True")), show():
-#            done()
+        with conditions(("Replica", "True")), show():
+            done()
         if tables.unique_bottom:
             if config.hide_unique_tier >= 0:
                 with conditions(("BaseType", *tables.unique_bottom)), hide():
@@ -338,7 +338,7 @@ def apply(config):
                 done()
 
     # Hide weapons and armour that are outleveled
-    equipment_overlap = 1
+    equipment_overlap = 5
                     
     for weap in tables.weapon_drop_levels.keys():
         drops = tables.weapon_drop_levels[weap]

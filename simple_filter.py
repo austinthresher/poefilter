@@ -13,6 +13,9 @@ from colors import Colors
 # Different color for 4link + desired sockets
 # Don't overwrite the 4link color with desired socket color
 # Filter out more normal gear without good links
+# TODO: Highlight high ilvl items
+# FIXME: everything with a custom drop sound should have an icon
+# FIXME: Incursion Stone of Passage doesn't get highlighted
 
 # Filter configuration
 # ====================

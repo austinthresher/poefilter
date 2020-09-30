@@ -318,10 +318,10 @@ weapon_classes = [
         "Claws", "Rune Daggers", "Daggers", "Wands", "One Hand Swords",
         "Two Hand Swords", "Bows", "Warstaves", "Staves",
         "Sceptres", "One Hand Axes", "Two Hand Axes", "One Hand Maces",
-        "Two Hand Maces", "Quivers"] # Quivers is debatable
+        "Two Hand Maces"]
 
 trinket_classes = [
-        "Amulets", "Rings", "Belts"]
+        "Amulets", "Rings", "Belts", "Quivers"]
 
 armour_classes = [
         "Helmets", "Gloves", "Boots", "Body Armours", "Shields"]
@@ -579,7 +579,7 @@ divination_top = [
         "The Nurse", "Etched in Blood", "The Sustenance", "The Fishmonger",
         "The Progeny of Lunaris", "The Spark and the Flame",
         "The White Knight", "The Long Con", "Wealth and Power",
-#        "Brother's Stash"
+        "Brother's Stash"
     ]
 
 divination_higher = [
@@ -594,10 +594,10 @@ divination_higher = [
         "Peaceful Moments", "The Hoarder", "The Eldritch Decay",
         # These are new in 3.12
         # FIXME: Sort into correct tiers
-#        "The Gulf", "The Bitter Blossom", "Triskaidekaphobia",
-#        "Unrequited Love", "The Cache", "The Academic",
-#        "Desecrated Virtue", "Unchained", "The Unexpected Prize",
-#        "Cursed Words", "The Journalist"
+        "The Gulf", "The Bitter Blossom", "Triskaidekaphobia",
+        "Unrequited Love", "The Cache", "The Academic",
+        "Desecrated Virtue", "Unchained", "The Unexpected Prize",
+        "Cursed Words", "The Journalist"
     ]
 
 divination_high = [

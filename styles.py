@@ -15,10 +15,9 @@ def apply(config, colors, icons, sounds):
         with show():
             colors.other_currency.apply()
 
-# Uncomment for 3.12
-#        with conditions(("BaseType", "Marker")), show():
-#            colors.rogue_marker.apply()
-#            sounds.currency.apply()
+        with conditions(("BaseType", "Marker")), show():
+            colors.rogue_marker.apply()
+            #sounds.currency.apply()
 
         with conditions(("BaseType", "Orb")), show():
             colors.other_orbs.apply()
@@ -434,18 +433,18 @@ def apply(config, colors, icons, sounds):
         with conditions(("Quality", ">", 0)), show():
             colors.superior_gems.apply()
 
-#        with conditions(("AlternateQuality", "True")), show():
-#            icons.other_higher.apply()
-#            sounds.pong.apply()
-#
-#        with conditions(("GemQualityType", "Divergent")), show():
-#            colors.divergent_gems.apply()
-#
-#        with conditions(("GemQualityType", "Phantasmal")), show():
-#            colors.phantasmal_gems.apply()
-#
-#        with conditions(("GemQualityType", "Anomalous")), show():
-#            colors.anomalous_gems.apply()
+        with conditions(("AlternateQuality", "True")), show():
+            icons.other_higher.apply()
+            sounds.pong.apply()
+
+        with conditions(("GemQualityType", "Divergent")), show():
+            colors.divergent_gems.apply()
+
+        with conditions(("GemQualityType", "Phantasmal")), show():
+            colors.phantasmal_gems.apply()
+
+        with conditions(("GemQualityType", "Anomalous")), show():
+            colors.anomalous_gems.apply()
 
         with conditions(("Corrupted", "True")), show():
             colors.corrupted.apply()
@@ -471,65 +470,65 @@ def apply(config, colors, icons, sounds):
         colors.seeds.apply()
         sounds.pong.apply()
 
-#    with conditions(("Class", "Heist Target")), show():
-#        colors.heist_target.apply()
-#        icons.other_higher.apply()
-#        sounds.vroom.apply()
-#
-#    with conditions(("Class", "Contract")), show():
-#        colors.contract.apply()
-#        icons.league_mid.apply()
-#        sounds.heavy.apply()
-#
-#    with conditions(("Class", "Quest Item"), ("BaseType", "Contract:")), show():
-#        colors.quest_contract.apply()
-#        icons.league_high.apply()
-#        sounds.heavy.apply()
-#
-#    with conditions(("Class", "Blueprint")), show():
-#        colors.blueprint.apply()
-#        icons.league_higher.apply()
-#        sounds.heavy_more.apply()
-#
-#    with conditions(("Class", "Heist Cloak")), show():
-#        colors.heist_cloak.apply()
-#        icons.league_high.apply()
-#        sounds.pong.apply()
-#
-#    with conditions(("Class", "Heist Brooch")), show():
-#        colors.heist_brooch.apply()
-#        icons.league_high.apply()
-#        sounds.pong.apply()
-#
-#    with conditions(("Class", "Heist Tool")), show():
-#        colors.heist_tool.apply()
-#        icons.league_high.apply()
-#        sounds.pong.apply()
-#
-#    with conditions(("Class", "Heist Gear")), show():
-#        colors.heist_gear.apply()
-#        icons.league_high.apply()
-#        sounds.pong.apply()
+    with conditions(("Class", "Heist Target")), show():
+        colors.heist_target.apply()
+        icons.other_higher.apply()
+        sounds.vroom.apply()
 
-#    with conditions(("BaseType", "Prime Regrading Lens")), show():
-#        colors.prime_regrading_lens.apply()
-#        icons.league_higher.apply()
-#        sounds.heavy_more.apply()
-#
-#    with conditions(("BaseType", "Secondary Regrading Lens")), show():
-#        colors.secondary_regrading_lens.apply()
-#        icons.league_high.apply()
-#        sounds.heavy.apply()
-#
-#    with conditions(("BaseType", "Tailoring Orb")), show():
-#        colors.tailoring_orb.apply()
-#        icons.currency_high.apply()
-#        sounds.currency.apply()
-#
-#    with conditions(("BaseType", "Tempering Orb")), show():
-#        colors.tempering_orb.apply()
-#        icons.currency_high.apply()
-#        sounds.currency.apply()
+    with conditions(("Class", "Contract")), show():
+        colors.contract.apply()
+        icons.league_mid.apply()
+        sounds.currency.apply()
+
+    with conditions(("Class", "Quest Item"), ("BaseType", "Contract:")), show():
+        colors.quest_contract.apply()
+        icons.league_high.apply()
+        sounds.currency.apply()
+
+    with conditions(("Class", "Blueprint")), show():
+        colors.blueprint.apply()
+        icons.league_higher.apply()
+        sounds.heavy.apply()
+
+    with conditions(("Class", "Heist Cloak")), show():
+        colors.heist_cloak.apply()
+        icons.league_high.apply()
+        sounds.pong.apply()
+
+    with conditions(("Class", "Heist Brooch")), show():
+        colors.heist_brooch.apply()
+        icons.league_high.apply()
+        sounds.pong.apply()
+
+    with conditions(("Class", "Heist Tool")), show():
+        colors.heist_tool.apply()
+        icons.league_high.apply()
+        sounds.pong.apply()
+
+    with conditions(("Class", "Heist Gear")), show():
+        colors.heist_gear.apply()
+        icons.league_high.apply()
+        sounds.pong.apply()
+
+    with conditions(("BaseType", "Prime Regrading Lens")), show():
+        colors.prime_regrading_lens.apply()
+        icons.league_higher.apply()
+        sounds.heavy_more.apply()
+
+    with conditions(("BaseType", "Secondary Regrading Lens")), show():
+        colors.secondary_regrading_lens.apply()
+        icons.league_high.apply()
+        sounds.heavy.apply()
+
+    with conditions(("BaseType", "Tailoring Orb")), show():
+        colors.tailoring_orb.apply()
+        icons.currency_high.apply()
+        sounds.currency.apply()
+
+    with conditions(("BaseType", "Tempering Orb")), show():
+        colors.tempering_orb.apply()
+        icons.currency_high.apply()
+        sounds.currency.apply()
 
     # Apply styles to items with rarity
     # =================================
@@ -764,15 +763,15 @@ def apply(config, colors, icons, sounds):
                 colors.extremely_valuable.apply()
                 sounds.unique_most.apply()
 
-#        with conditions(("BaseType", *tables.experimented_bases)), show():
-#            colors.experimented_base.apply()
-#            icons.other_high.apply()
-#            sounds.stutter.apply()
+        with conditions(("BaseType", *tables.experimented_bases)), show():
+            colors.experimented_base.apply()
+            icons.other_high.apply()
+            sounds.stutter.apply()
 
-#        with conditions(("Replica", "True")), show():
-#            colors.replica_unique.apply()
-#            icons.other_higher.apply()
-#            sounds.stutter_more.apply()
+        with conditions(("Replica", "True")), show():
+            colors.replica_unique.apply()
+            icons.other_higher.apply()
+            sounds.stutter_more.apply()
 
         with conditions(("Class", "Fishing")), show():
             icons.other_top.apply()
